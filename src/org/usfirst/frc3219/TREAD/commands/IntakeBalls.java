@@ -9,32 +9,33 @@ public class IntakeBalls extends Command {
 
 	@Override
 	protected void end() {
-		
+		Robot.intake.flipperStop();
 		
 	}
 
 	@Override
 	protected void execute() {
-		
+		//TODO might cause lag
+		Robot.intake.flipperStart();		
 		
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.intake.flipperStart();
-		//TODO make sure 
+
+ 
 	}
 
 	@Override
 	protected void interrupted() {
-		
+		end();
 		
 	}
 
 	@Override
 	protected boolean isFinished() {
-		
-		return true;
+
+		return false;
 	}
 
 }
