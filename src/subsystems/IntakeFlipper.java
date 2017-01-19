@@ -9,11 +9,12 @@ public class IntakeFlipper extends Subsystem {
 	/*	
 	 *	This subsystem lets devs use flipper start and stop for self explanatory stuff
 	 *	also makes flipperSpeed available.
-	 *	You can use the turnSpeed variable to set the speed the the fipper
+	 *	You can use the turnSpeed variable to set the speed the the from 0% to 100%.
+	 *  It might make more sense to say "start/stop" then to say speed 1-0.
 	 */
 	
 	// Variable setup
-	double turnSpeed = 1;	
+	private int turnSpeed = 100;	// In percent
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -28,7 +29,7 @@ public class IntakeFlipper extends Subsystem {
 	
 	public void flipperStart() {
 		// Starts motor
-		RobotMap.intakeTalon.set(turnSpeed);
+		RobotMap.intakeTalon.set(turnSpeed / 100);
 	}
 	
 	public void flipperStop() {
