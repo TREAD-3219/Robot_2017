@@ -22,5 +22,7 @@ public class Drive extends Subsystem {
 	public void stopMotors() {
 	drive.arcadeDrive(0, 0);
 	}
-
+public void setMotors(double inchespersecond){
+	double Power= inchespersecond/120;
+drive.arcadeDrive(Power, 0);}
 }
