@@ -6,23 +6,26 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drive extends Subsystem {
-	
+
 	public RobotDrive drive;
-	
+
 	@Override
 	protected void initDefaultCommand() {
-		drive = new RobotDrive(RobotMap.driveTalonBL, RobotMap.driveTalonBR, RobotMap.driveTalonFL, RobotMap.driveTalonFR);
+		drive = new RobotDrive(RobotMap.driveTalonBL, RobotMap.driveTalonBR, RobotMap.driveTalonFL,
+				RobotMap.driveTalonFR);
 	}
-	
-	//TODO would throttle cause trouble? Do we need to say a specific axis?
+
+	// TODO would throttle cause trouble? Do we need to say a specific axis?
 	public void stickDrive(double forwardSpeed, double turnSpeed, double throttle) {
 		drive.arcadeDrive(forwardSpeed * throttle, turnSpeed * throttle);
 	}
-	
+
 	public void stopMotors() {
-	drive.arcadeDrive(0, 0);
+		drive.arcadeDrive(0, 0);
 	}
-public void setMotors(double inchespersecond){
-	double Power= inchespersecond/120;
-drive.arcadeDrive(Power, 0);}
+
+	public void setMotors(double inchespersecond) {
+		double Power = inchespersecond / 120;
+		drive.arcadeDrive(Power, 0);
+	}
 }
