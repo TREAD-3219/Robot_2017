@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -22,8 +23,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 
     //MOTOR DELCARATIONS
-
+	public static Talon talon;
     public static void init() {
-       
+    	talon = new Talon(6); 
     }
 }
