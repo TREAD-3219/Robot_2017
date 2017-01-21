@@ -21,9 +21,8 @@ public class IntakeFlipper extends Subsystem {
 
 	}
 	
-	//probably won't need to use
+	//Sets the speed of the flipper motor, on a scale from 0-1
 	public void flipperSpeed(double speed) {
-		// Goes from 0-1
 		RobotMap.intakeTalon.set(speed);
 	}
 	
