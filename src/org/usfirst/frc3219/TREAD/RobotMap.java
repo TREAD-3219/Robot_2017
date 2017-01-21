@@ -8,9 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -20,9 +22,20 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-    //MOTOR DELCARATIONS
+	private static final int TURNTABLE_INDEX = 2;
+	private static final int TURNTABLE_ENCODER_B = 1;
+	private static final int TURNTABLE_ENCODER_A = 0;
 
-    public static void init() {
-       
-    }
+	private static final int TURNTABLE_MOTOR = 7;
+
+	// MOTOR DELCARATIONS
+	public static CANTalon turntableMotor;
+	public static Encoder turntableEncoder;
+	public static DigitalInput turntableIndex;
+
+	public static void init() {
+		turntableMotor = new CANTalon(TURNTABLE_MOTOR);
+		turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
+		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
+	 }
 }
