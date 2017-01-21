@@ -16,6 +16,7 @@ import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc3219.TREAD.subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -34,7 +35,7 @@ public class Robot extends IterativeRobot {
     
     //Subsystem Declarations
     public static OI oi;
-
+    public static Shooter shooter;
 
 
     /**
@@ -47,7 +48,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
     	
     	//Subsystem Construction, OI must be last.
-    	
+    	shooter= new Shooter();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null

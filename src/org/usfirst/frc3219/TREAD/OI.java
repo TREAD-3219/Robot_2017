@@ -12,6 +12,9 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.*;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -49,12 +52,13 @@ public class OI {
 	 */
 	
 	//Joystick Declarations
-	
+	public static Joystick joystick;
 	
     public OI() {
     	//Button Declarations
-
-
+joystick= new Joystick(0);
+JoystickButton shoot= new JoystickButton(joystick,0);
+shoot.whileHeld(new Shoot());
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
     }
