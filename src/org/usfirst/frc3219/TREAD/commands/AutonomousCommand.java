@@ -12,38 +12,45 @@
 package org.usfirst.frc3219.TREAD.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc3219.TREAD.Robot;
 
 /**
- *
+ * This command does nothing. On a real command, this is where you would put the description.
+ * This command has comments to show what you might put in a real command (with names filled in)
  */
 public class AutonomousCommand extends Command {
-
-   
+	
+	//private boolean example;
+	
     public AutonomousCommand() {
-
-  
+    	//requires(Robot.exampleSubsystem);
+    	//example = true;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	//Robot.exampleSubsystem.motor.setSafetyEnabled(false);
+    	//this.setTimeout(5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Robot.exampleSubsystem.runMotor();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//return this.isTimedOut();
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	//Robot.exampleSubsystem.stopMotors();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
