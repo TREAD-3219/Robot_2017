@@ -7,9 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Shoot extends Command {
 
 	@Override
-	protected void end() {Robot.shooter.stopShooter();
-		// TODO Auto-generated method stub
-		
+	protected void end() {
+		Robot.shooter.stopShooter();
 	}
 
 	@Override
@@ -19,8 +18,8 @@ public class Shoot extends Command {
 	}
 
 	@Override
-	protected void initialize() {Robot.shooter.startShooter();
-		// TODO Auto-generated method stub
+	protected void initialize() {
+		Robot.shooter.startShooter();
 		
 	}
 

@@ -23,8 +23,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 
     //MOTOR DELCARATIONS
-	public static Talon talon;
+	public static Talon flyWheelMotor;
     public static void init() {
-    	talon = new Talon(6); 
+    	flyWheelMotor = new Talon(6); 
     }
 }

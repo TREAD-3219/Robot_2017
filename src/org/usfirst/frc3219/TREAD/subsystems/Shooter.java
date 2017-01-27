@@ -12,15 +12,20 @@ public class Shooter extends Subsystem{
 		// TODO Auto-generated method stub
 		
 	}
-public void startShooter(){
-	RobotMap.talon.set(1);
-}
-
-public void stopShooter(){
-	RobotMap.talon.set(0);
+	
+	public void setSafety(boolean enabled) {
+		RobotMap.flyWheelMotor.setSafetyEnabled(enabled);
+	}
+	
+	public void startShooter(){
+		RobotMap.flyWheelMotor.set(1);
 	}
 
-public void shooter(double speed){RobotMap.talon.set(speed);
+	public void stopShooter(){
+		RobotMap.flyWheelMotor.set(0);
+	}
 
-}
+	public void shooter(double speed){
+		RobotMap.flyWheelMotor.set(speed);
+	}
 }
