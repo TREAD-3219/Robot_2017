@@ -11,6 +11,8 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -24,15 +26,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 	
     //MOTOR DELCARATIONS
-	public static Talon driveTalonFL;
-	public static Talon driveTalonFR;
-	public static Talon driveTalonBL;
-	public static Talon driveTalonBR;
+	public static CANTalon driveTalonFL;
+	public static CANTalon driveTalonFR;
+	public static CANTalon driveTalonBL;
+	public static CANTalon driveTalonBR;
 
     public static void init() {
-    	driveTalonFL = new Talon(0);
-    	driveTalonFR = new Talon(1);
-    	driveTalonBL = new Talon(2);
-    	driveTalonBR = new Talon(3);
+    	driveTalonFL = new CANTalon(0);
+    	driveTalonFR = new CANTalon(1);
+    	driveTalonBL = new CANTalon(2);
+    	driveTalonBR = new CANTalon(3);
     }
 }
