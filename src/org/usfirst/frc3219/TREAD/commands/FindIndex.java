@@ -1,9 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands;
 
 import org.usfirst.frc3219.TREAD.Robot;
+import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.command.Command;
-import subsystems.Turntable;
 
 /**
  *
