@@ -10,7 +10,7 @@ public class IntakeBalls extends Command {
 	@Override
 	protected void end() {
 		Robot.intake.flipperStop();
-		
+		Robot.intake.setSafety(true);
 	}
 
 	@Override
@@ -22,8 +22,7 @@ public class IntakeBalls extends Command {
 
 	@Override
 	protected void initialize() {
-
- 
+		Robot.intake.setSafety(false);
 	}
 
 	@Override

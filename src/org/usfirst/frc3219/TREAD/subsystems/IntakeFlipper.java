@@ -1,4 +1,4 @@
-package subsystems;
+package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
@@ -19,6 +19,10 @@ public class IntakeFlipper extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 
+	}
+	
+	public void setSafety(boolean enabled) {
+		RobotMap.intakeTalon.setSafetyEnabled(enabled);
 	}
 	
 	//Sets the speed of the flipper motor, on a scale from 0-1
