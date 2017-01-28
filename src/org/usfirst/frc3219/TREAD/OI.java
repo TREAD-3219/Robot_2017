@@ -14,6 +14,7 @@ package org.usfirst.frc3219.TREAD;
 import org.usfirst.frc3219.TREAD.commands.*;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -56,7 +57,8 @@ public class OI {
 	
     public OI() {
     	//Button Declarations
-
+    	JoystickButton shift = new JoystickButton(stick, 1);
+    	shift.whenPressed(new Shift());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

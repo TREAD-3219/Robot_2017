@@ -13,6 +13,7 @@ package org.usfirst.frc3219.TREAD;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -30,11 +31,13 @@ public class RobotMap {
 	public static CANTalon driveTalonFR;
 	public static CANTalon driveTalonBL;
 	public static CANTalon driveTalonBR;
+	public static Solenoid shifter;
 
     public static void init() {
     	driveTalonFL = new CANTalon(0);
     	driveTalonFR = new CANTalon(1);
     	driveTalonBL = new CANTalon(2);
     	driveTalonBR = new CANTalon(3);
+    	shifter = new Solenoid(0);
     }
 }
