@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     //MOTOR DELCARATIONS
-
+	driveEncoder = new Encoder(0,1,false);
     public static void init() {
        
     }
