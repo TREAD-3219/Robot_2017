@@ -8,11 +8,11 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -25,19 +25,21 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 
 public class RobotMap {
-	
-    //MOTOR DELCARATIONS
+
+	// MOTOR DELCARATIONS
 	public static CANTalon driveTalonFL;
 	public static CANTalon driveTalonFR;
 	public static CANTalon driveTalonBL;
 	public static CANTalon driveTalonBR;
 	public static Solenoid shifter;
+	public static Encoder driveEncoder;
 
-    public static void init() {
-    	driveTalonFL = new CANTalon(0);
-    	driveTalonFR = new CANTalon(1);
-    	driveTalonBL = new CANTalon(2);
-    	driveTalonBR = new CANTalon(3);
-    	shifter = new Solenoid(0);
-    }
+	public static void init() {
+		driveTalonFL = new CANTalon(0);
+		driveTalonFR = new CANTalon(1);
+		driveTalonBL = new CANTalon(2);
+		driveTalonBR = new CANTalon(3);
+		shifter = new Solenoid(0);
+		driveEncoder = new Encoder(0,1,false);
+	}
 }
