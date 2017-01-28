@@ -12,6 +12,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.subsystems.Sensors;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -32,7 +33,7 @@ public class Robot extends IterativeRobot {
     
     //Subsystem Declarations
     public static OI oi;
-
+public static Sensors sensors;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -41,7 +42,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
     	
     	//Subsystem Construction, OI must be last.
-    	
+    	sensors = new Sensors();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
