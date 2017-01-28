@@ -11,8 +11,8 @@ public class Drive extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		drive = new RobotDrive(RobotMap.driveTalonBL, RobotMap.driveTalonBR, RobotMap.driveTalonFL,
-				RobotMap.driveTalonFR);
+		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonFR, 
+				RobotMap.driveTalonBL, RobotMap.driveTalonBR);
 	}
 
 	// TODO would throttle cause trouble? Do we need to say a specific axis?

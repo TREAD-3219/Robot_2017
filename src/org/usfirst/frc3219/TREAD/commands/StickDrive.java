@@ -18,7 +18,7 @@ public class StickDrive extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.drive.stickDrive(driveStick.getX(), driveStick.getY(), driveStick.getThrottle());
+		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), driveStick.getThrottle());
 		
 	}
 

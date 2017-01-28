@@ -12,6 +12,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.commands.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -88,6 +89,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Scheduler.getInstance().add(new StickDrive());
     }
 
     /**
