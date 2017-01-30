@@ -12,6 +12,8 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.commands.StickDrive;
+import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,12 +27,16 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
+	
+
 public class Robot extends IterativeRobot {
 
 	//Command Declarations
     Command autonomousCommand;
     
     //Subsystem Declarations
+    public static Drive drive;
     public static OI oi;
 
     /**
@@ -41,13 +47,14 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
     	
     	//Subsystem Construction, OI must be last.
+    	drive = new Drive();
     	
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
         oi = new OI();
-
+        
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousCommand();
     }
@@ -82,6 +89,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Scheduler.getInstance().add(new StickDrive());
     }
 
     /**
