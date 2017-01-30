@@ -14,8 +14,6 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -26,13 +24,14 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class RobotMap {
 
-	// MOTOR DELCARATIONS
-	public static CANTalon driveTalonFL;
-	public static CANTalon driveTalonFR;
+	// HARDWARE DECLARATIONS
+	public static CANTalon driveTalonFL;	// Note: only L and R, this is NOT
+	public static CANTalon driveTalonFR;	// a 4WD base - just doubled L & R
 	public static CANTalon driveTalonBL;
 	public static CANTalon driveTalonBR;
 	public static Solenoid shifter;
 	public static Encoder driveEncoder;
+	// what about RobotDrive?
 
 	public static void init() {
 		driveTalonFL = new CANTalon(0);
