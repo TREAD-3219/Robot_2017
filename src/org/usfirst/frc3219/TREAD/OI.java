@@ -12,6 +12,9 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.*;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -20,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
 	//// CREATING BUTTONS
     /* One type of button is a joystick button which is any button on a joystick.
      * You create one by telling it which joystick it's on and which button
@@ -49,11 +53,12 @@ public class OI {
 	 */
 	
 	//Joystick Declarations
-	
+	public Joystick stick = new Joystick(0);
 	
     public OI() {
     	//Button Declarations
-
+    	JoystickButton shift = new JoystickButton(stick, 1);
+    	shift.whenPressed(new Shift());
 
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
