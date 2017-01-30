@@ -10,10 +10,9 @@
 
 package org.usfirst.frc3219.TREAD;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -28,7 +27,7 @@ public class RobotMap {
 
 	private static final int TURNTABLE_MOTOR = 7;
 
-	// MOTOR DELCARATIONS
+	// HARDWARE DECLARATIONS
 	public static CANTalon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndex;
