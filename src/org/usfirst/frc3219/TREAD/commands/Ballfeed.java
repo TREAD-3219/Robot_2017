@@ -1,5 +1,7 @@
 package org.usfirst.frc3219.TREAD.commands;
 
+import org.usfirst.frc3219.TREAD.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class Ballfeed extends Command {
@@ -7,7 +9,7 @@ public class Ballfeed extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		
+		Robot.ballfeeder.TurnOffMotors();	
 	}
 
 	@Override
