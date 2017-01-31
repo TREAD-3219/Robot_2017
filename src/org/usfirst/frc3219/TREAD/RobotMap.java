@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     //MOTOR DELCARATIONS
-
+public static CANTalon
     public static void init() {
        
     }
