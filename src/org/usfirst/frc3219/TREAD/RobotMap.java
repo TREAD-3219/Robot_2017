@@ -22,8 +22,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 	// MOTOR DELCARATIONS
 
-	
 	public static Encoder driveEncoder;
+	Encode = RobotMap.driveEncoder;
+	Encode.setMaxPeriod(0.1);
+	Encode.setMinRate(10);
+Encode.setDistancePerPulse(Math.PI/90);}
 
 	public static void init() {
 		
