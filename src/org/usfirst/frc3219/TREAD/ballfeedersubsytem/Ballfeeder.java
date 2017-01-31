@@ -12,10 +12,10 @@ public class Ballfeeder extends Subsystem{
 		
 	}
 	public void TurnOnMotors() {
-		RobotMap.Motor.set(1);
+		RobotMap.FeederMotor.set(1);
 	}
 
 	public void TurnOffMotors() {
-		RobotMap.Motor.set(0);
+		RobotMap.FeederMotor.set(0);
 	}
 }

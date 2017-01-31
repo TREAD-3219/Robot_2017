@@ -21,9 +21,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	// MOTOR DELCARATIONS
-	public static CANTalon Motor;
+	public static CANTalon FeederMotor;
 
 	public static void init() {
-		Motor = new CANTalon(7);
+		FeederMotor = new CANTalon(7);
 	}
 }
