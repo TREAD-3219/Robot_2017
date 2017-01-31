@@ -8,9 +8,9 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -20,9 +20,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * floating around.
  */
 public class RobotMap {
-    //MOTOR DELCARATIONS
-public static CANTalon
-    public static void init() {
-       
-    }
+	// MOTOR DELCARATIONS
+	public static CANTalon Motor;
+
+	public static void init() {
+		Motor = new CANTalon(7);
+	}
 }
