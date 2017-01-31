@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
     
     //Subsystem Declarations
     public static OI oi;
-
+    public static Ballfeeder ballfeeder;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
