@@ -12,10 +12,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import com.ctre.CANTalon;
-
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -34,10 +31,16 @@ public class RobotMap {
 	public static Solenoid shifter;
 
     public static void init() {
-    	driveTalonFL = new CANTalon(0);
-    	driveTalonFR = new CANTalon(1);
+    	driveTalonFL = new CANTalon(1);
+    	driveTalonFR = new CANTalon(3);
     	driveTalonBL = new CANTalon(2);
-    	driveTalonBR = new CANTalon(3);
+    	driveTalonBR = new CANTalon(4);
     	shifter = new Solenoid(0);
+    	/*
+    	driveTalonFL.disable();
+    	driveTalonFR.disable();
+    	driveTalonBL.disable();
+    	driveTalonBR.disable();
+    	*/
     }
 }

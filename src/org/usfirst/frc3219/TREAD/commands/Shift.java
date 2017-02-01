@@ -1,6 +1,7 @@
 package org.usfirst.frc3219.TREAD.commands;
 
 import org.usfirst.frc3219.TREAD.Robot;
+import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,6 +13,7 @@ public class Shift extends Command {
 	
 	@Override
 	protected void initialize() {
+		this.setTimeout(Drive.SHIFT_SPEED_MS);
 		Robot.drive.shift();
 	}
 	
@@ -22,12 +24,13 @@ public class Shift extends Command {
 	
 	@Override
 	protected void end() {
+		Robot.drive.endShift();
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return true;
+		return this.isTimedOut();
 	}
 	
 	@Override
