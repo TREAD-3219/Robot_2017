@@ -23,16 +23,19 @@ public class RobotMap {
 	// MOTOR DELCARATIONS
 
 	public static Encoder driveEncoder;
-	Encode.setDistancePerPulse(Math.PI/90);{
-		
+	public static Encoder driveEncoderA;Encode.setDistancePerPulse(Math.PI/90);
+	public static Encoder driveEncoderB; Encode.setDistancePerPulse(Math.PI/90)
+	{
 	}
-	
-
 
 	public static void init() {
-		
-		driveEncoder = new Encoder(0, 1, false);{
-	}
-		
 	
-
+		driveEncoder = new Encoder(0,1,false);{
+	}
+	driveEncoderA = new Encoder(0,2,false);{
+		
+	}
+	driveEncoderB = new Encoder (0,3,false);{
+		
+	}
+	
