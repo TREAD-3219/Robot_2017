@@ -13,6 +13,11 @@ protected void initialize() {
 protected void end(){
 	Robot.drive.setMotors(0);
 }
+@Override 
+protected void interrupted() {
+	end();
+	
+}
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub

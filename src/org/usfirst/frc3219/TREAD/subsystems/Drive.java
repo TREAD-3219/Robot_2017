@@ -3,6 +3,7 @@ package org.usfirst.frc3219.TREAD.subsystems;
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.RobotMap;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
@@ -18,16 +19,23 @@ public class Drive extends Subsystem {
 	private static final double SHIFTING_SCALE = 10;
 	public static final double SHIFT_SPEED_MS = 100 / 1000.0;
 	
-	@Override
-	protected void initDefaultCommand() {
-	}
-	
 	public Drive() {
 		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonBL, 
 				RobotMap.driveTalonFR, RobotMap.driveTalonBR);
+	}
+	
+	private Encoder Encode;
+
+	@Override
+	protected void initDefaultCommand() {
+		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonFR, RobotMap.driveTalonBL,
+				RobotMap.driveTalonBR);
 		shifter = RobotMap.shifter;
 		highGear = false;
-	}
+		Encode = RobotMap.driveEncoder;
+		Encode.setMaxPeriod(0.1);
+		Encode.setMinRate(10);
+	Encode.setDistancePerPulse(Math.PI/90);}
 
 	
 	public void stickDrive(double forwardSpeed, double turnSpeed, double throttle) {
@@ -39,7 +47,9 @@ public class Drive extends Subsystem {
 		//}
 
 	}
-
+public double GetDistance(){
+	return Encode.getDistance();
+}
 	public void stopMotors() {
 		drive.arcadeDrive(0, 0);
 	}
@@ -51,6 +61,7 @@ public class Drive extends Subsystem {
 	
 	// Inverts boolean highGear for button presses
 	private boolean highGear;
+
 	public void shift() {
 		shifting = true;
 		highGear = !highGear;
