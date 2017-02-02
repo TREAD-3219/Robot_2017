@@ -28,7 +28,9 @@ public class Sensors extends Subsystem {
 		Encode.setMinRate(10);
 		Encode.setDistancePerPulse(Math.PI / 90);
 		Encode = RobotMap.driveEncoderA;
-	}
+		Encode = RobotMap.driveEncoderB;
+	Encode.setDistancePerPulse(Math.PI / 90);
+	Encode.setDistancePerPulse(Math.PI / 90);}
 
 	public double getDriveDistance() {
 		return Encode.getDistance();
