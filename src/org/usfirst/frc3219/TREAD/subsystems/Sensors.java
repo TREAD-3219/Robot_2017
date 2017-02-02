@@ -27,10 +27,13 @@ public class Sensors extends Subsystem {
 		Encode.setMaxPeriod(0.1);
 		Encode.setMinRate(10);
 		Encode.setDistancePerPulse(Math.PI / 90);
-		Encode = RobotMap.driveEncoderA; }
-public double getDriveDistance(){
-	return Encode.getDistance();
-}
+		Encode = RobotMap.driveEncoderA;
+	}
+
+	public double getDriveDistance() {
+		return Encode.getDistance();
+	}
+
 	public int getDistance() {
 		byte[] buffer = new byte[2];
 		i2c.write(0x00, 0x04);
