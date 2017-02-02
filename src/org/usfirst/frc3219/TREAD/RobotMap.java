@@ -24,13 +24,13 @@ public class RobotMap {
 
 	public static Encoder driveEncoder;
 	public static Encoder driveEncoderA;Encode.setDistancePerPulse(Math.PI/90);
-	public static Encoder driveEncoderB; Encode.setDistancePerPulse(Math.PI/90)
+	public static Encoder driveEncoderB;Encode.setDistancePerPulse(Math.PI/90);
 	{
 	}
 
 	public static void init() {
 	
-		driveEncoder = new Encoder(0,1,false);{
+	driveEncoder = new Encoder(0,1,false);{
 	}
 	driveEncoderA = new Encoder(0,2,false);{
 		
@@ -38,4 +38,3 @@ public class RobotMap {
 	driveEncoderB = new Encoder (0,3,false);{
 		
 	}
-	

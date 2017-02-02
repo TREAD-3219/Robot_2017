@@ -1,5 +1,7 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
-public class DriveEncoders {
+import edu.wpi.first.wpilibj.command.Command;
+
+public class DriveEncoders extends Command{
 
 }
