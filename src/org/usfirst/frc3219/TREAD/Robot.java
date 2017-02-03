@@ -12,6 +12,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.commands.Drive20ft;
 import org.usfirst.frc3219.TREAD.commands.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousCommand();
+        autonomousCommand = new Drive20ft();
     }
 
     /**

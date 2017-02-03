@@ -37,7 +37,6 @@ public class RobotMap {
     	driveTalonBL = new CANTalon(2);
     	driveTalonBR = new CANTalon(4);
     	shifter = new Solenoid(0);
-    	shifter = new Solenoid(0);
 		driveEncoder = new Encoder(0,1,false);
     	/*
     	driveTalonFL.disable();

@@ -19,17 +19,12 @@ public class Drive extends Subsystem {
 	private static final double SHIFTING_SCALE = 10;
 	public static final double SHIFT_SPEED_MS = 100 / 1000.0;
 	
-	public Drive() {
-		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonBL, 
-				RobotMap.driveTalonFR, RobotMap.driveTalonBR);
-	}
-	
 	private Encoder Encode;
 
 	@Override
 	protected void initDefaultCommand() {
-		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonFR, RobotMap.driveTalonBL,
-				RobotMap.driveTalonBR);
+		drive = new RobotDrive(RobotMap.driveTalonFL, RobotMap.driveTalonBL, 
+				RobotMap.driveTalonFR, RobotMap.driveTalonBR);
 		shifter = RobotMap.shifter;
 		highGear = false;
 		Encode = RobotMap.driveEncoder;
@@ -40,11 +35,11 @@ public class Drive extends Subsystem {
 	
 	public void stickDrive(double forwardSpeed, double turnSpeed, double throttle) {
 		//TODO find a better, more optimal way of doing this
-		//if (shifting) {
-			//drive.arcadeDrive((forwardSpeed * throttle) / SHIFTING_SCALE, (turnSpeed * throttle) / SHIFTING_SCALE);
-		//} else {
+		if (shifting) {
+			drive.arcadeDrive((forwardSpeed * throttle) / SHIFTING_SCALE, (turnSpeed * throttle) / SHIFTING_SCALE);
+		} else {
 			drive.arcadeDrive(forwardSpeed, turnSpeed);
-		//}
+		}
 
 	}
 public double GetDistance(){
@@ -55,8 +50,8 @@ public double GetDistance(){
 	}
 
 	public void setMotors(double inchespersecond) {
-		double Power = inchespersecond / 120;
-		drive.arcadeDrive(Power, 0);
+		double Power = inchespersecond / 120.0;
+		stickDrive(Power, 0, 0);
 	}
 	
 	// Inverts boolean highGear for button presses
