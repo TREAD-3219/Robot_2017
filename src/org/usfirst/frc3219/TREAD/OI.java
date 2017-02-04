@@ -61,9 +61,9 @@ public class OI {
     	shift.whenPressed(new Shift());
     	JoystickButton Drive20ft= new JoystickButton(stick, 2);
     	Drive20ft.whenPressed(new Drive20ft());
-
-        // SmartDashboard Buttons
-        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
+    	JoystickButton ballPickup = new JoystickButton(stick, 3);
+		ballPickup.whileHeld(new IntakeBalls());
+		
     }
 }
 

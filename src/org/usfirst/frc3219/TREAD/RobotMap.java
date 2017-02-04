@@ -43,19 +43,25 @@ public class RobotMap {
   public static CANTalon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndex;
-  
+	
+  // Intake subsystem
+	public static CANTalon intakeTalon;
+	
 	public static void init() {
     // Drive subsystem
 		driveTalonFL = new CANTalon(1);
-    driveTalonFR = new CANTalon(3);
-   	driveTalonBL = new CANTalon(2);
-   	driveTalonBR = new CANTalon(4);
+		driveTalonFR = new CANTalon(3);
+		driveTalonBL = new CANTalon(2);
+		driveTalonBR = new CANTalon(4);
 		shifter = new Solenoid(0);
 		driveEncoder = new Encoder(0,1,false);
 
     // Turntable subsystem
-    turntableMotor = new CANTalon(TURNTABLE_MOTOR);
+		turntableMotor = new CANTalon(TURNTABLE_MOTOR);
 		turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
 		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
-	 }
+	 
+	// Intake subsystem
+		intakeTalon = new CANTalon(5);
+	}
 }
