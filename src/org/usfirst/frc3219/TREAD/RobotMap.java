@@ -11,6 +11,8 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -23,9 +25,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 
     //MOTOR DELCARATIONS
-	public static Talon intakeTalon;
+	public static CANTalon intakeTalon;
 	
     public static void init() {
-    	intakeTalon = new Talon(4); // Port 4 to be compatable with drive branch
+    	intakeTalon = new CANTalon(5); // Port 5 to be compatable with drive branch
     }
 }
