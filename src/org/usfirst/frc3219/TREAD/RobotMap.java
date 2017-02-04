@@ -11,6 +11,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 
@@ -22,27 +23,39 @@ import edu.wpi.first.wpilibj.Solenoid;
  */
 
 public class RobotMap {
+	private static final int TURNTABLE_INDEX = 2;
+	private static final int TURNTABLE_ENCODER_B = 1;
+	private static final int TURNTABLE_ENCODER_A = 0;
 
-	// MOTOR DELCARATIONS
-	public static CANTalon driveTalonFL;
-	public static CANTalon driveTalonFR;
+	private static final int TURNTABLE_MOTOR = 7;
+
+	// HARDWARE DECLARATIONS
+  // Drive subsystem
+	public static CANTalon driveTalonFL;	// Note: only L and R, this is NOT
+	public static CANTalon driveTalonFR;	// a 4WD base - just doubled L & R
 	public static CANTalon driveTalonBL;
 	public static CANTalon driveTalonBR;
 	public static Solenoid shifter;
 	public static Encoder driveEncoder;
+	// what about RobotDrive?
 
-    public static void init() {
-    	driveTalonFL = new CANTalon(1);
-    	driveTalonFR = new CANTalon(3);
-    	driveTalonBL = new CANTalon(2);
-    	driveTalonBR = new CANTalon(4);
-    	shifter = new Solenoid(0);
+  // Turntable subsystem
+  public static CANTalon turntableMotor;
+	public static Encoder turntableEncoder;
+	public static DigitalInput turntableIndex;
+  
+	public static void init() {
+    // Drive subsystem
+		driveTalonFL = new CANTalon(1);
+    driveTalonFR = new CANTalon(3);
+   	driveTalonBL = new CANTalon(2);
+   	driveTalonBR = new CANTalon(4);
+		shifter = new Solenoid(0);
 		driveEncoder = new Encoder(0,1,false);
-    	/*
-    	driveTalonFL.disable();
-    	driveTalonFR.disable();
-    	driveTalonBL.disable();
-    	driveTalonBR.disable();
-    	*/
-    }
+
+    // Turntable subsystem
+    turntableMotor = new CANTalon(TURNTABLE_MOTOR);
+		turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
+		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
+	 }
 }
