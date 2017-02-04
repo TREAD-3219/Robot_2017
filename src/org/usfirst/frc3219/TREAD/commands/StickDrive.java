@@ -15,11 +15,10 @@ public class StickDrive extends Command {
 		Robot.drive.stopMotors();
 		
 	}
-
+	
 	@Override
 	protected void execute() {
 		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), driveStick.getThrottle());
-		
 	}
 
 	@Override

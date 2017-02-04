@@ -11,6 +11,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.commands.Drive20ft;
 import org.usfirst.frc3219.TREAD.commands.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
@@ -31,7 +32,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 	
 
 public class Robot extends IterativeRobot {
-
 	// Command Declarations
 	Command autonomousCommand;
 
@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new AutonomousCommand();
+		autonomousCommand = new Drive20ft();
 	}
 
 	/**
@@ -90,8 +90,8 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
+		if (autonomousCommand != null) autonomousCommand.cancel();
+     Scheduler.getInstance().add(new StickDrive());
 	}
 
 	/**

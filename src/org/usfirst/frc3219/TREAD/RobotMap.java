@@ -43,13 +43,13 @@ public class RobotMap {
   public static CANTalon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndex;
-
+  
 	public static void init() {
     // Drive subsystem
-		driveTalonFL = new CANTalon(0);
-		driveTalonFR = new CANTalon(1);
-		driveTalonBL = new CANTalon(2);
-		driveTalonBR = new CANTalon(3);
+		driveTalonFL = new CANTalon(1);
+    driveTalonFR = new CANTalon(3);
+   	driveTalonBL = new CANTalon(2);
+   	driveTalonBR = new CANTalon(4);
 		shifter = new Solenoid(0);
 		driveEncoder = new Encoder(0,1,false);
 
