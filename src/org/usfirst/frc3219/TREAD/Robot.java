@@ -14,6 +14,7 @@ import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
 import org.usfirst.frc3219.TREAD.commands.Drive20ft;
 import org.usfirst.frc3219.TREAD.commands.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
+import org.usfirst.frc3219.TREAD.subsystems.IntakeFlipper;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -37,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Turntable turntable;
 	public static Drive drive;
-	ublic static IntakeFlipper intake;
+	public static IntakeFlipper intake;
 
 	/**
 	 * This function is run when the robot is first started up and should be
