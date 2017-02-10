@@ -11,10 +11,9 @@
 package org.usfirst.frc3219.TREAD;
 
 import com.ctre.CANTalon;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Solenoid;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -22,6 +21,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
 public class RobotMap {
 	private static final int TURNTABLE_INDEX = 2;
 	private static final int TURNTABLE_ENCODER_B = 1;
@@ -29,13 +29,32 @@ public class RobotMap {
 
 	private static final int TURNTABLE_MOTOR = 7;
 
-	// MOTOR DELCARATIONS
-	public static CANTalon turntableMotor;
+	// HARDWARE DECLARATIONS
+  // Drive subsystem
+	public static CANTalon driveTalonFL;	// Note: only L and R, this is NOT
+	public static CANTalon driveTalonFR;	// a 4WD base - just doubled L & R
+	public static CANTalon driveTalonBL;
+	public static CANTalon driveTalonBR;
+	public static Solenoid shifter;
+	public static Encoder driveEncoder;
+	// what about RobotDrive?
+
+  // Turntable subsystem
+  public static CANTalon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndex;
 
 	public static void init() {
-		turntableMotor = new CANTalon(TURNTABLE_MOTOR);
+    // Drive subsystem
+		driveTalonFL = new CANTalon(0);
+		driveTalonFR = new CANTalon(1);
+		driveTalonBL = new CANTalon(2);
+		driveTalonBR = new CANTalon(3);
+		shifter = new Solenoid(0);
+		driveEncoder = new Encoder(0,1,false);
+
+    // Turntable subsystem
+    turntableMotor = new CANTalon(TURNTABLE_MOTOR);
 		turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
 		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
 	 }
