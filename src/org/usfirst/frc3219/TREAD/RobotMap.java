@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -21,8 +22,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
     //MOTOR DELCARATIONS
-
+	public static Solenoid gearPiston;
     public static void init() {
-       
+       gearPiston = new Solenoid(2);
     }
 }

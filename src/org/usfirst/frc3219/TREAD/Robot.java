@@ -12,6 +12,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     
     //Subsystem Declarations
+    public static GearSlot gearSlot;
     public static OI oi;
 
     /**
@@ -41,7 +43,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
     	
     	//Subsystem Construction, OI must be last.
-    	
+    	gearSlot = new GearSlot();
         // OI must be constructed after subsystems. If the OI creates Commands
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
