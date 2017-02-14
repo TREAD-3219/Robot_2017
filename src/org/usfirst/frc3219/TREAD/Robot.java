@@ -11,8 +11,8 @@
 
 package org.usfirst.frc3219.TREAD;
 
-import org.usfirst.frc3219.TREAD.ballfeedersubsytem.Ballfeeder;
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+import org.usfirst.frc3219.TREAD.subsytems.Ballfeeder;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;

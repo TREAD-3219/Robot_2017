@@ -1,4 +1,4 @@
-package org.usfirst.frc3219.TREAD.ballfeedersubsytem;
+package org.usfirst.frc3219.TREAD.subsytems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
@@ -12,7 +12,7 @@ public class Ballfeeder extends Subsystem{
 		
 	}
 	public void TurnOnMotors() {
-		RobotMap.FeederMotor.set(1);
+		RobotMap.FeederMotor.set(-1);
 	}
 
 	public void TurnOffMotors() {
