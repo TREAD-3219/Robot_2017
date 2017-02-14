@@ -14,6 +14,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -45,7 +46,7 @@ public class RobotMap {
 	public static DigitalInput turntableIndex;
 	
   // Intake subsystem
-	public static CANTalon intakeTalon;
+	public static Victor intakeTalon;
 	
 	public static void init() {
     // Drive subsystem
@@ -58,10 +59,9 @@ public class RobotMap {
 
     // Turntable subsystem
 		turntableMotor = new CANTalon(TURNTABLE_MOTOR);
-		turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
+		//turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
 		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
 	 
 	// Intake subsystem
-		intakeTalon = new CANTalon(5);
 	}
 }

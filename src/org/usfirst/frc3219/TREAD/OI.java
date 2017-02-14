@@ -57,11 +57,11 @@ public class OI {
 	
     public OI() {
     	//Button Declarations
-    	JoystickButton shift = new JoystickButton(stick, 1);
+    	JoystickButton shift = new JoystickButton(stick, 2);
     	shift.whenPressed(new Shift());
-    	JoystickButton Drive20ft= new JoystickButton(stick, 2);
+    	JoystickButton Drive20ft= new JoystickButton(stick, 3);
     	Drive20ft.whenPressed(new Drive20ft());
-    	JoystickButton ballPickup = new JoystickButton(stick, 3);
+    	JoystickButton ballPickup = new JoystickButton(stick, 1);
 		ballPickup.whileHeld(new IntakeBalls());
 		
     }
