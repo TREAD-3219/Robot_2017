@@ -63,5 +63,6 @@ public class RobotMap {
 		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
 	 
 	// Intake subsystem
+		intakeTalon = new Victor(0);
 	}
 }
