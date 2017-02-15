@@ -57,7 +57,7 @@ public class OI {
     public OI() {
     	//Button Declarations
     	joystick= new Joystick(0);
-    	JoystickButton shoot= new JoystickButton(joystick, 0);
+    	JoystickButton shoot= new JoystickButton(joystick, 3);
     	shoot.whileHeld(new Shoot());
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

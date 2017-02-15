@@ -11,7 +11,8 @@
 
 package org.usfirst.frc3219.TREAD;
 
-import edu.wpi.first.wpilibj.Talon;
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -23,8 +24,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class RobotMap {
 
     //MOTOR DELCARATIONS
-	public static Talon flyWheelMotor;
+	public static CANTalon flyWheelMotor;
     public static void init() {
-    	flyWheelMotor = new Talon(6); 
+    	flyWheelMotor = new CANTalon(5); 
     }
 }
