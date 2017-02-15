@@ -8,11 +8,16 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -20,10 +25,59 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
 public class RobotMap {
-    //MOTOR DELCARATIONS
+	private static final int TURNTABLE_INDEX = 2;
+	private static final int TURNTABLE_ENCODER_B = 1;
+	private static final int TURNTABLE_ENCODER_A = 0;
+
+	private static final int TURNTABLE_MOTOR = 7;
+
+	// HARDWARE DECLARATIONS
+  // Drive subsystem
+	public static CANTalon driveTalonFL;	// Note: only L and R, this is NOT
+	public static CANTalon driveTalonFR;	// a 4WD base - just doubled L & R
+	public static CANTalon driveTalonBL;
+	public static CANTalon driveTalonBR;
+	public static Solenoid shifter;
+	public static Encoder driveEncoder;
+	// what about RobotDrive?
+
+  // Turntable subsystem
+  public static CANTalon turntableMotor;
+	public static Encoder turntableEncoder;
+	public static DigitalInput turntableIndex;
+	
+  // Intake subsystem
+	public static Victor intakeTalon;
+	
+  // BallFeed subsystem
+	public static Spark FeederMotor;
+	
+  // GearSlot subsytem
 	public static Solenoid gearPiston;
-    public static void init() {
-       gearPiston = new Solenoid(1);
-    }
+	
+	public static void init() {
+    // Drive subsystem
+		driveTalonFL = new CANTalon(1);
+		driveTalonFR = new CANTalon(3);
+		driveTalonBL = new CANTalon(2);
+		driveTalonBR = new CANTalon(4);
+		shifter = new Solenoid(0);
+		driveEncoder = new Encoder(0,1,false);
+
+    // Turntable subsystem
+		turntableMotor = new CANTalon(TURNTABLE_MOTOR);
+		//turntableEncoder = new Encoder(TURNTABLE_ENCODER_A, TURNTABLE_ENCODER_B);
+		turntableIndex = new DigitalInput(TURNTABLE_INDEX);
+	 
+	// Intake subsystem
+		intakeTalon = new Victor(0);
+		
+	// BallFeed subsystem
+		FeederMotor = new Spark(2);
+		
+	// GearSlot subsystem
+		gearPiston = new Solenoid(1);
+	}
 }
