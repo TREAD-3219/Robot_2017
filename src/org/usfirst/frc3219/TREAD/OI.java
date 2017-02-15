@@ -16,11 +16,16 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
 	//// CREATING BUTTONS
 	/*
 	 * One type of button is a joystick button which is any button on a
@@ -46,16 +51,19 @@ public class OI {
 	 * until it is finished as determined by it's isFinished method.
 	 * button.whenReleased(new ExampleCommand());
 	 */
-
-	// Joystick Declarations
-	Joystick joystick;
-
-	public OI() {
-		// Button Declarations
-		joystick = new Joystick(0);
-		JoystickButton ballfeed = new JoystickButton(joystick, 3);
+	
+	//Joystick Declarations
+	public Joystick stick = new Joystick(0);
+	
+    public OI() {
+    	//Button Declarations
+    	JoystickButton shift = new JoystickButton(stick, 2);
+    	shift.whenPressed(new Shift());
+    	JoystickButton Drive20ft= new JoystickButton(stick, 3);
+    	Drive20ft.whenPressed(new Drive20ft());
+    	JoystickButton ballPickup = new JoystickButton(stick, 1);
+		ballPickup.whileHeld(new IntakeBalls());
+		JoystickButton ballfeed = new JoystickButton(stick, 4);
 		ballfeed.whileHeld(new Ballfeed());
-		// SmartDashboard Buttons
-		SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-	}
+    }
 }
