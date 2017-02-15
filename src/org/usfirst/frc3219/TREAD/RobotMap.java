@@ -10,6 +10,8 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -48,6 +50,9 @@ public class RobotMap {
   // Intake subsystem
 	public static Victor intakeTalon;
 	
+  // BallFeed subsystem
+	public static Spark FeederMotor;
+	
 	public static void init() {
     // Drive subsystem
 		driveTalonFL = new CANTalon(1);
@@ -64,5 +69,8 @@ public class RobotMap {
 	 
 	// Intake subsystem
 		intakeTalon = new Victor(0);
+		
+	// BallFeed subsystem
+		FeederMotor = new Spark(2);
 	}
 }

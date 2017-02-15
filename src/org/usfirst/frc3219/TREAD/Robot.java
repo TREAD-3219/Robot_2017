@@ -11,6 +11,8 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
+
+import org.usfirst.frc3219.TREAD.subsytems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.commands.Drive20ft;
 import org.usfirst.frc3219.TREAD.commands.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static Turntable turntable;
 	public static Drive drive;
 	public static IntakeFlipper intake;
+	public static Ballfeeder ballfeeder;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -51,6 +54,7 @@ public class Robot extends IterativeRobot {
 		turntable = new Turntable();
 		drive = new Drive();
 		intake = new IntakeFlipper();
+		ballfeeder = new Ballfeeder();
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
