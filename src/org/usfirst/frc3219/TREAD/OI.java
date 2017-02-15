@@ -53,19 +53,29 @@ public class OI {
 	 */
 	
 	//Joystick Declarations
+
 	public Joystick stick;
 	
     public OI() {
     	//joystick initialization
     	stick = new Joystick(0);
     	//Button Declarations
+    	
     	JoystickButton shift = new JoystickButton(stick, 2);
     	shift.whenPressed(new Shift());
+    	
     	//JoystickButton Drive20ft= new JoystickButton(stick, 3);
     	//Drive20ft.whenPressed(new Drive20ft());
+    	
     	JoystickButton ballPickup = new JoystickButton(stick, 1);
 		ballPickup.whileHeld(new IntakeBalls());
+		
 		JoystickButton ballfeed = new JoystickButton(stick, 4);
 		ballfeed.whileHeld(new Ballfeed());
+		
+		JoystickButton openGear = new JoystickButton(stick, 11);
+    	openGear.whenPressed(new GearPiston(false));
+    	JoystickButton closeGear = new JoystickButton(stick, 12);
+    	closeGear.whenPressed(new GearPiston(true));
     }
 }

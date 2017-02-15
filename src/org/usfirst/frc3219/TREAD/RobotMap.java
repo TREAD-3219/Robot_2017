@@ -10,6 +10,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import com.ctre.CANTalon;
@@ -53,6 +54,9 @@ public class RobotMap {
   // BallFeed subsystem
 	public static Spark FeederMotor;
 	
+  // GearSlot subsytem
+	public static Solenoid gearPiston;
+	
 	public static void init() {
     // Drive subsystem
 		driveTalonFL = new CANTalon(1);
@@ -72,5 +76,8 @@ public class RobotMap {
 		
 	// BallFeed subsystem
 		FeederMotor = new Spark(2);
+		
+	// GearSlot subsystem
+		gearPiston = new Solenoid(1);
 	}
 }
