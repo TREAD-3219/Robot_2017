@@ -10,7 +10,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -21,9 +21,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  */
 public class RobotMap {
 	// MOTOR DELCARATIONS
-	public static CANTalon Motor;
+	public static Victor Motor;
 
 	public static void init() {
-		Motor = new CANTalon(7);
+		Motor = new Victor(1);
 	}
 }

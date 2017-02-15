@@ -53,7 +53,7 @@ public class OI {
 	public OI() {
 		// Button Declarations
 		joystick = new Joystick(0);
-		JoystickButton climb = new JoystickButton(joystick, 2);
+		JoystickButton climb = new JoystickButton(joystick, 5);
 		climb.whileHeld(new Climb());
 		// SmartDashboard Buttons
 		SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
