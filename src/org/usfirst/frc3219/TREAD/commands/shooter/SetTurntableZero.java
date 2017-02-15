@@ -8,9 +8,10 @@ import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 /**
  *
  */
-public class FindZeroIndex extends Command {
+public class SetTurntableZero extends Command {
 
-	public FindZeroIndex() {
+	private double startAngle;
+	public SetTurntableZero() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -18,15 +19,19 @@ public class FindZeroIndex extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		startAngle = Robot.turntable.getAngle();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		if (Math.abs(Robot.turntable.getAngle() - startAngle) > 180) {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.turntable.atIndex();
+		return Robot.turntable.atZeroIndex();
 	}
 
 	// Called once after isFinished returns true

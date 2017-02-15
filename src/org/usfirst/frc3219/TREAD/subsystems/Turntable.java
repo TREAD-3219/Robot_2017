@@ -11,21 +11,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Turntable extends Subsystem {
-	public static final Float TURNTABLE_FORWARD = 1.0f;
-	public static final Float TURNTABLE_BACKWARD = -1.0f;
+	public static final double TURNTABLE_FORWARD = .1;
+	public static final double TURNTABLE_BACKWARD = .1;
 	private Spark turntableMotor;
 	private Encoder turntableEncoder;
-	private DigitalInput turntableIndex;
+	private DigitalInput turntableIndexSensor;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	public void setup() {
 		turntableMotor = RobotMap.turntableMotor;
 		turntableEncoder = RobotMap.turntableEncoder;
-		turntableIndex = RobotMap.turntableIndexSetter;
+		turntableIndexSensor = RobotMap.turntableIndexSetter;
 	}
 
-	public void turnDirection(Float direction) {
+	public void turnDirection(double direction) {
 		turntableMotor.set(direction);
 	}
 
@@ -39,13 +39,12 @@ public class Turntable extends Subsystem {
 		// setDefaultCommand(new MySpecialCommand());
 	}
 
-	public boolean atIndex() {
-		return turntableIndex.get();
+	public boolean atZeroIndex() {
+		return turntableIndexSensor.get();
 	}
 
 	public void setZero() {
 		turntableEncoder.reset();
-		
 	}
 	
 	public static void intializeMotors() {
