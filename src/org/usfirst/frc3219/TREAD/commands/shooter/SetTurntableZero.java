@@ -12,24 +12,30 @@ public class SetTurntableZero extends Command {
 
 	private double startAngle;
 	public SetTurntableZero() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		requires(Robot.turntable);
 	}
 
-	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
 		startAngle = Robot.turntable.getAngle();
+		halfChecked = false;
 	}
 
-	// Called repeatedly when this Command is scheduled to run
+	boolean halfChecked;
 	protected void execute() {
-		if (Math.abs(Robot.turntable.getAngle() - startAngle) > 180) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		double direction;
+		if (Robot.turntable.getAngle() > 0) {
+			direction = Turntable.TURNTABLE_FORWARD;
+		} else {
+			direction = Turntable.TURNTABLE_BACKWARD;
 		}
+		
+		if (Math.abs(Robot.turntable.getAngle() - startAngle) > 180 || halfChecked){
+			direction *= -1;
+			halfChecked = true;
+		}
+		Robot.turntable.turnDirection(direction);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		return Robot.turntable.atZeroIndex();
 	}
