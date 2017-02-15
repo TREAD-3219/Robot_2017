@@ -60,7 +60,6 @@ public class OI {
     	//joystick initialization
     	stick = new Joystick(0);
     	//Button Declarations
-    	
     	JoystickButton shift = new JoystickButton(stick, 2);
     	shift.whenPressed(new Shift());
     	
@@ -80,5 +79,8 @@ public class OI {
     	
     	JoystickButton climb = new JoystickButton(stick, 5);
 		climb.whileHeld(new Climb());
+		
+		JoystickButton shoot= new JoystickButton(stick, 3);
+    	shoot.whileHeld(new Shoot());
     }
 }

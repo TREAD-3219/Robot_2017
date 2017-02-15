@@ -10,11 +10,11 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -61,6 +61,9 @@ public class RobotMap {
   // Climber subsystem
 	public static Victor Motor;
 	
+  // Shooter subsystem
+	public static CANTalon flyWheelMotor;
+	
 	public static void init() {
     // Drive subsystem
 		driveTalonFL = new CANTalon(1);
@@ -86,5 +89,8 @@ public class RobotMap {
 		
 	// Climber subsystem
 		Motor = new Victor(1);
+		
+	// Shooter subsystem
+		flyWheelMotor = new CANTalon(5); 
 	}
 }
