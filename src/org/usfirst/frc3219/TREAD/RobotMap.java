@@ -24,6 +24,6 @@ public class RobotMap {
     //MOTOR DELCARATIONS
 	public static Solenoid gearPiston;
     public static void init() {
-       gearPiston = new Solenoid(2);
+       gearPiston = new Solenoid(1);
     }
 }

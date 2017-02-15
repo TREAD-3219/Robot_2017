@@ -1,6 +1,7 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
+import org.usfirst.frc3219.TREAD.commands.GearPiston;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,8 +13,9 @@ public class GearSlot extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		piston = RobotMap.gearPiston;
-		out = false;
+		out = true;
 		setPosition(out);
+		//this.setDefaultCommand(new GearPiston(false));
 	}
 	
 	public void changePosition() {
