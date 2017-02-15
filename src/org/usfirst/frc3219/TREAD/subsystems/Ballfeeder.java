@@ -1,4 +1,4 @@
-package org.usfirst.frc3219.TREAD.subsytems;
+package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
