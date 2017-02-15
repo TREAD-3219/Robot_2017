@@ -2,6 +2,8 @@ package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
+import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -14,18 +16,22 @@ public class Shooter extends Subsystem{
 	}
 	
 	public void setSafety(boolean enabled) {
-		RobotMap.flyWheelMotor.setSafetyEnabled(enabled);
+		RobotMap.shooterMotor.setSafetyEnabled(enabled);
 	}
 	
 	public void startShooter(){
-		RobotMap.flyWheelMotor.set(1);
+		RobotMap.shooterMotor.set(1);
 	}
 
 	public void stopShooter(){
-		RobotMap.flyWheelMotor.set(0);
+		RobotMap.shooterMotor.set(0);
 	}
 
 	public void shooter(double speed){
-		RobotMap.flyWheelMotor.set(speed);
+		RobotMap.shooterMotor.set(speed);
+	}
+	
+	public static void initializeMotors() {
+		RobotMap.shooterMotor = new CANTalon(RobotMap.SHOOTER_CAN_INDEX); 
 	}
 }

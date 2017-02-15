@@ -29,5 +29,9 @@ public class GearSlot extends Subsystem {
 			out = pos;
 		}
 	}
+	
+	public static void initializeMotors() {
+		RobotMap.gearPiston = new Solenoid(RobotMap.GEAR_SOLENOID_INDEX);
+	}
 
 }

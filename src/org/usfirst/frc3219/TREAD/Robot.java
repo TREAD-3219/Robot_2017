@@ -10,19 +10,15 @@
 
 package org.usfirst.frc3219.TREAD;
 
-import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
-import org.usfirst.frc3219.TREAD.subystem.Climber;
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
-
-import org.usfirst.frc3219.TREAD.commands.Drive20ft;
-import org.usfirst.frc3219.TREAD.commands.StickDrive;
+import org.usfirst.frc3219.TREAD.commands.autonomous.Drive20ft;
+import org.usfirst.frc3219.TREAD.commands.drive.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
-import org.usfirst.frc3219.TREAD.subsystems.IntakeFlipper;
+import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3219.TREAD.subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -46,7 +42,7 @@ public class Robot extends IterativeRobot {
 	public static Climber climber;
 	public static Turntable turntable;
 	public static Drive drive;
-	public static IntakeFlipper intake;
+	public static BallIntake intake;
 	public static Ballfeeder ballfeeder;
 	public static GearSlot gearSlot;
 	public static Shooter shooter;
@@ -62,10 +58,11 @@ public class Robot extends IterativeRobot {
 		climber = new Climber();
 		turntable = new Turntable();
 		drive = new Drive();
-		intake = new IntakeFlipper();
+		intake = new BallIntake();
 		ballfeeder = new Ballfeeder();
 		gearSlot = new GearSlot();
 		shooter= new Shooter();
+		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
 		// constructed yet. Thus, their requires() statements may grab null
@@ -107,7 +104,6 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null) autonomousCommand.cancel();
-     	Scheduler.getInstance().add(new StickDrive());
 	}
 
 	/**

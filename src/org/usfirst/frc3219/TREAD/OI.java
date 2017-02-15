@@ -11,6 +11,10 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.*;
+import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
+import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
+import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

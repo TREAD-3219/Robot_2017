@@ -1,4 +1,4 @@
-package org.usfirst.frc3219.TREAD.commands;
+package org.usfirst.frc3219.TREAD.commands.autonomous;
 
 import org.usfirst.frc3219.TREAD.Robot;
 

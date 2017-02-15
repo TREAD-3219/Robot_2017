@@ -1,7 +1,8 @@
-package org.usfirst.frc3219.TREAD.subystem;
+package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
@@ -13,10 +14,14 @@ public class Climber extends Subsystem {
 	}
 
 	public void TurnOnMotors() {
-		RobotMap.Motor.set(1);
+		RobotMap.climberMotor.set(1);
 	}
 
 	public void TurnOffMotors() {
-		RobotMap.Motor.set(0);
+		RobotMap.climberMotor.set(0);
+	}
+	
+	public static void initializeMotors() {
+		RobotMap.climberMotor = new Victor(RobotMap.CLIMBER_PWM_INDEX);
 	}
 }
