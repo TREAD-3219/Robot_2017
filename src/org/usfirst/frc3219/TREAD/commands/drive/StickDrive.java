@@ -10,6 +10,10 @@ public class StickDrive extends Command {
 	
 	Joystick driveStick = Robot.oi.stick;
 	
+	public StickDrive() {
+		requires(Robot.drive);
+	}
+	
 	@Override
 	protected void end() {
 		Robot.drive.stopMotors();

@@ -20,7 +20,7 @@ public class Shooter extends Subsystem{
 	}
 	
 	public void startShooter(){
-		RobotMap.shooterMotor.set(1);
+		RobotMap.shooterMotor.set(-1);
 	}
 
 	public void stopShooter(){

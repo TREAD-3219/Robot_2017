@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Turntable extends Subsystem {
-	public static final double TURNTABLE_FORWARD = .1;
-	public static final double TURNTABLE_BACKWARD = .1;
+	public static final double TURNTABLE_FORWARD = .03;
+	public static final double TURNTABLE_BACKWARD = .03;
 	private Spark turntableMotor;
 	private Encoder turntableEncoder;
 	private DigitalInput turntableIndexSensor;
