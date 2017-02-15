@@ -77,5 +77,8 @@ public class OI {
     	openGear.whenPressed(new GearPiston(false));
     	JoystickButton closeGear = new JoystickButton(stick, 12);
     	closeGear.whenPressed(new GearPiston(true));
+    	
+    	JoystickButton climb = new JoystickButton(stick, 5);
+		climb.whileHeld(new Climb());
     }
 }

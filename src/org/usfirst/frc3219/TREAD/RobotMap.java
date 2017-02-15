@@ -10,6 +10,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -57,6 +58,9 @@ public class RobotMap {
   // GearSlot subsytem
 	public static Solenoid gearPiston;
 	
+  // Climber subsystem
+	public static Victor Motor;
+	
 	public static void init() {
     // Drive subsystem
 		driveTalonFL = new CANTalon(1);
@@ -79,5 +83,8 @@ public class RobotMap {
 		
 	// GearSlot subsystem
 		gearPiston = new Solenoid(1);
+		
+	// Climber subsystem
+		Motor = new Victor(1);
 	}
 }
