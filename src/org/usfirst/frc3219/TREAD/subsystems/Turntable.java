@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Turntable extends Subsystem {
 	public static final Float TURNTABLE_FORWARD = 1.0f;
+	public static final Float TURNTABLE_BACKWARD = -1.0f;
 	private Spark turntableMotor;
 	private Encoder turntableEncoder;
 	private DigitalInput turntableIndex;

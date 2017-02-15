@@ -14,6 +14,8 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimLeft;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -86,5 +88,10 @@ public class OI {
 		
 		JoystickButton shoot= new JoystickButton(stick, 3);
     	shoot.whileHeld(new Shoot());
+    	
+    	JoystickButton aimLeft = new JoystickButton(stick, 10);
+    	aimLeft.whileHeld(new AimLeft());
+    	JoystickButton aimRight = new JoystickButton(stick, 9);
+    	aimRight.whileHeld(new AimRight());
     }
 }
