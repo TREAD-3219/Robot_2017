@@ -1,6 +1,7 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
+import org.usfirst.frc3219.TREAD.commands.SensorWatch;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -12,31 +13,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Sensors extends Subsystem {
 	public I2C i2c;
 	public AHRS NAVX;
-	public Encoder Encode;
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		i2c = new I2C(I2C.Port.kMXP, 0x62);
+		//i2c = new I2C(I2C.Port.kMXP, 0x62);
 		NAVX = new AHRS(SPI.Port.kMXP);
+		
 		//Encode = RobotMap.driveEncoder;
-		Encode.setMaxPeriod(0.1);
-		Encode.setMinRate(10);
-		Encode.setDistancePerPulse(Math.PI / 90);
-		//Encode = RobotMap.driveEncoder;
-		Encode.setMaxPeriod(0.1);
-		Encode.setMinRate(10);
-		Encode.setDistancePerPulse(Math.PI / 90);
-		Encode = RobotMap.driveEncoderA;
-		Encode = RobotMap.driveEncoderB;
-	Encode.setDistancePerPulse(Math.PI / 90);
-	Encode.setDistancePerPulse(Math.PI / 90);}
-
-	public double getDriveDistance() {
-		return Encode.getDistance();
+		//Encode.setMaxPeriod(0.1);
+		//Encode.setMinRate(10);
+		RobotMap.rightDriveEncoder.setDistancePerPulse(Math.PI / 90);
+		RobotMap.leftDriveEncoder.setDistancePerPulse(Math.PI / 90);
+		this.setDefaultCommand(new SensorWatch());
 	}
 
-	public int getDistance() {
+	public double getDriveDistance() {
+		double total = RobotMap.rightDriveEncoder.getDistance() + RobotMap.leftDriveEncoder.getDistance();
+		return total / 2;
+	}
+	
+	public double rightDriveDistance() {
+		return RobotMap.rightDriveEncoder.getDistance();
+	}
+	
+	public double leftDriveDistance() {
+		return RobotMap.leftDriveEncoder.getDistance();
+	}
+
+	public int getLidarDistance() {
 		byte[] buffer = new byte[2];
 		i2c.write(0x00, 0x04);
 		i2c.read(0x8f, 2, buffer);
@@ -44,11 +48,11 @@ public class Sensors extends Subsystem {
 	}
 
 	public double getAngle() {
-		return NAVX.getAngle();
+		return NAVX.getYaw();
 	}
 	
 	public static void initializeSensors() {
-		RobotMap.driveEncoderA.setDistancePerPulse(Math.PI/90);
-		RobotMap.driveEncoderB.setDistancePerPulse(Math.PI/90);
+		RobotMap.rightDriveEncoder = new Encoder(RobotMap.RIGHT_DRIVE_ENCODER_A, RobotMap.RIGHT_DRIVE_ENCODER_B);
+		RobotMap.leftDriveEncoder = new Encoder(RobotMap.LEFT_DRIVE_ENCODER_A, RobotMap.LEFT_DRIVE_ENCODER_B);
 	}
 }

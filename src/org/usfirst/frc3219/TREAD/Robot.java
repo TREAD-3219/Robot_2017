@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3219.TREAD.subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
