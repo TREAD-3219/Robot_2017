@@ -1,42 +1,38 @@
 package org.usfirst.frc3219.TREAD.commands;
 
-import org.usfirst.frc3219.TREAD.OI;
 import org.usfirst.frc3219.TREAD.Robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class StickDrive extends Command {
-	
-	Joystick driveStick = Robot.oi.stick;
-	
+public class Climb extends Command {
+
 	@Override
 	protected void end() {
-		Robot.drive.stopMotors();
-		
+		// TODO Auto-generated method stub
+		Robot.climber.TurnOffMotors();
 	}
 
 	@Override
 	protected void execute() {
-		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), driveStick.getThrottle());
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	protected void initialize() {
-		
-		
+		// TODO Auto-generated method stub
+		Robot.climber.TurnOnMotors();
 	}
 
 	@Override
 	protected void interrupted() {
-		
-		
+		// TODO Auto-generated method stub
+		end();
 	}
 
 	@Override
 	protected boolean isFinished() {
-		
+		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -8,14 +8,17 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
-import com.ctre.CANTalon;
+import org.usfirst.frc3219.TREAD.subsystems.*;
 
+import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -26,18 +29,72 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class RobotMap {
 	
-    //MOTOR DELCARATIONS
-	public static CANTalon driveTalonFL;
-	public static CANTalon driveTalonFR;
-	public static CANTalon driveTalonBL;
-	public static CANTalon driveTalonBR;
-	public static Solenoid shifter;
+	public static final int TURNTABLE_ENCODER_A = 0;
+	public static final int TURNTABLE_ENCODER_B = 1;
+	public static final int DRIVE_ENCODER_A = 2;
+	public static final int DRIVE_ENCODER_B = 3;
+	public static final int TURNTABLE_DIO_INDEX = 4;
+	
+	public static final int BALL_INTAKE_PWM_INDEX = 0;
+	public static final int CLIMBER_PWM_INDEX = 1;
+	public static final int BALLFEED_PWM_INDEX = 2;
+	public static final int TURNTABLE_PWM_INDEX = 3;
+	
+	public static final int LEFT_DRIVE_1_CAN_INDEX = 1;
+	public static final int LEFT_DRIVE_2_CAN_INDEX = 2;
+	public static final int RIGHT_DRIVE_1_CAN_INDEX = 3;
+	public static final int RIGHT_DRIVE_2_CAN_INDEX = 4;
+	public static final int SHOOTER_CAN_INDEX = 5;
 
-    public static void init() {
-    	driveTalonFL = new CANTalon(0);
-    	driveTalonFR = new CANTalon(1);
-    	driveTalonBL = new CANTalon(2);
-    	driveTalonBR = new CANTalon(3);
-    	shifter = new Solenoid(0);
-    }
+	public static final int DRIVE_SHIFTER_INDEX = 0;
+	public static final int GEAR_SOLENOID_INDEX = 1;
+
+	// HARDWARE DECLARATIONS
+	
+	// Drive subsystem
+	public static CANTalon leftDriveTalon1;
+	public static CANTalon rightDriveTalon1;
+	public static CANTalon leftDriveTalon2;
+	public static CANTalon rightDriveTalon2;
+	public static Solenoid shifter;
+	public static Encoder driveEncoder;
+	public static RobotDrive robotDrive;
+
+	// Turntable subsystem
+	public static Spark turntableMotor;
+	public static Encoder turntableEncoder;
+	public static DigitalInput turntableIndexSetter;
+	
+	// Intake subsystem
+	public static Victor ballIntakeMotor;
+	
+	// BallFeed subsystem
+	public static Spark FeederMotor;
+	
+	// GearSlot subsytem
+	public static Solenoid gearPiston;
+	
+	// Climber subsystem
+	public static Victor climberMotor;
+	
+	// Shooter subsystem
+	public static CANTalon shooterMotor;
+	
+	
+	public static void init() {
+		//Initialize motors for each subsystem
+		Drive.initializeMotors();
+		
+		Turntable.intializeMotors();
+		
+		BallIntake.initializeMotors();
+		
+		Ballfeeder.initializeMotors();
+		
+		GearSlot.initializeMotors();
+		
+		Climber.initializeMotors();
+		
+		Shooter.initializeMotors();
+	}
 }

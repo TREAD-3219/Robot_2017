@@ -4,35 +4,22 @@ import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Shift extends Command {
-	
-	public Shift() {
-		requires(Robot.drive);
+public class GearPiston extends Command {
+	private boolean on;
+	public GearPiston(boolean on) {
+		requires(Robot.gearSlot);
+		this.on = on;
 	}
 	
 	@Override
 	protected void initialize() {
-		Robot.drive.shift();
+		Robot.gearSlot.setPosition(on);
 	}
 	
-	@Override
-	protected void execute() {
-		
-	}
-	
-	@Override
-	protected void end() {
-	}
-
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		return true;
-	}
-	
-	@Override
-	protected void interrupted() {
-		end();
 	}
 
 }

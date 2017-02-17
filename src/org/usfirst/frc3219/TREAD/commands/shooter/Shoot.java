@@ -1,35 +1,26 @@
-package org.usfirst.frc3219.TREAD.commands;
+package org.usfirst.frc3219.TREAD.commands.shooter;
 
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveForward extends Command {
-	private int inches;
-
-	public DriveForward(int inches) {
-		this.inches = inches;
-
-	}
+public class Shoot extends Command {
 
 	@Override
 	protected void end() {
-		Robot.drive.setMotors(0);
-		// TODO Auto-generated method stub
-
+		Robot.shooter.stopShooter();
 	}
 
 	@Override
-	protected void execute() { 
+	protected void execute() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drive.setMotors(40);
-		// TODO Auto-generated method stub
-		this.setTimeout(inches / 40);
+		Robot.shooter.startShooter();
+		
 	}
 
 	@Override
@@ -41,6 +32,7 @@ public class DriveForward extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return this.isTimedOut();
+		return false;
 	}
+
 }

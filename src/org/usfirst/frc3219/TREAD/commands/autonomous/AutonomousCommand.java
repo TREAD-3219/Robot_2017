@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3219.TREAD.commands;
+package org.usfirst.frc3219.TREAD.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 
