@@ -19,11 +19,11 @@ public class Sensors extends Subsystem {
 		// TODO Auto-generated method stub
 		i2c = new I2C(I2C.Port.kMXP, 0x62);
 		NAVX = new AHRS(SPI.Port.kMXP);
-		Encode = RobotMap.driveEncoder;
+		//Encode = RobotMap.driveEncoder;
 		Encode.setMaxPeriod(0.1);
 		Encode.setMinRate(10);
 		Encode.setDistancePerPulse(Math.PI / 90);
-		Encode = RobotMap.driveEncoder;
+		//Encode = RobotMap.driveEncoder;
 		Encode.setMaxPeriod(0.1);
 		Encode.setMinRate(10);
 		Encode.setDistancePerPulse(Math.PI / 90);
@@ -45,5 +45,10 @@ public class Sensors extends Subsystem {
 
 	public double getAngle() {
 		return NAVX.getAngle();
+	}
+	
+	public static void initializeSensors() {
+		RobotMap.driveEncoderA.setDistancePerPulse(Math.PI/90);
+		RobotMap.driveEncoderB.setDistancePerPulse(Math.PI/90);
 	}
 }

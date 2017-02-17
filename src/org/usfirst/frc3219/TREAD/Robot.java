@@ -8,14 +8,19 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 
-
 package org.usfirst.frc3219.TREAD;
 
-import org.usfirst.frc3219.TREAD.commands.AutonomousCommand;
-import org.usfirst.frc3219.TREAD.subsystems.Sensors;
+import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
+import org.usfirst.frc3219.TREAD.commands.autonomous.Drive20ft;
+import org.usfirst.frc3219.TREAD.commands.drive.StickDrive;
+import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
+import org.usfirst.frc3219.TREAD.subsystems.Drive;
+import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
+import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc3219.TREAD.subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
@@ -26,76 +31,94 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Robot extends IterativeRobot {
+	
+	// Command Declarations
+	Command autonomousCommand;
 
-	//Command Declarations
-    Command autonomousCommand;
-    
-    //Subsystem Declarations
-    public static OI oi;
-public static Sensors sensors;
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
-    	RobotMap.init();
-    	
-    	//Subsystem Construction, OI must be last.
-    	sensors = new Sensors();
-        // OI must be constructed after subsystems. If the OI creates Commands
-        //(which it very likely will), subsystems are not guaranteed to be
-        // constructed yet. Thus, their requires() statements may grab null
-        // pointers. Bad news. Don't move it.
-        oi = new OI();
+	// Subsystem Declarations
+	public static OI oi;
+	public static Climber climber;
+	public static Turntable turntable;
+	public static Drive drive;
+	public static BallIntake intake;
+	public static Ballfeeder ballfeeder;
+	public static GearSlot gearSlot;
+	public static Shooter shooter;
+	public static Sensors sensors;
+	
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	public void robotInit() {
+		RobotMap.init();
 
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new AutonomousCommand();
-    }
+		// Subsystem Construction, OI must be last.
+		climber = new Climber();
+		turntable = new Turntable();
+		drive = new Drive();
+		intake = new BallIntake();
+		ballfeeder = new Ballfeeder();
+		gearSlot = new GearSlot();
+		shooter= new Shooter();
+		sensors = new Sensors();
+		
+		// OI must be constructed after subsystems. If the OI creates Commands
+		// (which it very likely will), subsystems are not guaranteed to be
+		// constructed yet. Thus, their requires() statements may grab null
+		// pointers. Bad news. Don't move it.
+		oi = new OI();
 
-    /**
-     * This function is called when the disabled button is hit.
-     * You can use it to reset subsystems before shutting down.
-     */
-    public void disabledInit(){
+		// instantiate the command used for the autonomous period
+		autonomousCommand = new Drive20ft();
+	}
 
-    }
+	/**
+	 * This function is called when the disabled button is hit. You can use it
+	 * to reset subsystems before shutting down.
+	 */
+	public void disabledInit() {
 
-    public void disabledPeriodic() {
-        Scheduler.getInstance().run();
-    }
+	}
 
-    public void autonomousInit() {
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
-    }
+	public void disabledPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
+	public void autonomousInit() {
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
+	}
 
-    public void teleopInit() {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-    }
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-    }
+	public void teleopInit() {
+		// This makes sure that the autonomous stops running when
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		if (autonomousCommand != null) autonomousCommand.cancel();
+	}
 
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
-        LiveWindow.run();
-    }
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+	}
+
+	/**
+	 * This function is called periodically during test mode
+	 */
+	public void testPeriodic() {
+		LiveWindow.run();
+	}
 }
