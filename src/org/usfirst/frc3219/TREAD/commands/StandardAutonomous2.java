@@ -1,5 +1,8 @@
 package org.usfirst.frc3219.TREAD.commands;
 
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class StandardAutonomous2 extends CommandGroup {
