@@ -5,41 +5,48 @@ import org.usfirst.frc3219.TREAD.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveTurn extends Command {
-	private int degrees;
+	private double goalDegrees;
+	private double initialDegrees;
 
 	public DriveTurn(int degrees) {
-		this.degrees = degrees;
+		goalDegrees = degrees;
 	}
 
 	@Override
 	protected void end() {
 		Robot.drive.setMotors(0);
-		// TODO Auto-generated method stub
 
 	}
-
+	double previous = 0;
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-
+		double speed = .7;
+		if (Math.abs(previous - Robot.sensors.getAngle()) > 90) {
+			goalDegrees = goalDegrees - (previous - initialDegrees);
+			initialDegrees = Robot.sensors.getAngle();
+		}
+		if ((Robot.sensors.getAngle() - initialDegrees) > goalDegrees) {
+			speed *= -1;
+		}
+		Robot.drive.stickDrive(0, speed, 1);
+		previous = Robot.sensors.getAngle();
 	}
 
 	@Override
 	protected void initialize() {
 		Robot.drive.stickDrive(0, .5, 1);
-		// TODO Auto-generated method stub
-		this.setTimeout(degrees / 90);
+		this.setTimeout(7);
+		initialDegrees = Robot.sensors.getAngle();
 	}
 
 	@Override
 	protected void interrupted() {
-		// TODO Auto-generated method stub
+		end();
 
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return this.isTimedOut();
+		return Math.abs(Robot.sensors.getAngle() - initialDegrees) > Math.abs(goalDegrees) || this.isTimedOut();
 	}
 }

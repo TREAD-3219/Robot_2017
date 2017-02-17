@@ -52,5 +52,6 @@ public class Turntable extends Subsystem {
 		RobotMap.turntableMotor = new Spark(RobotMap.TURNTABLE_PWM_INDEX);
 		RobotMap.turntableEncoder = new Encoder(RobotMap.TURNTABLE_ENCODER_A, RobotMap.TURNTABLE_ENCODER_B);
 		RobotMap.turntableIndexSetter = new DigitalInput(RobotMap.TURNTABLE_DIO_INDEX);
+		RobotMap.turntableEncoder.setDistancePerPulse(12.0 / 240.0);
 	}
 }
