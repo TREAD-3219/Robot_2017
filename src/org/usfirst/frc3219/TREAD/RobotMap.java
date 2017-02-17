@@ -10,6 +10,7 @@
 
 package org.usfirst.frc3219.TREAD;
 
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc3219.TREAD.subsystems.*;
 
 import com.ctre.CANTalon;
@@ -31,9 +32,11 @@ public class RobotMap {
 	
 	public static final int TURNTABLE_ENCODER_A = 0;
 	public static final int TURNTABLE_ENCODER_B = 1;
-	public static final int DRIVE_ENCODER_A = 2;
-	public static final int DRIVE_ENCODER_B = 3;
-	public static final int TURNTABLE_DIO_INDEX = 4;
+	public static final int RIGHT_DRIVE_ENCODER_A = 2;
+	public static final int RIGHT_DRIVE_ENCODER_B = 3;
+	public static final int LEFT_DRIVE_ENCODER_A = 4;
+	public static final int LEFT_DRIVE_ENCODER_B = 5;
+	public static final int TURNTABLE_DIO_INDEX = 6;
 	
 	public static final int BALL_INTAKE_PWM_INDEX = 0;
 	public static final int CLIMBER_PWM_INDEX = 1;
@@ -57,7 +60,8 @@ public class RobotMap {
 	public static CANTalon leftDriveTalon2;
 	public static CANTalon rightDriveTalon2;
 	public static Solenoid shifter;
-	public static Encoder driveEncoder;
+	public static Encoder rightDriveEncoder;
+	public static Encoder leftDriveEncoder;
 	public static RobotDrive robotDrive;
 
 	// Turntable subsystem
@@ -96,5 +100,7 @@ public class RobotMap {
 		Climber.initializeMotors();
 		
 		Shooter.initializeMotors();
+		
+		Sensors.initializeSensors();
 	}
 }

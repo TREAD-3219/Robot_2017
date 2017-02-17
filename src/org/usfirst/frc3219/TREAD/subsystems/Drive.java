@@ -20,17 +20,11 @@ public class Drive extends Subsystem {
 	private static final double SHIFTING_SCALE = 10;
 	public static final double SHIFT_SPEED_MS = 100 / 1000.0;
 
-	private Encoder Encode;
-
 	@Override
 	protected void initDefaultCommand() {
 		drive = RobotMap.robotDrive;
 		shifter = RobotMap.shifter;
 		highGear = false;
-		Encode = RobotMap.driveEncoder;
-		Encode.setMaxPeriod(0.1);
-		Encode.setMinRate(10);
-		Encode.setDistancePerPulse(Math.PI / 90);
 		this.setDefaultCommand(new StickDrive());
 	}
 
@@ -42,10 +36,6 @@ public class Drive extends Subsystem {
 			drive.arcadeDrive(forwardSpeed, turnSpeed);
 		}
 
-	}
-
-	public double GetDistance() {
-		return Encode.getDistance();
 	}
 
 	public void stopMotors() {
@@ -86,6 +76,5 @@ public class Drive extends Subsystem {
 				RobotMap.rightDriveTalon2);
 		
 		RobotMap.shifter = new Solenoid(RobotMap.DRIVE_SHIFTER_INDEX);
-		RobotMap.driveEncoder = new Encoder(RobotMap.DRIVE_ENCODER_A, RobotMap.DRIVE_ENCODER_B, false);
 	}
 }
