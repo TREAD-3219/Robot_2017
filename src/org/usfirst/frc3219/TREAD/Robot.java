@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3219.TREAD.subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -46,7 +47,8 @@ public class Robot extends IterativeRobot {
 	public static Ballfeeder ballfeeder;
 	public static GearSlot gearSlot;
 	public static Shooter shooter;
-
+	public static Sensors sensors;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -62,6 +64,7 @@ public class Robot extends IterativeRobot {
 		ballfeeder = new Ballfeeder();
 		gearSlot = new GearSlot();
 		shooter= new Shooter();
+		sensors = new Sensors();
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
