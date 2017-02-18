@@ -58,43 +58,72 @@ public class OI {
 	 * until it is finished as determined by it's isFinished method.
 	 * button.whenReleased(new ExampleCommand());
 	 */
-	
-	//Joystick Declarations
+
+	// Joystick Declarations
 
 	public Joystick stick;
+    public Joystick Gamecontroller;
 	
     public OI() {
-    	//joystick initialization
-    	stick = new Joystick(0);
-    	//Button Declarations
-    	JoystickButton shift = new JoystickButton(stick, 2);
-    	shift.whenPressed(new Shift());
-    	
-    	//JoystickButton Drive20ft= new JoystickButton(stick, 3);
-    	//Drive20ft.whenPressed(new Drive20ft());
-    	
-    	JoystickButton ballPickup = new JoystickButton(stick, 1);
+		// joystick initialization
+		stick = new Joystick(0);
+		// Button Declarations
+		JoystickButton shift = new JoystickButton(stick, 6);
+		shift.whenPressed(new Shift());
+		JoystickButton shift1 = new JoystickButton(Gamecontroller, 8);
+    	shift1.whenPressed(new Shift());
+		
+    	// JoystickButton Drive20ft= new JoystickButton(stick, 3);
+		// Drive20ft.whenPressed(new Drive20ft());
+
+		JoystickButton ballPickup = new JoystickButton(stick, 5);
 		ballPickup.whileHeld(new IntakeBalls());
+		JoystickButton ballPickup1 = new JoystickButton(Gamecontroller, );
+		ballPickup1.whileHeld(new IntakeBalls());
 		
-		JoystickButton ballfeed = new JoystickButton(stick, 4);
+		JoystickButton ballfeed = new JoystickButton(stick, 2);
 		ballfeed.whileHeld(new Ballfeed());
+		JoystickButton ballfeed1 = new JoystickButton(Gamecontroller, 2);
+		ballfeed1.whileHeld(new Ballfeed());
+
+		JoystickButton openGear = new JoystickButton(stick, 9);
+		openGear.whenPressed(new GearPiston(false));
+		JoystickButton openGear1 = new JoystickButton(Gamecontroller, 3);
+		openGear1.whenPressed(new GearPiston(false));
 		
-		JoystickButton openGear = new JoystickButton(stick, 11);
-    	openGear.whenPressed(new GearPiston(false));
-    	JoystickButton closeGear = new JoystickButton(stick, 12);
-    	closeGear.whenPressed(new GearPiston(true));
-    	
-    	JoystickButton climb = new JoystickButton(stick, 5);
+		JoystickButton closeGear = new JoystickButton(stick, 10);
+		closeGear.whenPressed(new GearPiston(true));
+		JoystickButton closeGear1 = new JoystickButton(Gamecontroller, 1);
+		closeGear1.whenPressed(new GearPiston(true));
+		
+		JoystickButton climb = new JoystickButton(stick, 8);
 		climb.whileHeld(new Climb());
+		 JoystickButton climb1 = new JoystickButton(Gamecontroller, 7);
+			climb1.whileHeld(new Climb());
 		
-		JoystickButton shoot= new JoystickButton(stick, 3);
-    	shoot.whileHeld(new Shoot());
-    	
-    	JoystickButton aimLeft = new JoystickButton(stick, 10);
-    	aimLeft.whileHeld(new AimLeft());
-    	JoystickButton aimRight = new JoystickButton(stick, 9);
-    	aimRight.whileHeld(new AimRight());
-    	JoystickButton turntableZero = new JoystickButton(stick, 6);
-    	turntableZero.whenPressed(new SetTurntableZero());
-    }
-}
+		JoystickButton shoot = new JoystickButton(stick, 1);
+		shoot.whileHeld(new Shoot());
+		JoystickButton shoot1= new JoystickButton(Gamecontroller, 4);
+		shoot1.whileHeld(new Shoot());
+		
+		JoystickButton aimLeft = new JoystickButton(stick, 3);
+		aimLeft.whileHeld(new AimLeft());
+		JoystickButton aimLeft1 = new JoystickButton(Gamecontroller, );
+		aimLeft1.whileHeld(new AimLeft());
+		
+		JoystickButton aimRight = new JoystickButton(stick, 4);
+		aimRight.whileHeld(new AimRight());
+		JoystickButton aimRight1 = new JoystickButton(Gamecontroller, );
+		aimRight1.whileHeld(new AimRight());
+		
+		// JoystickButton turntableZero = new JoystickButton(stick, 2);
+		// turntableZero.whenPressed(new SetTurntableZero());
+	}
+
+	JoystickButton shift = new JoystickButton(stick, 6);
+	shift.whenPressed(new Shift());
+
+	// JoystickButton Drive20ft= new JoystickButton(stick, 3);
+	// Drive20ft.whenPressed(new Drive20ft());
+	
+	}
