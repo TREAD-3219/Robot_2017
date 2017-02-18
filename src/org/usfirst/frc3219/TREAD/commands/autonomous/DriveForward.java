@@ -21,15 +21,15 @@ public class DriveForward extends Command {
 
 	@Override
 	protected void execute() { 
-		// TODO Auto-generated method stub
+		Robot.drive.setMotors(120);
 
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drive.setMotors(40);
+		Robot.drive.setMotors(120);
 		// TODO Auto-generated method stub
-		this.setTimeout(inches / 40);
+		this.setTimeout(inches / 120);
 	}
 
 	@Override

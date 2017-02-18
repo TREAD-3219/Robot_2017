@@ -27,6 +27,8 @@ public class StickDrive extends Command {
 		SmartDashboard.putNumber("Angle", Robot.sensors.getAngle());
 		SmartDashboard.putNumber("Right Drive Dist", Robot.sensors.rightDriveDistance());
 		SmartDashboard.putNumber("Left Drive Dist", Robot.sensors.leftDriveDistance());
+		SmartDashboard.putNumber("Turntable", Robot.turntable.getAngle());
+		SmartDashboard.putNumber("Zero", Robot.turntable.atZeroIndex() ? 1 : 0);
 	}
 
 	@Override

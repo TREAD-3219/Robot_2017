@@ -11,6 +11,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
+import org.usfirst.frc3219.TREAD.commands.StandardAutonomous;
 import org.usfirst.frc3219.TREAD.commands.autonomous.Drive20ft;
 import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
 import org.usfirst.frc3219.TREAD.commands.drive.StickDrive;
@@ -74,7 +75,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new DriveTurn(90);
+		autonomousCommand = new StandardAutonomous();
 	}
 
 	/**

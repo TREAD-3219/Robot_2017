@@ -14,8 +14,11 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimAtTarget;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimLeft;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
+import org.usfirst.frc3219.TREAD.commands.shooter.AutoShoot;
+import org.usfirst.frc3219.TREAD.commands.shooter.ClearMove;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 
@@ -74,7 +77,7 @@ public class OI {
     	//Drive20ft.whenPressed(new Drive20ft());
     	
     	JoystickButton ballPickup = new JoystickButton(stick, 1);
-		ballPickup.whileHeld(new IntakeBalls());
+		ballPickup.whileHeld(new AutoShoot());//new IntakeBalls());
 		
 		JoystickButton ballfeed = new JoystickButton(stick, 4);
 		ballfeed.whileHeld(new Ballfeed());
@@ -96,5 +99,8 @@ public class OI {
     	aimRight.whileHeld(new AimRight());
     	JoystickButton turntableZero = new JoystickButton(stick, 6);
     	turntableZero.whenPressed(new SetTurntableZero());
+    	
+    	JoystickButton reset = new JoystickButton(stick, 8);
+    	reset.whenPressed(new AimAtTarget());
     }
 }
