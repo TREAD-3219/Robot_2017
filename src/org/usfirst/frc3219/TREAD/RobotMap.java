@@ -42,6 +42,7 @@ public class RobotMap {
 	public static final int CLIMBER_PWM_INDEX = 1;
 	public static final int BALLFEED_PWM_INDEX = 2;
 	public static final int TURNTABLE_PWM_INDEX = 3;
+	public static final int AGITATOR_PWM_INDEX = 4;
 	
 	public static final int LEFT_DRIVE_1_CAN_INDEX = 1;
 	public static final int LEFT_DRIVE_2_CAN_INDEX = 2;
@@ -83,6 +84,7 @@ public class RobotMap {
 	
 	// Shooter subsystem
 	public static CANTalon shooterMotor;
+	public static Victor Agitator;
 	
 	
 	public static void init() {
