@@ -32,10 +32,11 @@ public class RobotMap {
 	
 	public static final int TURNTABLE_ENCODER_A = 0;
 	public static final int TURNTABLE_ENCODER_B = 1;
-	public static final int RIGHT_DRIVE_ENCODER_A = 2;
-	public static final int RIGHT_DRIVE_ENCODER_B = 3;
-	public static final int LEFT_DRIVE_ENCODER_A = 4;
-	public static final int LEFT_DRIVE_ENCODER_B = 5;
+
+	public static final int LEFT_DRIVE_ENCODER_A = 2;
+	public static final int LEFT_DRIVE_ENCODER_B = 3;
+	public static final int RIGHT_DRIVE_ENCODER_A = 4;
+	public static final int RIGHT_DRIVE_ENCODER_B = 5;
 	public static final int TURNTABLE_DIO_INDEX = 6;
 	
 	public static final int BALL_INTAKE_PWM_INDEX = 0;

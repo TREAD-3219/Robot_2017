@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AimAtTarget extends CommandGroup {
 	public AimAtTarget() {
 		this.addSequential(new SetTurntableZero());
-		this.addSequential(new TurntableTurnTo(1000));
+		this.addSequential(new TurntableTurnTo(1500));
+		this.addSequential(new Spinup());
+		this.addSequential(new AutoShoot());
 	}
 }

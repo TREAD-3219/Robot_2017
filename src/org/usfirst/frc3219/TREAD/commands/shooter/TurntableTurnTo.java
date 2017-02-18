@@ -15,13 +15,21 @@ public class TurntableTurnTo extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		if (goalAngle < 0) {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		} else {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		}
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		if (goalAngle < 0) {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		} else {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		}
 	}
 
 	// Called once after isFinished returns true
@@ -32,7 +40,12 @@ public class TurntableTurnTo extends Command {
 	
 	@Override
 	protected boolean isFinished() {
-		return Math.abs(Robot.turntable.getAngle()) > goalAngle;
+		if (goalAngle < 0) {
+			return Robot.turntable.getAngle() < goalAngle;
+		} else {
+			return Math.abs(Robot.turntable.getAngle()) > goalAngle;
+		}
+		
 	}
 
 }
