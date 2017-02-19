@@ -9,10 +9,15 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class Sensors extends Subsystem {
 	public I2C i2c;
 	public AHRS NAVX;
+	public NetworkTable visionTable;
+	
+	public static final int CAMERA_WIDTH = 640;
+	public static final int CAMERA_HEIGHT = 480;
 
 	@Override
 	protected void initDefaultCommand() {
@@ -26,12 +31,23 @@ public class Sensors extends Subsystem {
 		RobotMap.leftDriveEncoder.setDistancePerPulse(-Math.PI / 63);
 		RobotMap.rightDriveEncoder.reset();
 		RobotMap.leftDriveEncoder.reset();
+		visionTable = NetworkTable.getTable("GRIP/myContoursReport");
 		this.setDefaultCommand(new SensorWatch());
 	}
 	
 	public double getDriveDistance() {
 		double total = RobotMap.rightDriveEncoder.getDistance() + RobotMap.leftDriveEncoder.getDistance();
 		return total / 2;
+	}
+	
+	public double getTargetX() {
+		double[] centerXs = visionTable.getNumberArray("centerX", new double[1]);
+		double average = 0.0;
+		for (double d : centerXs) {
+			average += d;
+		}
+		average /= centerXs.length;
+		return average;
 	}
 	
 	public double rightDriveDistance() {
