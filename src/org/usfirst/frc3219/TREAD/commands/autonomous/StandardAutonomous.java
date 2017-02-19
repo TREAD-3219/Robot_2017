@@ -1,7 +1,5 @@
-package org.usfirst.frc3219.TREAD.commands;
+package org.usfirst.frc3219.TREAD.commands.autonomous;
 
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimAtTarget;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
 
