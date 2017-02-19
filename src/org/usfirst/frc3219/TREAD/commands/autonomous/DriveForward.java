@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveForward extends Command {
 	private int inches;
-
+	private double initDist;
 	public DriveForward(int inches) {
 		this.inches = inches;
 
@@ -15,21 +15,21 @@ public class DriveForward extends Command {
 	@Override
 	protected void end() {
 		Robot.drive.setMotors(0);
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected void execute() { 
-		// TODO Auto-generated method stub
+		Robot.drive.setMotors(120);
 
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drive.setMotors(40);
+		Robot.drive.setMotors(100);
 		// TODO Auto-generated method stub
-		this.setTimeout(inches / 40);
+		//this.setTimeout(inches / 120);
+		initDist = Robot.sensors.getDriveDistance();
 	}
 
 	@Override
@@ -41,6 +41,6 @@ public class DriveForward extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return this.isTimedOut();
+		return Robot.sensors.getDriveDistance() - initDist > inches;
 	}
 }

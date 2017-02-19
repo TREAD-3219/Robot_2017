@@ -4,6 +4,7 @@ import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AimRight extends Command {
 	
@@ -14,6 +15,10 @@ public class AimRight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		SmartDashboard.putNumber("Turntable", Robot.turntable.getAngle());
+		if (Robot.turntable.atZeroIndex()) {
+			Robot.turntable.setZero();
+		}
 	}
 
 	// Called once after isFinished returns true

@@ -23,6 +23,8 @@ public class Turntable extends Subsystem {
 	public void setup() {
 		turntableMotor = RobotMap.turntableMotor;
 		turntableEncoder = RobotMap.turntableEncoder;
+		turntableEncoder.setMaxPeriod(.1);
+		turntableEncoder.setMinRate(10);
 		turntableIndexSensor = RobotMap.turntableIndexSetter;
 	}
 
@@ -31,7 +33,7 @@ public class Turntable extends Subsystem {
 	}
 
 	public double getAngle() {
-		double angle = turntableEncoder.getDistance();
+		double angle = turntableEncoder.getRaw();//turntableEncoder.getDistance();
 		return angle;
 	}
 
@@ -42,7 +44,7 @@ public class Turntable extends Subsystem {
 	}
 
 	public boolean atZeroIndex() {
-		return turntableIndexSensor.get();
+		return !turntableIndexSensor.get();
 	}
 
 	public void setZero() {
@@ -51,7 +53,8 @@ public class Turntable extends Subsystem {
 	
 	public static void intializeMotors() {
 		RobotMap.turntableMotor = new Spark(RobotMap.TURNTABLE_PWM_INDEX);
-		RobotMap.turntableEncoder = new Encoder(RobotMap.TURNTABLE_ENCODER_A, RobotMap.TURNTABLE_ENCODER_B);
+		RobotMap.turntableEncoder = new Encoder(RobotMap.TURNTABLE_ENCODER_A, RobotMap.TURNTABLE_ENCODER_B, false, Encoder.EncodingType.k4X);
 		RobotMap.turntableIndexSetter = new DigitalInput(RobotMap.TURNTABLE_DIO_INDEX);
+		RobotMap.turntableEncoder.setDistancePerPulse(12.0 / 240.0);
 	}
 }

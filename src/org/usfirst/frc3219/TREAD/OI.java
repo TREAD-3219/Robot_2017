@@ -14,8 +14,11 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimAtTarget;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimLeft;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
+import org.usfirst.frc3219.TREAD.commands.shooter.AutoShoot;
+import org.usfirst.frc3219.TREAD.commands.shooter.ClearMove;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 
@@ -89,17 +92,11 @@ public class OI {
 		
 		 JoystickButton climb1 = new JoystickButton(Gamecontroller, 5);
 			climb1.whileHeld(new Climb());
-		
 
 		JoystickButton shoot1= new JoystickButton(Gamecontroller, 4);
 		shoot1.whileHeld(new Shoot());
-		
-	
-		
 		// JoystickButton turntableZero = new JoystickButton(stick, 2);
 		// turntableZero.whenPressed(new SetTurntableZero());
-
-	
 }
     // JoystickButton Drive20ft= new JoystickButton(stick, 3);
 	// Drive20ft.whenPressed(new Drive20ft());

@@ -44,7 +44,7 @@ public class Drive extends Subsystem {
 
 	public void setMotors(double inchespersecond) {
 		double Power = inchespersecond / 120.0;
-		stickDrive(Power, 0, 0);
+		stickDrive(-Power, 0, 0);
 	}
 
 	// Inverts boolean highGear for button presses

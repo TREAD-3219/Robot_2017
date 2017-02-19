@@ -12,6 +12,10 @@ package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 import org.usfirst.frc3219.TREAD.commands.autonomous.Drive20ft;
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
+import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
+import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousLeft;
+import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousRight;
 import org.usfirst.frc3219.TREAD.commands.drive.StickDrive;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
@@ -73,7 +77,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		// instantiate the command used for the autonomous period
-		autonomousCommand = new Drive20ft();
+		autonomousCommand = new StandardAutonomousRight();
 	}
 
 	/**
