@@ -13,7 +13,7 @@ public class Shoot extends Command {
 
 	@Override
 	protected void execute() {
-		Robot.shooter.startShooter();
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -25,9 +25,13 @@ public class DriveTurn extends Command {
 	protected void execute() {
 		double speed = .7;
 		if (Math.abs(previous - Robot.sensors.getAngle()) > 90) {
+			SmartDashboard.putNumber("diff", previous - initialDegrees);
 			tempDegrees = tempDegrees - (initialDegrees - previous);
 			initialDegrees = Robot.sensors.getAngle();
 		}
+		SmartDashboard.putNumber("Goal Degrees", tempDegrees);
+		SmartDashboard.putNumber("initial Degrees", initialDegrees);
+		SmartDashboard.putNumber("Distance", Robot.sensors.getAngle() - initialDegrees);
 		if ((Robot.sensors.getAngle() - initialDegrees) < tempDegrees) {
 			speed *= -1;
 		}
@@ -41,6 +45,9 @@ public class DriveTurn extends Command {
 		this.setTimeout(7);
 		initialDegrees = Robot.sensors.getAngle();
 		previous = Robot.sensors.getAngle();
+		SmartDashboard.putNumber("Goal Degrees", goalDegrees);
+		SmartDashboard.putNumber("initial Degrees", initialDegrees);
+		SmartDashboard.putNumber("Distance", Robot.sensors.getAngle() - initialDegrees);
 		tempDegrees = goalDegrees;
 	}
 
