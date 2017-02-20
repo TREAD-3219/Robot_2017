@@ -17,15 +17,17 @@ public class DPad extends Command {
 	protected void execute() {
 		int pov = Robot.oi.Gamecontroller.getPOV();
 		if (pov == 90) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
-		}
-
-		else if (pov == 270) {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
-		}
-
-		else {
+		} else if (pov == 270) {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		} else {
 			Robot.turntable.turnDirection(0);
+		}
+		
+		if (pov == 180) {
+			Robot.shooter.powerDown();
+		} else if(pov == 0) {
+			Robot.shooter.powerUp();
 		}
 	}
 

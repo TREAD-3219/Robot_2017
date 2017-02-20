@@ -18,7 +18,11 @@ public class SetTurntableZero extends Command {
 	}
 
 	protected void execute() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		if (Robot.turntable.getAngle() < 0) {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		} else {
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		}
 	}
 
 	protected boolean isFinished() {

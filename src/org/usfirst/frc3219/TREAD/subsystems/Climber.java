@@ -14,7 +14,7 @@ public class Climber extends Subsystem {
 	}
 
 	public void TurnOnMotors() {
-		RobotMap.climberMotor.set(-1);
+		RobotMap.climberMotor.set(1);
 	}
 
 	public void TurnOffMotors() {
