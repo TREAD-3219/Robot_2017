@@ -13,17 +13,23 @@ public class VisionAim extends PIDCommand {
 	public static final double D = 0.0;
 	
 	private double turnRate;
+	private double goalAngle;
+	private double initialDegrees;
 	
 	public VisionAim() {
 		super(P, I, D);
     	requires(Robot.sensors);
     	requires(Robot.shooter);
     	turnRate = 0;
+    	goalAngle = 0;
+    	initialDegrees = 0;
     }
 
     protected void initialize() {
     	this.setTimeout(10);
     	turnRate = 0;
+    	goalAngle = 0;
+    	initialDegrees = 0;
     }
 
     protected void execute() {
@@ -41,10 +47,19 @@ public class VisionAim extends PIDCommand {
     protected void interrupted() {
     	end();
     }
+    
+    private void checkAngle() {
+    	double temp = (Robot.sensors.getTargetX() - Sensors.CAMERA_WIDTH/2.0) / Sensors.DEGREES_PER_PIXEL;
+    	if (goalAngle != temp) {
+    		goalAngle = temp;
+    		initialDegrees = Robot.turntable.getAngle();
+    	}
+    }
 
 	@Override
 	protected double returnPIDInput() {
-		return Robot.sensors.getTargetX() - (Sensors.CAMERA_WIDTH / 2.0);
+		checkAngle();
+		return Robot.turntable.getAngle() - initialDegrees - goalAngle;
 	}
 
 	@Override

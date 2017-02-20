@@ -18,6 +18,7 @@ public class Sensors extends Subsystem {
 	
 	public static final int CAMERA_WIDTH = 640;
 	public static final int CAMERA_HEIGHT = 480;
+	public static final double DEGREES_PER_PIXEL = 60.0 / CAMERA_WIDTH;
 
 	@Override
 	protected void initDefaultCommand() {
