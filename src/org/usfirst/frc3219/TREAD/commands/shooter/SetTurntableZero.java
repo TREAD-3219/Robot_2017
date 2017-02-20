@@ -15,13 +15,19 @@ public class SetTurntableZero extends Command {
 	}
 
 	protected void initialize() {
+		halfChecked = false;
 	}
-
+	private boolean halfChecked;
+	private int count;
 	protected void execute() {
-		if (Robot.turntable.getAngle() < 0) {
+		if (halfChecked) {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
 		} else {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		}
+		count++;
+		if (count > 30) {
+			halfChecked = true;
 		}
 	}
 

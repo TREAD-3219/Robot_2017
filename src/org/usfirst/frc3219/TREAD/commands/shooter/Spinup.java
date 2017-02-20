@@ -7,9 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Spinup extends Command {
+	private double seconds;
+	public Spinup(double seconds) {
+		this.seconds = seconds;
+	}
+	
 	@Override
 	protected void initialize() {
-		this.setTimeout(1.5);
+		this.setTimeout(seconds);
 	}
 	
 	@Override
@@ -24,7 +29,7 @@ public class Spinup extends Command {
 	
 	@Override
 	protected void end() {
-		Robot.shooter.stopShooter();
+		//Robot.shooter.stopShooter();
 	}
 
 	@Override

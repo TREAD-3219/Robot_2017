@@ -11,16 +11,7 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
-import org.usfirst.frc3219.TREAD.commands.autonomous.Drive20ft;
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
-import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousBlue;
-import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousLeft;
-import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousRed;
-import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomousRight;
-import org.usfirst.frc3219.TREAD.commands.drive.StickDrive;
-import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
@@ -46,10 +37,10 @@ public class Robot extends IterativeRobot {
 	
 	// Command Declarations
 	Command autonomousCommand;
-	//private static SendableChooser posChooser;
+	private static SendableChooser posChooser;
 	public static String position = "Default";
 	
-	//private static SendableChooser teamChooser;
+	private static SendableChooser teamChooser;
 	public static boolean blueAlliance = true;
 	
 	// Subsystem Declarations
@@ -87,7 +78,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		// instantiate the command chooser used for selecting autonomous
-		/*posChooser = new SendableChooser();
+		posChooser = new SendableChooser();
 		posChooser.addDefault("Default", "Default");
 		posChooser.addObject("Left", "Left");
 		posChooser.addObject("Right", "Right");
@@ -96,9 +87,9 @@ public class Robot extends IterativeRobot {
 		teamChooser = new SendableChooser();
 		teamChooser.addDefault("Blue Alliance", "blue");
 		teamChooser.addObject("Red Alliance", "red");
-		SmartDashboard.putData("Alliance", teamChooser);*/
+		SmartDashboard.putData("Alliance", teamChooser);
 		
-		autonomousCommand = new DriveForward(100);
+		autonomousCommand = new StandardAutonomous();
 	}
 
 	/**
@@ -114,14 +105,9 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		/*blueAlliance = teamChooser.getSelected().equals("blue");
+		blueAlliance = teamChooser.getSelected().equals("blue");
 		position = (String) posChooser.getSelected();
-		if (blueAlliance) {
-			autonomousCommand = new StandardAutonomousBlue();
-		} else {
-			autonomousCommand = new StandardAutonomousRed();
-		}*/
-		
+		autonomousCommand = new StandardAutonomous();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();

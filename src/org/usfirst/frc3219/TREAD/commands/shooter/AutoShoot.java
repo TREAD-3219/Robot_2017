@@ -9,20 +9,19 @@ public class AutoShoot extends Command {
 	protected void end() {
 		Robot.shooter.stopShooter();
 		Robot.ballfeeder.TurnOffMotors();
-		Robot.climber.TurnOnMotors();
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		
+		Robot.shooter.startShooter();
+		Robot.ballfeeder.TurnOnMotors();
 	}
 
 	@Override
 	protected void initialize() {
 		Robot.shooter.startShooter();
 		Robot.ballfeeder.TurnOnMotors();
-		Robot.climber.TurnOnMotors();
 	}
 
 	@Override

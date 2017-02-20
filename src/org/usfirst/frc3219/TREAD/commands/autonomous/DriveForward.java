@@ -16,12 +16,11 @@ public class DriveForward extends Command {
 	@Override
 	protected void end() {
 		Robot.drive.setMotors(0);
-		DriverStation.reportWarning("he thing ended", false);
 	}
 
 	@Override
 	protected void execute() { 
-		Robot.drive.setMotors(120);
+		Robot.drive.setMotors(100);
 
 	}
 

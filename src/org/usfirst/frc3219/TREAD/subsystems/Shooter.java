@@ -21,7 +21,7 @@ public class Shooter extends Subsystem{
 	}
 	
 	public void startShooter(){
-		RobotMap.shooterMotor.set(-shooterPower);
+		RobotMap.shooterMotor.set(-1);
 	}
 
 	public void stopShooter(){

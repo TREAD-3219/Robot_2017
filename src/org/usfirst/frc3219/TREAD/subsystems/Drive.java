@@ -33,7 +33,7 @@ public class Drive extends Subsystem {
 		if (shifting) {
 			drive.arcadeDrive((forwardSpeed * throttle) / SHIFTING_SCALE, (turnSpeed * throttle) / SHIFTING_SCALE);
 		} else {
-			drive.arcadeDrive(forwardSpeed*throttle, turnSpeed*throttle);
+			drive.arcadeDrive(forwardSpeed, turnSpeed);
 		}
 
 	}
