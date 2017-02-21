@@ -7,18 +7,20 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AimRight extends Command {
+	public AimRight() {
+		requires(Robot.turntable);
+	}
 	
+	private double initialDegrees;
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+		initialDegrees = Robot.turntable.getAngle();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		SmartDashboard.putNumber("Turntable", Robot.turntable.getAngle());
-		if (Robot.turntable.atZeroIndex()) {
-			Robot.turntable.setZero();
-		}
+		Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
 	}
 
 	// Called once after isFinished returns true
@@ -34,6 +36,6 @@ public class AimRight extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return Robot.turntable.getAngle() - initialDegrees < -5;
 	}
 }

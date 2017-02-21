@@ -23,7 +23,7 @@ public class StickDrive extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), driveStick.getThrottle());
+		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), -driveStick.getThrottle());
 		SmartDashboard.putNumber("Angle", Robot.sensors.getAngle());
 		SmartDashboard.putNumber("Right Drive Dist", Robot.sensors.rightDriveDistance());
 		SmartDashboard.putNumber("Left Drive Dist", Robot.sensors.leftDriveDistance());

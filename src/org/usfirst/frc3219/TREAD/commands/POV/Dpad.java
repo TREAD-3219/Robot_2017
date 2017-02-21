@@ -2,6 +2,8 @@ package org.usfirst.frc3219.TREAD.commands.POV;
 
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.RobotMap;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimLeft;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,15 +19,17 @@ public class DPad extends Command {
 	protected void execute() {
 		int pov = Robot.oi.Gamecontroller.getPOV();
 		if (pov == 90) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+			Robot.addCommand(new AimRight());
+		} else if (pov == 270) {
+			Robot.addCommand(new AimLeft());
+		} else {
+			Robot.turntable.turnDirection(Robot.oi.Gamecontroller.getX() * 0.3);
 		}
-
-		else if (pov == 270) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
-		}
-
-		else {
-			Robot.turntable.turnDirection(0);
+		
+		if (pov == 180) {
+			Robot.shooter.powerDown();
+		} else if(pov == 0) {
+			Robot.shooter.powerUp();
 		}
 	}
 

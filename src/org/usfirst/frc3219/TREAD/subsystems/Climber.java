@@ -10,11 +10,11 @@ public class Climber extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-
+		TurnOffMotors();
 	}
 
 	public void TurnOnMotors() {
-		RobotMap.climberMotor.set(-1);
+		RobotMap.climberMotor.set(1);
 	}
 
 	public void TurnOffMotors() {
