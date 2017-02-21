@@ -9,13 +9,13 @@ public class TurntableTurnTo extends Command {
 	private double goalAngle;
 	
 	public TurntableTurnTo(double angle) {
-		goalAngle = angle;
+		goalAngle = angle - (10 * angle / Math.abs(angle));
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		if (goalAngle < 0) {
+		if (goalAngle > 0) {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
 		} else {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
@@ -25,7 +25,7 @@ public class TurntableTurnTo extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		if (goalAngle < 0) {
+		if (goalAngle > 0) {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
 		} else {
 			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);

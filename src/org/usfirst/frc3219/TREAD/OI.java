@@ -14,7 +14,11 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.SetDiag;
+import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
+import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
+import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -66,6 +70,12 @@ public class OI {
 
 		// JoystickButton Drive20ft= new JoystickButton(stick, 3);
 		// Drive20ft.whenPressed(new Drive20ft());
+		
+		JoystickButton turnTest = new JoystickButton(stick, 3);
+		turnTest.whenPressed(new SetTurntableZero());
+		
+		JoystickButton turnTest2 = new JoystickButton(stick, 4);
+		turnTest2.whenPressed(new TurntableTurnTo(90));
 
 		JoystickButton ballPickup = new JoystickButton(stick, 1);
 		ballPickup.whileHeld(new IntakeBalls());
@@ -86,6 +96,11 @@ public class OI {
 		shoot1.whileHeld(new Shoot());
 		// JoystickButton turntableZero = new JoystickButton(stick, 2);
 		// turntableZero.whenPressed(new SetTurntableZero());
+		
+		JoystickButton turnDiag = new JoystickButton(stick, 12);
+		turnDiag.whenPressed(new SetDiag(true));
+		JoystickButton turnMid = new JoystickButton(stick, 11);
+		turnMid.whenPressed(new SetDiag(false));
 	}
 
 }

@@ -12,11 +12,13 @@ package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
+import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc3219.TREAD.subsystems.*;
@@ -40,7 +42,6 @@ public class Robot extends IterativeRobot {
 	private static SendableChooser posChooser;
 	public static String position = "Default";
 	
-	private static SendableChooser teamChooser;
 	public static boolean blueAlliance = true;
 	
 	// Subsystem Declarations
@@ -79,15 +80,9 @@ public class Robot extends IterativeRobot {
 
 		// instantiate the command chooser used for selecting autonomous
 		posChooser = new SendableChooser();
-		posChooser.addDefault("Default", "Default");
-		posChooser.addObject("Left", "Left");
-		posChooser.addObject("Right", "Right");
+		posChooser.addDefault("Middle", "Middle");
+		posChooser.addObject("Side", "Diag");
 		SmartDashboard.putData("Position", posChooser);
-		
-		teamChooser = new SendableChooser();
-		teamChooser.addDefault("Blue Alliance", "blue");
-		teamChooser.addObject("Red Alliance", "red");
-		SmartDashboard.putData("Alliance", teamChooser);
 		
 		autonomousCommand = new StandardAutonomous();
 	}
@@ -105,7 +100,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		blueAlliance = teamChooser.getSelected().equals("blue");
+		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
+		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		position = (String) posChooser.getSelected();
 		autonomousCommand = new StandardAutonomous();
 		// schedule the autonomous command (example)
@@ -121,6 +117,8 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
+		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
+		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -140,5 +138,9 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+
+	public static void addCommand(Command command) {
+		Scheduler.getInstance().add(command);
 	}
 }

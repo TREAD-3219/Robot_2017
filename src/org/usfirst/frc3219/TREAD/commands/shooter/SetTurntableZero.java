@@ -16,6 +16,7 @@ public class SetTurntableZero extends Command {
 
 	protected void initialize() {
 		halfChecked = false;
+		count = 0;
 	}
 	private boolean halfChecked;
 	private int count;
