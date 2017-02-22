@@ -81,7 +81,8 @@ public class Robot extends IterativeRobot {
 		// instantiate the command chooser used for selecting autonomous
 		posChooser = new SendableChooser();
 		posChooser.addDefault("Middle", "Middle");
-		posChooser.addObject("Side", "Diag");
+		posChooser.addObject("Left", "Left");
+		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
 		autonomousCommand = new StandardAutonomous();
