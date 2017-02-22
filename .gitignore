@@ -47,4 +47,8 @@ Temporary Items
 .apdisk
 /bin/
 src\org\usfirst\frc3219\TREAD\RobotMap.java
+src\org\usfirst\frc3219\TREAD\subsystems\Ballfeeder.java
+src\org\usfirst\frc3219\TREAD\subsystems\BallIntake.java
+src\org\usfirst\frc3219\TREAD\subsystems\Turntable.java
+src\org\usfirst\frc3219\TREAD\subsystems\Climber.java
 .gitignore

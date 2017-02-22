@@ -17,6 +17,7 @@ import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -67,25 +68,25 @@ public class RobotMap {
 	public static RobotDrive robotDrive;
 
 	// Turntable subsystem
-	public static Spark turntableMotor;
+	public static Talon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndexSetter;
 	
 	// Intake subsystem
-	public static Victor ballIntakeMotor;
+	public static Talon ballIntakeMotor;
 	
 	// BallFeed subsystem
-	public static Spark FeederMotor;
+	public static Talon FeederMotor;
 	
 	// GearSlot subsytem
 	public static Solenoid gearPiston;
 	
 	// Climber subsystem
-	public static Victor climberMotor;
+	public static Talon climberMotor;
 	
 	// Shooter subsystem
 	public static CANTalon shooterMotor;
-	public static Victor Agitator;
+	public static Talon Agitator;
 	
 	
 	public static void init() {
