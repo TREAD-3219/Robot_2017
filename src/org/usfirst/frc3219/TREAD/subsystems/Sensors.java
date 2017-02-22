@@ -13,6 +13,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Sensors extends Subsystem {
 	public I2C i2c;
 	public AHRS NAVX;
+	
+	private final double TICKS_PER_ROTATION = 360;
+	private final double WHEEL_ROTATIONS_PER_ROTATION = 4.77;
+	private final double WHEEL_DIAMETER = 4 * Math.PI;
+	private final double INCHES_PER_TICK = (WHEEL_DIAMETER * WHEEL_ROTATIONS_PER_ROTATION) / TICKS_PER_ROTATION;
 
 	@Override
 	protected void initDefaultCommand() {
@@ -22,8 +27,8 @@ public class Sensors extends Subsystem {
 		//Encode = RobotMap.driveEncoder;
 		//Encode.setMaxPeriod(0.1);
 		//Encode.setMinRate(10);
-		RobotMap.rightDriveEncoder.setDistancePerPulse(Math.PI / 45);
-		RobotMap.leftDriveEncoder.setDistancePerPulse(-Math.PI / 63);
+		RobotMap.rightDriveEncoder.setDistancePerPulse(INCHES_PER_TICK);
+		RobotMap.leftDriveEncoder.setDistancePerPulse(-INCHES_PER_TICK);
 		RobotMap.rightDriveEncoder.reset();
 		RobotMap.leftDriveEncoder.reset();
 		this.setDefaultCommand(new SensorWatch());
