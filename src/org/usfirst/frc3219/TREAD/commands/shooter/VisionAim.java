@@ -6,15 +6,15 @@ import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class VisionAim extends PIDCommand {
-	public static final double P = 0.1;
-	public static final double I = 0.1;
-	public static final double D = 0.0;
+	public static final double P = 0.09;
+	public static final double I = 0.005;
+	public static final double D = 0.41;
 	
 	private double turnRate;
 	private double goalAngle;
-	private double initialDegrees;
 	
 	public VisionAim() {
 		super(P, I, D);
@@ -22,17 +22,17 @@ public class VisionAim extends PIDCommand {
     	requires(Robot.shooter);
     	turnRate = 0;
     	goalAngle = 0;
-    	initialDegrees = 0;
     }
 
     protected void initialize() {
     	this.setTimeout(10);
     	turnRate = 0;
     	goalAngle = 0;
-    	initialDegrees = 0;
     }
 
     protected void execute() {
+    	SmartDashboard.putData("PID", this.getPIDController());
+    	SmartDashboard.putNumber("dist left", Robot.turntable.getAngle() - goalAngle);
     	Robot.turntable.turnDirection(turnRate);
     }
 
@@ -48,18 +48,20 @@ public class VisionAim extends PIDCommand {
     	end();
     }
     
+    private double previous = 0;
     private void checkAngle() {
-    	double temp = (Robot.sensors.getTargetX() - Sensors.CAMERA_WIDTH/2.0) / Sensors.DEGREES_PER_PIXEL;
-    	if (goalAngle != temp) {
-    		goalAngle = temp;
-    		initialDegrees = Robot.turntable.getAngle();
+    	double temp = (Robot.sensors.getTargetX() - Sensors.CAMERA_WIDTH/2.0) * Sensors.DEGREES_PER_PIXEL;
+    	if (previous != temp) {
+    		goalAngle = Robot.turntable.getAngle() + temp;
+    		previous = temp;
     	}
     }
 
 	@Override
 	protected double returnPIDInput() {
 		checkAngle();
-		return Robot.turntable.getAngle() - initialDegrees - goalAngle;
+		SmartDashboard.putNumber("PID VALUE", Robot.turntable.getAngle() - goalAngle);
+		return -(Robot.turntable.getAngle() - goalAngle);
 	}
 
 	@Override
