@@ -19,6 +19,10 @@ public class VisionAimSingle extends Command{
     protected void initialize() {
     	this.setTimeout(10);
     	double temp = (Robot.sensors.getTargetX() - Sensors.CAMERA_WIDTH/2.0) * Sensors.DEGREES_PER_PIXEL;
+    	temp *= .85;
+    	if (Math.abs(temp) > 50) {
+    		temp = 0;
+    	}
     	goalAngle = Robot.turntable.getAngle() + temp;
     }
 
@@ -32,7 +36,7 @@ public class VisionAimSingle extends Command{
     }
 
     protected boolean isFinished() {
-        return this.isTimedOut() || Math.abs(Robot.turntable.getAngle() - goalAngle) < 10;
+        return this.isTimedOut() || Math.abs(Robot.turntable.getAngle() - goalAngle) < 1;
     }
 
     protected void end() {
