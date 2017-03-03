@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class StickDrive extends Command {
 	
-	Joystick driveStick = Robot.oi.stick;
+	Joystick driveStick = Robot.oi.leftStick;
 	
 	public StickDrive() {
 		requires(Robot.drive);
@@ -23,12 +23,8 @@ public class StickDrive extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), -driveStick.getThrottle());
-		SmartDashboard.putNumber("Angle", Robot.sensors.getAngle());
-		SmartDashboard.putNumber("Right Drive Dist", Robot.sensors.rightDriveDistance());
-		SmartDashboard.putNumber("Left Drive Dist", Robot.sensors.leftDriveDistance());
-		SmartDashboard.putNumber("Turntable", Robot.turntable.getAngle());
-		SmartDashboard.putNumber("Zero", Robot.turntable.atZeroIndex() ? 1 : 0);
+		//Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), -driveStick.getThrottle());
+		Robot.drive.tankDrive(-Robot.oi.leftStick.getY(), -Robot.oi.rightStick.getY());
 	}
 
 	@Override
