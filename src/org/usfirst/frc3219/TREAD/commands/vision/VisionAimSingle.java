@@ -1,4 +1,4 @@
-package org.usfirst.frc3219.TREAD.commands.shooter;
+package org.usfirst.frc3219.TREAD.commands.vision;
 
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Sensors;

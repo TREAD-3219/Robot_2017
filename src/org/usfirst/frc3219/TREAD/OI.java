@@ -18,7 +18,7 @@ import org.usfirst.frc3219.TREAD.commands.shooter.SetDiag;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
-import org.usfirst.frc3219.TREAD.commands.shooter.VisionAimSingle;
+import org.usfirst.frc3219.TREAD.commands.vision.VisionAimSingle;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -80,7 +80,7 @@ public class OI {
 		//JoystickButton turnTest = new JoystickButton(stick, 3);
 		//turnTest.whenPressed(new SetTurntableZero());
 		
-		JoystickButton turnTest2 = new JoystickButton(rightStick, 4);
+		JoystickButton turnTest2 = new JoystickButton(Gamecontroller, 6);
 		turnTest2.whenPressed(new VisionAimSingle());
 
 		JoystickButton ballPickup = new JoystickButton(leftStick, 1);
