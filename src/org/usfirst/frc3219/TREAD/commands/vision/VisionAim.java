@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class VisionAim extends PIDCommand {
-	public static final double P = 0.09;
-	public static final double I = 0.005;
-	public static final double D = 0.41;
+	public static final double P = 0.02;
+	public static final double I = 0.0;
+	public static final double D = 0.06;
 	
 	private double turnRate;
 	private double goalAngle;
@@ -32,7 +32,6 @@ public class VisionAim extends PIDCommand {
 
     protected void execute() {
     	SmartDashboard.putData("PID", this.getPIDController());
-    	SmartDashboard.putNumber("dist left", Robot.turntable.getAngle() - goalAngle);
     	Robot.turntable.turnDirection(turnRate);
     }
 

@@ -13,7 +13,6 @@ package org.usfirst.frc3219.TREAD;
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
-import org.usfirst.frc3219.TREAD.commands.vision.AutoAim;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAim;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
@@ -87,7 +86,7 @@ public class Robot extends IterativeRobot {
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
-		autonomousCommand = new AutoAim();
+		autonomousCommand = new VisionAim();
 	}
 
 	/**
@@ -106,7 +105,7 @@ public class Robot extends IterativeRobot {
 		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
 		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		position = (String) posChooser.getSelected();
-		autonomousCommand = new AutoAim();
+		autonomousCommand = new VisionAim();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();

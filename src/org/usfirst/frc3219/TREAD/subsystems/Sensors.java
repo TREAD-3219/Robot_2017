@@ -51,6 +51,10 @@ public class Sensors extends Subsystem {
 		return average;
 	}
 	
+	public boolean targetIsVisible() {
+		return visionTable.getNumberArray("centerX", new double[1]).length > 1;
+	}
+	
 	public double rightDriveDistance() {
 		return RobotMap.rightDriveEncoder.getDistance();
 	}
