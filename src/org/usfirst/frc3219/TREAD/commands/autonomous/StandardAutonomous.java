@@ -11,14 +11,16 @@ public class StandardAutonomous extends CommandGroup {
 	public StandardAutonomous() {
 		if (Robot.position.equals("Middle")) {
 			this.addSequential(new Spinup(0.1));
-			this.addSequential(new GearAim());
-			this.addSequential(new DriveForward(90));
+			this.addSequential(new GearAim(90));
+			this.addSequential(new DriveForward(45));
+			this.addSequential(new GearAim(45));
+			this.addSequential(new DriveForward(45));
 			shootCommands();
 			
 		} else if (Robot.position.equals("Left")) {
 			this.addSequential(new DriveForward(80));
 			this.addSequential(new DriveTurn(-57));
-			this.addSequential(new GearAim());
+			this.addSequential(new GearAim(95));
 			this.addSequential(new DriveForward(95));
 			if (!Robot.blueAlliance) {
 				shootCommands();
@@ -28,7 +30,7 @@ public class StandardAutonomous extends CommandGroup {
 			this.addSequential(new Spinup(0.1));
 			this.addSequential(new DriveForward(80));
 			this.addSequential(new DriveTurn(57));
-			this.addSequential(new GearAim());
+			this.addSequential(new GearAim(95));
 			this.addSequential(new DriveForward(95));
 			if (Robot.blueAlliance) {
 				shootCommands();

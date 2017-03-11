@@ -9,15 +9,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GearAim extends Command {
-	private static final double DIST_FROM_TARGET = 95;
 	private static final double OFFSET_INCHES = 6;
-	private static final double OFFSET_DEGREES = Math.atan(OFFSET_INCHES / DIST_FROM_TARGET) / (Math.PI / 180.0);
+	private static final double DEFAULT_DIST = 95;
+	private static double offsetDegrees;
 
 	private double goalDegrees;
 	private double initialDegrees;
 
+	public GearAim(int distLeft) {
+		offsetDegrees = Math.atan(OFFSET_INCHES / distLeft) / (Math.PI / 180.0);
+	}
+	
 	public GearAim() {
-		
+		offsetDegrees = Math.atan(OFFSET_INCHES / DEFAULT_DIST) / (Math.PI / 180.0);
 	}
 
 	@Override
