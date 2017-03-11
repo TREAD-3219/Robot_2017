@@ -20,8 +20,8 @@ public class SensorWatch extends Command {
 
 	@Override
 	protected void execute() {
-		SmartDashboard.putBoolean("TARGET VISIBLE", Robot.sensors.targetIsVisible());
-		SmartDashboard.putNumber("TURNTABLE ROTATION", Robot.turntable.getAngle());
+		SmartDashboard.putBoolean("SHOOTER TARGET VISIBLE", Robot.sensors.shooterTargetIsVisible());
+		SmartDashboard.putBoolean("GEAR TARGET VISIBLE", Robot.sensors.gearTargetIsVisible());
 	}
 
 	@Override

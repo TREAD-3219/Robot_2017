@@ -11,15 +11,14 @@ public class VisionAimSingle extends Command {
 	private double goalAngle;
 
 	public VisionAimSingle() {
-		requires(Robot.sensors);
 		requires(Robot.shooter);
 		goalAngle = 0;
 	}
 
 	protected void initialize() {
 		this.setTimeout(10);
-		if (Robot.sensors.targetIsVisible()) {
-			double temp = (Robot.sensors.getTargetX() - Sensors.CAMERA_WIDTH / 2.0) * Sensors.DEGREES_PER_PIXEL;
+		if (Robot.sensors.shooterTargetIsVisible()) {
+			double temp = (Robot.sensors.getShooterTargetX() - Sensors.CAMERA_WIDTH / 2.0) * Sensors.DEGREES_PER_PIXEL;
 			temp *= .8;
 			if (Math.abs(temp) > 50) {
 				temp = 0;

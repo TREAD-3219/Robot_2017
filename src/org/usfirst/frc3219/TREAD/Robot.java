@@ -11,14 +11,21 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
+import org.opencv.core.Mat;
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
+import org.usfirst.frc3219.TREAD.commands.vision.GearAim;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAim;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -55,6 +62,7 @@ public class Robot extends IterativeRobot {
 	public static GearSlot gearSlot;
 	public static Shooter shooter;
 	public static Sensors sensors;
+	public static UsbCamera camera;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -62,7 +70,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		RobotMap.init();
-		
+		//startCameras();
 		// Subsystem Construction, OI must be last.
 		climber = new Climber();
 		turntable = new Turntable();
@@ -80,13 +88,13 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		// instantiate the command chooser used for selecting autonomous
-		posChooser = new SendableChooser();
+		posChooser = new SendableChooser<String>();
 		posChooser.addDefault("Middle", "Middle");
 		posChooser.addObject("Left", "Left");
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
-		autonomousCommand = new VisionAim();
+		autonomousCommand = new DriveForward(90);
 	}
 
 	/**
@@ -105,7 +113,7 @@ public class Robot extends IterativeRobot {
 		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
 		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		position = (String) posChooser.getSelected();
-		autonomousCommand = new VisionAim();
+		autonomousCommand = new StandardAutonomous();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
