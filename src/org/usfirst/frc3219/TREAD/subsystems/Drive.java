@@ -37,6 +37,14 @@ public class Drive extends Subsystem {
 		}
 
 	}
+	
+	public void tankDrive(double leftPower, double rightPower) {
+		if (shifting) {
+			drive.tankDrive(leftPower / SHIFTING_SCALE, rightPower / SHIFTING_SCALE);
+		} else {
+			drive.tankDrive(leftPower, rightPower);
+		}
+	}
 
 	public void stopMotors() {
 		drive.arcadeDrive(0, 0);

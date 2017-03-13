@@ -20,9 +20,7 @@ public class SensorWatch extends Command {
 
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("Angle", Robot.sensors.getAngle());
-		SmartDashboard.putNumber("Right Drive Dist", Robot.sensors.rightDriveDistance());
-		SmartDashboard.putNumber("Left Drive Dist", Robot.sensors.leftDriveDistance());
+
 	}
 
 	@Override
