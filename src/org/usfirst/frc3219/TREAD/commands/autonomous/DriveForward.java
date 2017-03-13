@@ -19,8 +19,10 @@ public class DriveForward extends Command {
 	}
 
 	@Override
-	protected void execute() { 
-		Robot.drive.setMotors(100);
+	protected void execute() {
+		double deltaTheta = Robot.sensors.getAngle();
+		double turnSpeed = deltaTheta / 3.0;
+		Robot.drive.stickDrive(-.8, -turnSpeed, 1.0);
 
 	}
 
@@ -30,6 +32,7 @@ public class DriveForward extends Command {
 		// TODO Auto-generated method stub
 		//this.setTimeout(inches / 120);
 		initDist = Robot.sensors.getDriveDistance();
+		Robot.sensors.NAVX.reset();
 	}
 
 	@Override

@@ -14,10 +14,12 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.Reset;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetDiag;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
+import org.usfirst.frc3219.TREAD.commands.vision.VisionAimSingle;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -79,8 +81,8 @@ public class OI {
 		//JoystickButton turnTest = new JoystickButton(stick, 3);
 		//turnTest.whenPressed(new SetTurntableZero());
 		
-		//JoystickButton turnTest2 = new JoystickButton(stick, 4);
-		//turnTest2.whenPressed(new TurntableTurnTo(90));
+		JoystickButton turnTest2 = new JoystickButton(Gamecontroller, 6);
+		turnTest2.whenPressed(new VisionAimSingle());
 
 		JoystickButton ballPickup = new JoystickButton(leftStick, 1);
 		ballPickup.whileHeld(new IntakeBalls());
@@ -102,6 +104,9 @@ public class OI {
 
 		JoystickButton shoot1 = new JoystickButton(Gamecontroller, 3);
 		shoot1.whileHeld(new Shoot());
+		
+		JoystickButton resetShooter = new JoystickButton(Gamecontroller, 9);
+		resetShooter.whenPressed(new Reset());
 		// JoystickButton turntableZero = new JoystickButton(stick, 2);
 		// turntableZero.whenPressed(new SetTurntableZero());
 		
