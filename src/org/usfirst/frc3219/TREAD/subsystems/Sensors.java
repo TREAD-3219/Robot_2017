@@ -28,8 +28,8 @@ public class Sensors extends Subsystem {
 		// Encode = RobotMap.driveEncoder;
 		// Encode.setMaxPeriod(0.1);
 		// Encode.setMinRate(10);
-		RobotMap.rightDriveEncoder.setDistancePerPulse(Math.PI / 45);
-		RobotMap.leftDriveEncoder.setDistancePerPulse(-Math.PI / 63);
+		RobotMap.rightDriveEncoder.setDistancePerPulse(Math.PI / 64.8);
+		RobotMap.leftDriveEncoder.setDistancePerPulse(-Math.PI / 90.72);
 		RobotMap.rightDriveEncoder.reset();
 		RobotMap.leftDriveEncoder.reset();
 		visionTable = NetworkTable.getTable("GRIP/myContoursReport");

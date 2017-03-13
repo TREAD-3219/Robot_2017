@@ -21,7 +21,7 @@ public class Shooter extends Subsystem{
 	}
 	
 	public void startShooter(){
-		RobotMap.shooterMotor.set(-1);
+		RobotMap.shooterMotor.set(-shooterPower);
 	}
 
 	public void stopShooter(){
@@ -34,6 +34,10 @@ public class Shooter extends Subsystem{
 	
 	public static void initializeMotors() {
 		RobotMap.shooterMotor = new CANTalon(RobotMap.SHOOTER_CAN_INDEX); 
+	}
+	
+	public double getPower() {
+		return shooterPower;
 	}
 	
 	private final double step = 0.01;
@@ -52,5 +56,10 @@ public class Shooter extends Subsystem{
 		} else {
 			shooterPower = 0;
 		}
+	}
+
+	public void resetPower() {
+		shooterPower = 1.0;
+		
 	}
 }

@@ -14,6 +14,7 @@ import org.usfirst.frc3219.TREAD.commands.*;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.shooter.Reset;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetDiag;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
@@ -103,6 +104,9 @@ public class OI {
 
 		JoystickButton shoot1 = new JoystickButton(Gamecontroller, 3);
 		shoot1.whileHeld(new Shoot());
+		
+		JoystickButton resetShooter = new JoystickButton(Gamecontroller, 9);
+		resetShooter.whenPressed(new Reset());
 		// JoystickButton turntableZero = new JoystickButton(stick, 2);
 		// turntableZero.whenPressed(new SetTurntableZero());
 		

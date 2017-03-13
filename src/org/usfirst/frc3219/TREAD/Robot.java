@@ -94,7 +94,7 @@ public class Robot extends IterativeRobot {
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
-		autonomousCommand = new DriveForward(90);
+		autonomousCommand = new DriveForward(100);
 	}
 
 	/**
@@ -113,7 +113,7 @@ public class Robot extends IterativeRobot {
 		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
 		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		position = (String) posChooser.getSelected();
-		autonomousCommand = new StandardAutonomous();
+		//autonomousCommand = new StandardAutonomous();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
