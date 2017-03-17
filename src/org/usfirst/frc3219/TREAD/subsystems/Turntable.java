@@ -14,11 +14,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Turntable extends Subsystem {
 	public static final double TURNTABLE_FORWARD = .3;
 	public static final double TURNTABLE_BACKWARD = -.3;
-	public static final double DISTANCE_PER_PULSE = 12.0/240.0;
+	public static final double DISTANCE_FIX_VAR = 9.0/7.0;
+	public static final double DISTANCE_PER_PULSE = 12.0/240.0 * DISTANCE_FIX_VAR;
 	public static final int RED_LEFT_POSITION = 20;
-	public static final int RED_MID_POSITION = 100;
-	public static final int BLUE_MID_POSITION = -35;
-	public static final int BLUE_RIGHT_POSITION = 42;
+	public static final int RED_MID_POSITION = -40;
+	public static final int BLUE_MID_POSITION = 45;
+	public static final int BLUE_RIGHT_POSITION = -20;
 	private Talon turntableMotor;
 	private Encoder turntableEncoder;
 	private DigitalInput turntableIndexSensor;

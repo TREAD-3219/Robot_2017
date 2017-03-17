@@ -47,7 +47,8 @@ public class Robot extends IterativeRobot {
 	
 	// Command Declarations
 	Command autonomousCommand;
-	private static SendableChooser posChooser;
+	private static SendableChooser<String> posChooser;
+	public static SendableChooser<Boolean> shootChooser;
 	public static String position = "Default";
 	
 	public static boolean blueAlliance = true;
@@ -93,6 +94,9 @@ public class Robot extends IterativeRobot {
 		posChooser.addObject("Left", "Left");
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
+		
+		shootChooser = new SendableChooser<Boolean>();
+		shootChooser.addDefault("Shoot On", true);
 		
 		autonomousCommand = new DriveForward(100);
 	}

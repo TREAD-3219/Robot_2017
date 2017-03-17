@@ -107,13 +107,14 @@ public class OI {
 		
 		JoystickButton resetShooter = new JoystickButton(Gamecontroller, 9);
 		resetShooter.whenPressed(new Reset());
-		// JoystickButton turntableZero = new JoystickButton(stick, 2);
-		// turntableZero.whenPressed(new SetTurntableZero());
 		
-		//JoystickButton turnDiag = new JoystickButton(stick, 12);
-		//turnDiag.whenPressed(new SetDiag(true));
-		//JoystickButton turnMid = new JoystickButton(stick, 11);
-		//turnMid.whenPressed(new SetDiag(false));
+		JoystickButton turntableZero = new JoystickButton(rightStick, 10);
+		turntableZero.whenPressed(new SetTurntableZero());
+		
+		JoystickButton turnDiag = new JoystickButton(rightStick, 12);
+		turnDiag.whenPressed(new SetDiag(true));
+		JoystickButton turnMid = new JoystickButton(rightStick, 11);
+		turnMid.whenPressed(new SetDiag(false));
 	}
 
 }

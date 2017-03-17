@@ -23,7 +23,7 @@ public class DPad extends Command {
 		} else if (pov == 270) {
 			Robot.addCommand(new AimLeft());
 		} else {
-			Robot.turntable.turnDirection(Robot.oi.Gamecontroller.getX() * 0.3);
+			Robot.turntable.turnDirection(Robot.oi.Gamecontroller.getX() * -0.3);
 		}
 		
 		if (pov == 180) {

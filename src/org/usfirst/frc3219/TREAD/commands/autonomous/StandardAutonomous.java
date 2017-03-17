@@ -15,14 +15,16 @@ public class StandardAutonomous extends CommandGroup {
 			this.addSequential(new DriveForward(45));
 			this.addSequential(new GearAim(45));
 			this.addSequential(new DriveForward(45));
-			shootCommands();
+			if (Robot.shootChooser.getSelected()) {
+				shootCommands();
+			}
 			
 		} else if (Robot.position.equals("Left")) {
 			this.addSequential(new DriveForward(80));
 			this.addSequential(new DriveTurn(-57));
 			this.addSequential(new GearAim(95));
 			this.addSequential(new DriveForward(95));
-			if (!Robot.blueAlliance) {
+			if (!Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 			
@@ -32,7 +34,7 @@ public class StandardAutonomous extends CommandGroup {
 			this.addSequential(new DriveTurn(57));
 			this.addSequential(new GearAim(95));
 			this.addSequential(new DriveForward(95));
-			if (Robot.blueAlliance) {
+			if (Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 		}
