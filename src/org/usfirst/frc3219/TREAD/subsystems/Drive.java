@@ -19,12 +19,14 @@ public class Drive extends Subsystem {
 	private boolean shifting;
 	private static final double SHIFTING_SCALE = 10;
 	public static final double SHIFT_SPEED_MS = 100 / 1000.0;
+	public static final boolean HIGH_GEAR = false;
+	public static final int SHOOTING_POSITION = -38;
 
 	@Override
 	protected void initDefaultCommand() {
 		drive = RobotMap.robotDrive;
 		shifter = RobotMap.shifter;
-		highGear = false;
+		highGear = !HIGH_GEAR;
 		this.setDefaultCommand(new StickDrive());
 	}
 
@@ -68,7 +70,6 @@ public class Drive extends Subsystem {
 	public void shift(boolean highGear) {
 		shifting = true;
 		shifter.set(highGear);
-		SmartDashboard.putBoolean("High Gear", highGear);
 	}
 
 	public void endShift() {

@@ -2,8 +2,7 @@ package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Ballfeeder extends Subsystem{
@@ -14,8 +13,8 @@ public class Ballfeeder extends Subsystem{
 		
 	}
 	public void TurnOnMotors() {
-		RobotMap.FeederMotor.set(-1);
-		RobotMap.Agitator.set(1);
+		RobotMap.FeederMotor.set(1);
+		RobotMap.Agitator.set(-1);
 	}
 
 	public void TurnOffMotors() {
@@ -24,7 +23,7 @@ public class Ballfeeder extends Subsystem{
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.FeederMotor = new Spark(RobotMap.BALLFEED_PWM_INDEX);
-		RobotMap.Agitator = new Victor(RobotMap.AGITATOR_PWM_INDEX);
+		RobotMap.FeederMotor = new Talon(RobotMap.BALLFEED_PWM_INDEX);
+		RobotMap.Agitator = new Talon(RobotMap.AGITATOR_PWM_INDEX);
 	}
 }

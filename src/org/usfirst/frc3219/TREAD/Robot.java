@@ -14,6 +14,7 @@ import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 import org.opencv.core.Mat;
 import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
+import org.usfirst.frc3219.TREAD.commands.autonomous.Wiggle;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
 import org.usfirst.frc3219.TREAD.commands.vision.GearAim;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAim;
@@ -47,7 +48,8 @@ public class Robot extends IterativeRobot {
 	
 	// Command Declarations
 	Command autonomousCommand;
-	private static SendableChooser posChooser;
+	private static SendableChooser<String> posChooser;
+	public static SendableChooser<Boolean> shootChooser;
 	public static String position = "Default";
 	
 	public static boolean blueAlliance = true;
@@ -81,6 +83,8 @@ public class Robot extends IterativeRobot {
 		shooter= new Shooter();
 		sensors = new Sensors();
 		
+		setupCamera();
+		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
 		// constructed yet. Thus, their requires() statements may grab null
@@ -94,7 +98,19 @@ public class Robot extends IterativeRobot {
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
-		autonomousCommand = new DriveForward(100);
+		shootChooser = new SendableChooser<Boolean>();
+		shootChooser.addDefault("Shoot On", true);
+		shootChooser.addObject("Shoot Off", false);
+		SmartDashboard.putData("Shoot In Auto", shootChooser);
+		
+		autonomousCommand = new StandardAutonomous();
+	}
+	
+	private static void setupCamera() {
+		CameraServer server = CameraServer.getInstance();
+		//UsbCamera cam = server.startAutomaticCapture();
+		server.addAxisCamera("Gears", "10.32.19.51");
+		server.addAxisCamera("Shooter", "10.32.19.52");
 	}
 
 	/**
@@ -110,10 +126,11 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
+		Robot.sensors.resetEncoders();
 		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
 		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		position = (String) posChooser.getSelected();
-		//autonomousCommand = new StandardAutonomous();
+		autonomousCommand = new StandardAutonomous();
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();

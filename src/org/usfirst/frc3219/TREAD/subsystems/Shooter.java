@@ -10,10 +10,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Shooter extends Subsystem{
 	
 	private double shooterPower;
+	public static final double SHOOTER_DEFAULT_POWER = 0.66;
 	
 	@Override
 	protected void initDefaultCommand() {
-		shooterPower = 1;
+		shooterPower = SHOOTER_DEFAULT_POWER;
 	}
 	
 	public void setSafety(boolean enabled) {
@@ -59,7 +60,7 @@ public class Shooter extends Subsystem{
 	}
 
 	public void resetPower() {
-		shooterPower = 1.0;
+		shooterPower = SHOOTER_DEFAULT_POWER;
 		
 	}
 }

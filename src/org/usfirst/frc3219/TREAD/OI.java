@@ -11,15 +11,20 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.commands.*;
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.Ballfeed;
 import org.usfirst.frc3219.TREAD.commands.ballTransport.IntakeBalls;
 import org.usfirst.frc3219.TREAD.commands.drive.Shift;
+import org.usfirst.frc3219.TREAD.commands.drive.ShiftHigh;
+import org.usfirst.frc3219.TREAD.commands.drive.ShiftLow;
 import org.usfirst.frc3219.TREAD.commands.shooter.Reset;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetDiag;
 import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
+import org.usfirst.frc3219.TREAD.commands.shooter.ShooterForward;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAimSingle;
+import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -69,51 +74,63 @@ public class OI {
 		rightStick = new Joystick(1);
 		Gamecontroller = new Joystick(2);
 		// Button Declarations
-		JoystickButton shift = new JoystickButton(leftStick, 2);
-		shift.whenPressed(new Shift());
-		
-		JoystickButton shift2 = new JoystickButton(rightStick, 2);
-		shift2.whenPressed(new Shift());
 
-		// JoystickButton Drive20ft= new JoystickButton(stick, 3);
-		// Drive20ft.whenPressed(new Drive20ft());
+		// DRIVE COMMANDS
+		JoystickButton shift = new JoystickButton(leftStick, 2);
+		shift.whenPressed(new ShiftLow());
+
+		JoystickButton shift2 = new JoystickButton(rightStick, 2);
+		shift2.whenPressed(new ShiftHigh());
 		
-		//JoystickButton turnTest = new JoystickButton(stick, 3);
-		//turnTest.whenPressed(new SetTurntableZero());
-		
-		JoystickButton turnTest2 = new JoystickButton(Gamecontroller, 6);
-		turnTest2.whenPressed(new VisionAimSingle());
+		JoystickButton moveToPosition = new JoystickButton(rightStick, 3);
+		moveToPosition.whenPressed(new DriveForward(-Drive.SHOOTING_POSITION));
+
+		// Ball Pickup
 
 		JoystickButton ballPickup = new JoystickButton(leftStick, 1);
 		ballPickup.whileHeld(new IntakeBalls());
-		
-		JoystickButton ballPickup2 = new JoystickButton(rightStick, 1);
-		ballPickup2.whileHeld(new IntakeBalls());
 
+		JoystickButton ballPickup2 = new JoystickButton(rightStick, 1);
+		ballPickup2.whileHeld(new IntakeBalls(-1));
+
+		// SHOOTING COMMANDS
+		JoystickButton turnTest2 = new JoystickButton(Gamecontroller, 7);
+		turnTest2.whenPressed(new VisionAimSingle());
+
+		JoystickButton turnTest = new JoystickButton(Gamecontroller, 3);
+		turnTest.whenPressed(new SetTurntableZero());
+
+		JoystickButton turntableForward = new JoystickButton(Gamecontroller, 6);
+		turntableForward.whenPressed(new ShooterForward());
+
+		JoystickButton shoot1 = new JoystickButton(Gamecontroller, 2);
+		shoot1.whileHeld(new Shoot());
+
+		JoystickButton resetShooter = new JoystickButton(Gamecontroller, 8);
+		resetShooter.whenPressed(new Reset());
+		
+		//BALL FEED
 		JoystickButton ballfeed1 = new JoystickButton(Gamecontroller, 4);
 		ballfeed1.whileHeld(new Ballfeed());
 
-		JoystickButton openGear1 = new JoystickButton(Gamecontroller, 2);
+		//GEARS
+		JoystickButton openGear1 = new JoystickButton(Gamecontroller, 1);
 		openGear1.whenPressed(new GearPiston(false));
 
-		JoystickButton closeGear1 = new JoystickButton(Gamecontroller, 1);
+		JoystickButton closeGear1 = new JoystickButton(Gamecontroller, 3);
 		closeGear1.whenPressed(new GearPiston(true));
 
+		//CLIMBING
 		JoystickButton climb1 = new JoystickButton(Gamecontroller, 5);
 		climb1.whileHeld(new Climb());
 
-		JoystickButton shoot1 = new JoystickButton(Gamecontroller, 3);
-		shoot1.whileHeld(new Shoot());
-		
-		JoystickButton resetShooter = new JoystickButton(Gamecontroller, 9);
-		resetShooter.whenPressed(new Reset());
-		// JoystickButton turntableZero = new JoystickButton(stick, 2);
+		// JoystickButton turntableZero = new JoystickButton(rightStick, 10);
 		// turntableZero.whenPressed(new SetTurntableZero());
-		
-		//JoystickButton turnDiag = new JoystickButton(stick, 12);
-		//turnDiag.whenPressed(new SetDiag(true));
-		//JoystickButton turnMid = new JoystickButton(stick, 11);
-		//turnMid.whenPressed(new SetDiag(false));
+
+		// JoystickButton turnDiag = new JoystickButton(rightStick, 12);
+		// turnDiag.whenPressed(new SetDiag(true));
+		// JoystickButton turnMid = new JoystickButton(rightStick, 11);
+		// turnMid.whenPressed(new SetDiag(false));
 	}
 
 }

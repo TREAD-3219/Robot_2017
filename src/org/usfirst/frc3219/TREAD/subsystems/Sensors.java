@@ -14,6 +14,12 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class Sensors extends Subsystem {
 	public I2C i2c;
 	public AHRS NAVX;
+	
+	private final double OUTPUT_SHAFT_SCALE = 3.0;
+	private final double TICKS_PER_ROTATION = 360.0 * OUTPUT_SHAFT_SCALE;
+	private final double WHEEL_ROTATIONS_PER_ROTATION = 10.86;
+	private final double WHEEL_DIAMETER = 4 * Math.PI;
+	private final double INCHES_PER_TICK = (WHEEL_DIAMETER * WHEEL_ROTATIONS_PER_ROTATION) / TICKS_PER_ROTATION;
 	public NetworkTable visionTable;
 	public NetworkTable gearVisionTable;
 
@@ -24,12 +30,12 @@ public class Sensors extends Subsystem {
 	public Sensors() {
 		// i2c = new I2C(I2C.Port.kMXP, 0x62);
 		NAVX = new AHRS(SPI.Port.kMXP);
-
-		// Encode = RobotMap.driveEncoder;
-		// Encode.setMaxPeriod(0.1);
-		// Encode.setMinRate(10);
-		RobotMap.rightDriveEncoder.setDistancePerPulse(Math.PI / 64.8);
-		RobotMap.leftDriveEncoder.setDistancePerPulse(-Math.PI / 90.72);
+		
+		//Encode = RobotMap.driveEncoder;
+		//Encode.setMaxPeriod(0.1);
+		//Encode.setMinRate(10);
+		RobotMap.rightDriveEncoder.setDistancePerPulse(-INCHES_PER_TICK);
+		RobotMap.leftDriveEncoder.setDistancePerPulse(INCHES_PER_TICK);
 		RobotMap.rightDriveEncoder.reset();
 		RobotMap.leftDriveEncoder.reset();
 		visionTable = NetworkTable.getTable("GRIP/myContoursReport");
@@ -97,5 +103,10 @@ public class Sensors extends Subsystem {
 	public static void initializeSensors() {
 		RobotMap.rightDriveEncoder = new Encoder(RobotMap.RIGHT_DRIVE_ENCODER_A, RobotMap.RIGHT_DRIVE_ENCODER_B);
 		RobotMap.leftDriveEncoder = new Encoder(RobotMap.LEFT_DRIVE_ENCODER_A, RobotMap.LEFT_DRIVE_ENCODER_B);
+	}
+
+	public void resetEncoders() {
+		RobotMap.rightDriveEncoder.reset();
+		RobotMap.leftDriveEncoder.reset();
 	}
 }
