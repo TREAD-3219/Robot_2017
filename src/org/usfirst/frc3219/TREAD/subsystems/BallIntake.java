@@ -2,7 +2,7 @@ package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class BallIntake extends Subsystem {
@@ -45,7 +45,7 @@ public class BallIntake extends Subsystem {
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.ballIntakeMotor = new Talon(RobotMap.BALL_INTAKE_PWM_INDEX);
+		RobotMap.ballIntakeMotor = new Victor(RobotMap.BALL_INTAKE_PWM_INDEX);
 	}
 
 }
