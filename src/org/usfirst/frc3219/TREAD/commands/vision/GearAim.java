@@ -60,7 +60,7 @@ public class GearAim extends Command {
 		initialDegrees = 0;
 		
 		Robot.drive.stickDrive(0, .5, 1);
-		this.setTimeout(7);
+		this.setTimeout(.5);
 		initialDegrees = Robot.sensors.getAngle();
 		previous = Robot.sensors.getAngle();
 		tempDegrees = goalDegrees;

@@ -1,6 +1,7 @@
 package org.usfirst.frc3219.TREAD.commands.autonomous;
 
 import org.usfirst.frc3219.TREAD.Robot;
+import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +23,7 @@ public class DriveForward extends Command {
 	protected void execute() {
 		double deltaTheta = Robot.sensors.getAngle();
 		double turnSpeed = deltaTheta / 3.0;
-		Robot.drive.stickDrive(-.8, -turnSpeed, 1.0);
+		Robot.drive.stickDrive(.8, turnSpeed, 1.0);
 
 	}
 
@@ -30,8 +31,10 @@ public class DriveForward extends Command {
 	protected void initialize() {
 		//Robot.drive.setMotors(100);
 		// TODO Auto-generated method stub
-		//this.setTimeout(inches / 120);
+		this.setTimeout(2.5);
 		initDist = Robot.sensors.getDriveDistance();
+		Robot.drive.shift(!Drive.HIGH_GEAR);
+		Robot.drive.endShift();
 		Robot.sensors.NAVX.reset();
 	}
 
@@ -44,6 +47,6 @@ public class DriveForward extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return (Robot.sensors.getDriveDistance() - initDist) > inches;
+		return (Robot.sensors.getDriveDistance() - initDist) > inches || this.isTimedOut();
 	}
 }

@@ -17,7 +17,7 @@ public class Sensors extends Subsystem {
 	
 	private final double OUTPUT_SHAFT_SCALE = 3.0;
 	private final double TICKS_PER_ROTATION = 360.0 * OUTPUT_SHAFT_SCALE;
-	private final double WHEEL_ROTATIONS_PER_ROTATION = 4.77;
+	private final double WHEEL_ROTATIONS_PER_ROTATION = 10.86;
 	private final double WHEEL_DIAMETER = 4 * Math.PI;
 	private final double INCHES_PER_TICK = (WHEEL_DIAMETER * WHEEL_ROTATIONS_PER_ROTATION) / TICKS_PER_ROTATION;
 	public NetworkTable visionTable;
@@ -103,5 +103,10 @@ public class Sensors extends Subsystem {
 	public static void initializeSensors() {
 		RobotMap.rightDriveEncoder = new Encoder(RobotMap.RIGHT_DRIVE_ENCODER_A, RobotMap.RIGHT_DRIVE_ENCODER_B);
 		RobotMap.leftDriveEncoder = new Encoder(RobotMap.LEFT_DRIVE_ENCODER_A, RobotMap.LEFT_DRIVE_ENCODER_B);
+	}
+
+	public void resetEncoders() {
+		RobotMap.rightDriveEncoder.reset();
+		RobotMap.leftDriveEncoder.reset();
 	}
 }

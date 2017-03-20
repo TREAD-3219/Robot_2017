@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class StandardAutonomous extends CommandGroup {
 	public StandardAutonomous() {
 		if (Robot.position.equals("Middle")) {
-			this.addSequential(new Spinup(0.1));
-			this.addSequential(new GearAim(90));
-			this.addSequential(new DriveForward(45));
-			this.addSequential(new GearAim(45));
+			//this.addSequential(new Spinup(0.1));
+			//this.addSequential(new GearAim(90));
+			this.addSequential(new DriveForward(48));
+			//this.addSequential(new GearAim(45));
 			this.addSequential(new DriveForward(45));
 			if (Robot.shootChooser.getSelected()) {
 				shootCommands();
@@ -29,7 +29,7 @@ public class StandardAutonomous extends CommandGroup {
 			}
 			
 		} else if (Robot.position.equals("Right")) {
-			this.addSequential(new Spinup(0.1));
+			//this.addSequential(new Spinup(0.1));
 			this.addSequential(new DriveForward(80));
 			this.addSequential(new DriveTurn(57));
 			this.addSequential(new GearAim(95));
@@ -38,11 +38,22 @@ public class StandardAutonomous extends CommandGroup {
 				shootCommands();
 			}
 		}
+		//this.addSequential(new Wiggle());
+		//turnWait();
+	}
+	
+	public void turnWait() {
+		this.addSequential(new Wait(3));
+		this.addSequential(new DriveTurn(-5));
+		this.addSequential(new Wait(3));
+		this.addSequential(new DriveTurn(10));
+		this.addSequential(new Wait(3));
+		this.addSequential(new DriveTurn(-5));
 	}
 	
 	public void shootCommands() {
-		this.addSequential(new AimAtTarget());
-		this.addSequential(new Spinup(4));
-		this.addSequential(new AutoShoot());
+		this.addParallel(new AimAtTarget());
+		this.addParallel(new Spinup(4));
+		this.addParallel(new AutoShoot());
 	}
 }

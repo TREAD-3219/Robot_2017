@@ -7,6 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class IntakeBalls extends Command {
 
+	private int speed;
+	public IntakeBalls(int i) {
+		speed = i;
+	}
+	
+	public IntakeBalls() {
+		speed = 1;
+	}
+
 	@Override
 	protected void end() {
 		Robot.intake.flipperStop();
@@ -15,8 +24,8 @@ public class IntakeBalls extends Command {
 
 	@Override
 	protected void execute() {
-		//TODO might cause lag
-		Robot.intake.flipperStart();		
+		
+		Robot.intake.flipperSpeed(speed);
 		
 	}
 

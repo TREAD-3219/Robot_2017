@@ -27,7 +27,6 @@ public class SensorWatch extends Command {
 		SmartDashboard.putNumber("Left distance", RobotMap.leftDriveEncoder.getDistance());
 		SmartDashboard.putNumber("Shooter Power", Robot.shooter.getPower());
 		SmartDashboard.putNumber("Turntable Position", Robot.turntable.getAngle());
-		SmartDashboard.putNumber("Robot Angle", Robot.sensors.getAngle());
 	}
 
 	@Override
