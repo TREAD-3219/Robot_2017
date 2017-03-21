@@ -8,13 +8,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearSlot extends Subsystem {
 	private Solenoid piston;
-	private boolean out;
+	private boolean out = false;
 	
 	@Override
 	protected void initDefaultCommand() {
 		piston = RobotMap.gearPiston;
-		out = true;
-		setPosition(out);
+		out = piston.get();
 		//this.setDefaultCommand(new GearPiston(false));
 	}
 	
