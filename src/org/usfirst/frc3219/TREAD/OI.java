@@ -97,9 +97,6 @@ public class OI {
 		JoystickButton turnTest2 = new JoystickButton(Gamecontroller, 7);
 		turnTest2.whenPressed(new VisionAimSingle());
 
-		JoystickButton turnTest = new JoystickButton(Gamecontroller, 3);
-		turnTest.whenPressed(new SetTurntableZero());
-
 		JoystickButton turntableForward = new JoystickButton(Gamecontroller, 6);
 		turntableForward.whenPressed(new ShooterForward());
 

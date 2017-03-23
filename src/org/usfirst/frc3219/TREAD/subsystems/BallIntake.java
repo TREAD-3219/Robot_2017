@@ -28,13 +28,13 @@ public class BallIntake extends Subsystem {
 	
 	//Sets the speed of the flipper motor, on a scale from 0-1
 	public void flipperSpeed(double speed) {
-		RobotMap.ballIntakeMotor.set(speed);
+		RobotMap.ballIntakeMotor.set(-speed);
 		RobotMap.Agitator.set(-speed);
 	}
 	
 	public void flipperStart() {
 		// Starts motor
-		RobotMap.ballIntakeMotor.set(turnSpeed / 100);
+		RobotMap.ballIntakeMotor.set(-turnSpeed / 100);
 		RobotMap.Agitator.set(-1);
 	}
 	

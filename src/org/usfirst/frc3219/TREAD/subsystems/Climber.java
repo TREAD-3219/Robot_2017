@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 	
-	public static final int CLIMBER_DIRECTION = -1;
+	public static final int CLIMBER_DIRECTION = 1;
 
 	@Override
 	protected void initDefaultCommand() {

@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Turntable extends Subsystem {
-	public static final double TURNTABLE_FORWARD = .3;
-	public static final double TURNTABLE_BACKWARD = -.3;
+	public static final double TURNTABLE_FORWARD = -.3;
+	public static final double TURNTABLE_BACKWARD = .3;
 	public static final double DISTANCE_PER_PULSE = 12.0/240.0;
 	public static final int RED_LEFT_POSITION = 20;
 	public static final int RED_MID_POSITION = 100;
@@ -31,7 +31,7 @@ public class Turntable extends Subsystem {
 		turntableEncoder = RobotMap.turntableEncoder;
 		turntableEncoder.setMaxPeriod(.1);
 		turntableEncoder.setMinRate(10);
-		turntableEncoder.setDistancePerPulse(-DISTANCE_PER_PULSE);
+		turntableEncoder.setDistancePerPulse(DISTANCE_PER_PULSE);
 		turntableIndexSensor = RobotMap.turntableIndexSetter;
 	}
 
