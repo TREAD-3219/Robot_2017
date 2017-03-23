@@ -16,7 +16,7 @@ public class DriveTurn extends Command {
 
 	@Override
 	protected void end() {
-		Robot.drive.setMotors(0);
+		Robot.drive.runMotors(0);
 
 	}
 	double previous = 0;
@@ -31,13 +31,13 @@ public class DriveTurn extends Command {
 		if ((Robot.sensors.getAngle() - initialDegrees) < tempDegrees) {
 			speed *= -1;
 		}
-		Robot.drive.stickDrive(0, speed, 1);
+		Robot.drive.arcadeDrive(0, speed, 1);
 		previous = Robot.sensors.getAngle();
 	}
 
 	@Override
 	protected void initialize() {
-		Robot.drive.stickDrive(0, .5, 1);
+		Robot.drive.arcadeDrive(0, .5, 1);
 		this.setTimeout(7);
 		initialDegrees = Robot.sensors.getAngle();
 		previous = Robot.sensors.getAngle();

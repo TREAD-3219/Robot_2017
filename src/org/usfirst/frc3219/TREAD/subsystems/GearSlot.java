@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
+/*
+ * This class contains methods for using the gear flap solenoids
+ */
+
 import org.usfirst.frc3219.TREAD.RobotMap;
 import org.usfirst.frc3219.TREAD.commands.GearPiston;
 
@@ -7,25 +11,29 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearSlot extends Subsystem {
+	//solenoid for changing position
 	private Solenoid piston;
-	private boolean out = false;
+	//current position of flaps
+	private boolean position = false;
 	
 	@Override
 	protected void initDefaultCommand() {
 		piston = RobotMap.gearPiston;
-		out = piston.get();
+		position = piston.get();
 		//this.setDefaultCommand(new GearPiston(false));
 	}
 	
+	//toggles the position of the gear flaps
 	public void changePosition() {
-		out = !out;
-		piston.set(out);
+		position = !position;
+		piston.set(position);
 	}
 	
+	//sets the position of the gearflaps
 	public void setPosition(boolean pos) {
-		if (out != pos) {
+		if (position != pos) {
 			piston.set(pos);
-			out = pos;
+			position = pos;
 		}
 	}
 	

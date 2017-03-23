@@ -30,7 +30,8 @@ import edu.wpi.first.wpilibj.RobotDrive;
  */
 
 public class RobotMap {
-	
+	//PORT NUMBER CONSTANTS
+	//ENCODERS
 	public static final int LEFT_DRIVE_ENCODER_A = 0;
 	public static final int LEFT_DRIVE_ENCODER_B = 1;
 	public static final int RIGHT_DRIVE_ENCODER_A = 2;
@@ -38,14 +39,16 @@ public class RobotMap {
 
 	public static final int TURNTABLE_ENCODER_A = 4;
 	public static final int TURNTABLE_ENCODER_B = 5;
-	public static final int TURNTABLE_DIO_INDEX = 6;
+	public static final int TURNTABLE_LIMIT_SWITCH_INDEX = 6;
 	
+	//PWM MOTORS
 	public static final int BALL_INTAKE_PWM_INDEX = 0;
 	public static final int CLIMBER_PWM_INDEX = 1;
 	public static final int BALLFEED_PWM_INDEX = 2;
 	public static final int TURNTABLE_PWM_INDEX = 3;
 	public static final int AGITATOR_PWM_INDEX = 4;
 	
+	//CAN MOTORS
 	public static final int LEFT_DRIVE_1_CAN_INDEX = 1;
 	public static final int LEFT_DRIVE_2_CAN_INDEX = 2;
 	public static final int RIGHT_DRIVE_1_CAN_INDEX = 3;
@@ -88,7 +91,9 @@ public class RobotMap {
 	public static CANTalon shooterMotor;
 	public static Victor Agitator;
 	
-	
+	/*
+	 * When the code is initialized, all motors are initialized
+	 */
 	public static void init() {
 		//Initialize motors for each subsystem
 		Drive.initializeMotors();

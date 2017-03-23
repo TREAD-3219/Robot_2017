@@ -20,7 +20,7 @@ public class Wiggle extends Command {
 	@Override
 	protected void execute() {
 		count += 30;
-		Robot.drive.stickDrive(0, Math.sin(count * Math.PI / 180), 1);
+		Robot.drive.arcadeDrive(0, Math.sin(count * Math.PI / 180), 1);
 	}
 	
 	@Override

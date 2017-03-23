@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Drive20ft extends Command {
 @Override
 protected void initialize() {
-	Robot.drive.setMotors(60);
+	Robot.drive.runMotors(60);
 	this.setTimeout(12);
 }
 @Override
 protected void execute() {
-	Robot.drive.setMotors(60);
+	Robot.drive.runMotors(60);
 }
 @Override
 protected void end(){
-	Robot.drive.setMotors(0);
+	Robot.drive.runMotors(0);
 }
 @Override 
 protected void interrupted() {

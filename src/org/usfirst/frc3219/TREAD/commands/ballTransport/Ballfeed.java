@@ -9,7 +9,7 @@ public class Ballfeed extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.ballfeeder.TurnOffMotors();
+		Robot.ballfeeder.stopMotors();
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class Ballfeed extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.ballfeeder.TurnOnMotors();
+		Robot.ballfeeder.startMotors();
 	}
 
 	@Override

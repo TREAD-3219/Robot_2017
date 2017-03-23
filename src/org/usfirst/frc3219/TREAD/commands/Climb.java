@@ -9,7 +9,7 @@ public class Climb extends Command {
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		Robot.climber.TurnOffMotors();
+		Robot.climber.stopMotors();
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class Climb extends Command {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		Robot.climber.TurnOnMotors();
+		Robot.climber.startMotors();
 	}
 
 	@Override

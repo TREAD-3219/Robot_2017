@@ -18,14 +18,14 @@ public class IntakeBalls extends Command {
 
 	@Override
 	protected void end() {
-		Robot.intake.flipperStop();
+		Robot.intake.stopMotors();
 		Robot.intake.setSafety(true);
 	}
 
 	@Override
 	protected void execute() {
 		
-		Robot.intake.flipperSpeed(speed);
+		Robot.intake.runMotors(speed);
 		
 	}
 

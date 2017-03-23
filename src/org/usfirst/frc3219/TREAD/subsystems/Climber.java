@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
+/*
+ * This class contains methods useful to using the climber motor.
+ */
+
 import org.usfirst.frc3219.TREAD.RobotMap;
 
 import edu.wpi.first.wpilibj.Victor;
@@ -11,19 +15,18 @@ public class Climber extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		TurnOffMotors();
+		stopMotors();
 	}
 	
-	public void setMotors(double speed) {
-		RobotMap.climberMotor.set(CLIMBER_DIRECTION * speed);
+	public void runMotors(double speed) {
+		RobotMap.climberMotor.set(speed * CLIMBER_DIRECTION);
 	}
 
-	public void TurnOnMotors() {
+	public void startMotors() {
 		RobotMap.climberMotor.set(CLIMBER_DIRECTION);
 	}
 
-	public void TurnOffMotors() {
+	public void stopMotors() {
 		RobotMap.climberMotor.set(0);
 	}
 	

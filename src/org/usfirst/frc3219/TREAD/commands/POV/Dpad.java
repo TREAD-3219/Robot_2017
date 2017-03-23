@@ -18,13 +18,13 @@ public class DPad extends Command {
 
 	@Override
 	protected void execute() {
-		int pov = Robot.oi.Gamecontroller.getPOV();
+		int pov = Robot.oi.GameController.getPOV();
 		if (pov == 90) {
 			Robot.addCommand(new AimRight());
 		} else if (pov == 270) {
 			Robot.addCommand(new AimLeft());
 		} else {
-			double value = Robot.oi.Gamecontroller.getRawAxis(0);
+			double value = Robot.oi.GameController.getRawAxis(0);
 			Robot.turntable.turnDirection(value * -0.3);
 		}
 		
@@ -33,11 +33,11 @@ public class DPad extends Command {
 		} else if(pov == 0) {
 			Robot.shooter.powerUp();
 		}
-		double value = Robot.oi.Gamecontroller.getRawAxis(5);
+		double value = Robot.oi.GameController.getRawAxis(5);
 		if (Math.abs(value) < .3) {
-			Robot.climber.setMotors(0);
+			Robot.climber.runMotors(0);
 		} else {
-			Robot.climber.setMotors(Math.abs(value));
+			Robot.climber.runMotors(Math.abs(value));
 		}
 	}
 
