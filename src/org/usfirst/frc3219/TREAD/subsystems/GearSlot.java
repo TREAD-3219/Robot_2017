@@ -11,22 +11,33 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class GearSlot extends Subsystem {
-	//solenoid for changing position
+	//solenoid for changing position of gear flaps
 	private Solenoid piston;
-	//current position of flaps
+	
+	//solenoid for changing position of gear blocker
+	private Solenoid blocker;
+	
+	//current position of solenoids
 	private boolean position = false;
+	private boolean blockPosition = false;
 	
 	@Override
 	protected void initDefaultCommand() {
 		piston = RobotMap.gearPiston;
 		position = piston.get();
-		//this.setDefaultCommand(new GearPiston(false));
+		blockPosition = blocker.get();
 	}
 	
 	//toggles the position of the gear flaps
 	public void changePosition() {
 		position = !position;
 		piston.set(position);
+	}
+	
+	//toggles the position of the gear blocker
+	public void changeBlockPosition() {
+		blockPosition = !blockPosition;
+		blocker.set(blockPosition);
 	}
 	
 	//sets the position of the gearflaps
@@ -37,8 +48,17 @@ public class GearSlot extends Subsystem {
 		}
 	}
 	
+	//sets the position of the gear blocker
+	public void setBlockerPosition(boolean pos) {
+		if (blockPosition != pos) {
+			blocker.set(pos);
+			blockPosition = pos;
+		}
+	}
+	
 	public static void initializeMotors() {
 		RobotMap.gearPiston = new Solenoid(RobotMap.GEAR_SOLENOID_INDEX);
+		RobotMap.blockerPiston = new Solenoid(RobotMap.BLOCKER_SOLENOID_INDEX);
 	}
 
 }

@@ -57,6 +57,7 @@ public class RobotMap {
 
 	public static final int DRIVE_SHIFTER_INDEX = 0;
 	public static final int GEAR_SOLENOID_INDEX = 1;
+	public static final int BLOCKER_SOLENOID_INDEX = 2;
 
 	// HARDWARE DECLARATIONS
 	
@@ -83,6 +84,7 @@ public class RobotMap {
 	
 	// GearSlot subsytem
 	public static Solenoid gearPiston;
+	public static Solenoid blockerPiston;
 	
 	// Climber subsystem
 	public static Victor climberMotor;

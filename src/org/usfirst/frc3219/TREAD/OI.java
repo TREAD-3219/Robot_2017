@@ -95,7 +95,7 @@ public class OI {
 		JoystickButton turnTest2 = new JoystickButton(GameController, 7);
 		turnTest2.whenPressed(new VisionAimSingle());
 
-		JoystickButton turntableForward = new JoystickButton(GameController, 6);
+		JoystickButton turntableForward = new JoystickButton(GameController, 9);
 		turntableForward.whenPressed(new ShooterForward());
 
 		JoystickButton shoot1 = new JoystickButton(GameController, 2);
@@ -109,14 +109,20 @@ public class OI {
 		ballfeed1.whileHeld(new Ballfeed());
 
 		//GEARS
-		JoystickButton openGear1 = new JoystickButton(GameController, 1);
-		openGear1.whenPressed(new GearPiston(false));
+		JoystickButton openGear = new JoystickButton(GameController, 1);
+		openGear.whenPressed(new GearPiston(false));
 
-		JoystickButton closeGear1 = new JoystickButton(GameController, 3);
-		closeGear1.whenPressed(new GearPiston(true));
+		JoystickButton closeGear = new JoystickButton(GameController, 3);
+		closeGear.whenPressed(new GearPiston(true));
+		
+		JoystickButton openBlock = new JoystickButton(GameController, 5);
+		openBlock.whenPressed(new BlockerPiston(false));
+
+		JoystickButton closeBlock = new JoystickButton(GameController, 6);
+		closeBlock.whenPressed(new BlockerPiston(true));
 
 		//CLIMBING
-		JoystickButton climb1 = new JoystickButton(GameController, 5);
+		JoystickButton climb1 = new JoystickButton(GameController, 10);
 		climb1.whileHeld(new Climb());
 	}
 
