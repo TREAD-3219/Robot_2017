@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.ballTransport;
 
+/*
+ * This command runs the ball feeder motors for as long as it runs
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;

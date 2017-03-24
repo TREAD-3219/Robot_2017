@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command finds the zero index of the turntable
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,13 +22,15 @@ public class SetTurntableZero extends Command {
 		halfChecked = false;
 		count = 0;
 	}
+	
+	//Turns right for a distance, then goes back if it has not found the sensor yet
 	private boolean halfChecked;
 	private int count;
 	protected void execute() {
 		if (halfChecked) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_CLOCKWISE);
 		} else {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_COUNTER_CLOCKWISE);
 		}
 		count++;
 		if (count > 30) {
@@ -36,14 +42,11 @@ public class SetTurntableZero extends Command {
 		return Robot.turntable.atZeroIndex();
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
 		Robot.turntable.turnDirection(0.0f);
 		Robot.turntable.setZero();
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 		end();
 	}

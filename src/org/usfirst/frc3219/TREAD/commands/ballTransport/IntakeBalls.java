@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.ballTransport;
 
+/*
+ * This command runs the ball intake motors until the command stops
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;

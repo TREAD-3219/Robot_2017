@@ -1,10 +1,13 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command turns the turntable left for as long as it is held
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AimLeft extends Command {
 	public AimLeft() {
@@ -12,29 +15,24 @@ public class AimLeft extends Command {
 	}
 	
 	private double initialDegrees;
-	// Called just before this Command runs the first time
+	
 	protected void initialize() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		Robot.turntable.turnDirection(Turntable.TURNTABLE_COUNTER_CLOCKWISE);
 		initialDegrees = Robot.turntable.getAngle();
 	}
-
-	// Called repeatedly when this Command is scheduled to run
+	
 	protected void execute() {
-		Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+		Robot.turntable.turnDirection(Turntable.TURNTABLE_COUNTER_CLOCKWISE);
 	}
-
-	// Called once after isFinished returns true
+	
 	protected void end() {
 		Robot.turntable.turnDirection(0.0);
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 		end();
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		return Robot.turntable.getAngle() - initialDegrees > 5;
 	}

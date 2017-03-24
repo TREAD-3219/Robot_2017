@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.drive;
 
+/*
+ * This command toggles the shift of the drive base
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 
