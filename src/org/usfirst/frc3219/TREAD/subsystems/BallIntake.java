@@ -46,4 +46,10 @@ public class BallIntake extends Subsystem {
 		RobotMap.ballIntakeMotor = new Victor(RobotMap.BALL_INTAKE_PWM_INDEX);
 	}
 
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
