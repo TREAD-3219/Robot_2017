@@ -36,6 +36,7 @@ public class Sensors extends Subsystem {
 	public static final int CAMERA_WIDTH = 640;
 	public static final int CAMERA_HEIGHT = 480;
 	public static final double DEGREES_PER_PIXEL = 60.0 / CAMERA_WIDTH;
+	public static final double DEGREES_PER_PIXEL_Y = 90.0 / CAMERA_HEIGHT;
 
 	public Sensors() {
 		NAVX = new AHRS(SPI.Port.kMXP);
@@ -66,13 +67,13 @@ public class Sensors extends Subsystem {
 	}
 
 	//returns the x location in pixels of the shooting target
-	public double getShooterTargetX() {
-		double[] centerXs = visionTable.getNumberArray("centerX", new double[1]);
+	public double getShooterTargetY() {
+		double[] centerYs = visionTable.getNumberArray("centerY", new double[1]);
 		double average = 0.0;
-		for (double d : centerXs) {
+		for (double d : centerYs) {
 			average += d;
 		}
-		average /= centerXs.length;
+		average /= centerYs.length;
 		return average;
 	}
 	

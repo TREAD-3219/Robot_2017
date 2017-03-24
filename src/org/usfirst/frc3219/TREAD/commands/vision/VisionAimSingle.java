@@ -20,9 +20,9 @@ public class VisionAimSingle extends Command {
 	}
 
 	protected void initialize() {
-		this.setTimeout(10);
+		this.setTimeout(1.5);
 		if (Robot.sensors.shooterTargetIsVisible()) {
-			double temp = (Robot.sensors.getShooterTargetX() - Sensors.CAMERA_WIDTH / 2.0) * Sensors.DEGREES_PER_PIXEL;
+			double temp = (Robot.sensors.getShooterTargetY() - Sensors.CAMERA_HEIGHT / 2.0) * Sensors.DEGREES_PER_PIXEL_Y;
 			temp *= .8;
 			if (Math.abs(temp) > 50) {
 				temp = 0;

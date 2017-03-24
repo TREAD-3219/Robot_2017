@@ -52,7 +52,7 @@ public class VisionAim extends PIDCommand {
     
     private double previous = 0;
     private void checkAngle() {
-    	double temp = (Robot.sensors.getShooterTargetX() - Sensors.CAMERA_WIDTH/2.0) * Sensors.DEGREES_PER_PIXEL;
+    	double temp = (Robot.sensors.getShooterTargetY() - Sensors.CAMERA_HEIGHT/2.0) * Sensors.DEGREES_PER_PIXEL_Y;
     	if (previous != temp) {
     		goalAngle = Robot.turntable.getAngle() + temp;
     		previous = temp;
