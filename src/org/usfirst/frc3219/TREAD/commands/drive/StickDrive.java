@@ -25,7 +25,7 @@ public class StickDrive extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.drive.tankDrive(-Robot.oi.leftStick.getY(), -Robot.oi.rightStick.getY());
+		Robot.drive.tankDrive(Robot.oi.leftStick.getY(), Robot.oi.rightStick.getY());
 	}
 
 	@Override

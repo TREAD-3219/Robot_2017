@@ -92,7 +92,7 @@ public class OI {
 		ballPickup2.whileHeld(new IntakeBalls(-1));
 
 		// SHOOTING COMMANDS
-		JoystickButton turnTest2 = new JoystickButton(GameController, 7);
+		JoystickButton turnTest2 = new JoystickButton(GameController, 8);
 		turnTest2.whenPressed(new VisionAimSingle());
 
 		JoystickButton turntableForward = new JoystickButton(GameController, 9);
@@ -101,7 +101,7 @@ public class OI {
 		JoystickButton shoot1 = new JoystickButton(GameController, 2);
 		shoot1.whileHeld(new Shoot());
 
-		JoystickButton resetShooter = new JoystickButton(GameController, 8);
+		JoystickButton resetShooter = new JoystickButton(GameController, 7);
 		resetShooter.whenPressed(new Reset());
 		
 		//BALL FEED

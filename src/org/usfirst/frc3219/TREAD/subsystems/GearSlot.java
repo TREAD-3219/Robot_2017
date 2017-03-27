@@ -24,6 +24,7 @@ public class GearSlot extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		piston = RobotMap.gearPiston;
+		blocker = RobotMap.blockerPiston;
 		position = piston.get();
 		blockPosition = blocker.get();
 	}
