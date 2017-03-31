@@ -72,26 +72,26 @@ public class RobotMap {
 	public static RobotDrive robotDrive;
 
 	// Turntable subsystem
-	public static Spark turntableMotor;
+	public static Talon turntableMotor;
 	public static Encoder turntableEncoder;
 	public static DigitalInput turntableIndexSetter;
 	
 	// Intake subsystem
-	public static Victor ballIntakeMotor;
+	public static Talon ballIntakeMotor;
 	
 	// BallFeed subsystem
-	public static Spark FeederMotor;
+	public static Talon FeederMotor;
 	
 	// GearSlot subsytem
 	public static Solenoid gearPiston;
 	public static Solenoid blockerPiston;
 	
 	// Climber subsystem
-	public static Victor climberMotor;
+	public static Talon climberMotor;
 	
 	// Shooter subsystem
 	public static CANTalon shooterMotor;
-	public static Victor Agitator;
+	public static Talon Agitator;
 	
 	/*
 	 * When the code is initialized, all motors are initialized

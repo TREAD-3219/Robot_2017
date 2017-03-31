@@ -10,6 +10,7 @@ import org.usfirst.frc3219.TREAD.commands.POV.DPad;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -22,16 +23,17 @@ public class Turntable extends Subsystem {
 	
 	//encoder ratio for turntable
 	public static final double DISTANCE_PER_PULSE = 12.0/240.0;
+	public static final double DISTANCE_FIX_VAR = 9.0/7.0;
 	
 	//previously set positions for when the robot is at the airship
-	public static final int RED_LEFT_POSITION = 20;
-	public static final int RED_MID_POSITION = 100;
-	public static final int BLUE_MID_POSITION = -35;
-	public static final int BLUE_RIGHT_POSITION = 42;
+	public static final int RED_LEFT_POSITION = 50;
+	public static final int RED_MID_POSITION = -40;
+	public static final int BLUE_MID_POSITION = 45;
+	public static final int BLUE_RIGHT_POSITION = -20;
 	//position for the robot directly in front of the boiler
 	public static final int FORWARD_POSITION = -41;
 	//hardware declarations
-	private Spark turntableMotor;
+	private Talon turntableMotor;
 	private Encoder turntableEncoder;
 	private DigitalInput turntableIndexSensor;
 
@@ -74,7 +76,7 @@ public class Turntable extends Subsystem {
 	}
 	
 	public static void intializeMotors() {
-		RobotMap.turntableMotor = new Spark(RobotMap.TURNTABLE_PWM_INDEX);
+		RobotMap.turntableMotor = new Talon(RobotMap.TURNTABLE_PWM_INDEX);
 		RobotMap.turntableEncoder = new Encoder(RobotMap.TURNTABLE_ENCODER_A, RobotMap.TURNTABLE_ENCODER_B, false, Encoder.EncodingType.k4X);
 		RobotMap.turntableIndexSetter = new DigitalInput(RobotMap.TURNTABLE_LIMIT_SWITCH_INDEX);
 		RobotMap.turntableEncoder.setDistancePerPulse(12.0 / 240.0);

@@ -6,12 +6,13 @@ package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem {
 	
-	public static final int CLIMBER_DIRECTION = 1;
+	public static final int CLIMBER_DIRECTION = -1;
 
 	@Override
 	protected void initDefaultCommand() {
@@ -31,6 +32,6 @@ public class Climber extends Subsystem {
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.climberMotor = new Victor(RobotMap.CLIMBER_PWM_INDEX);
+		RobotMap.climberMotor = new Talon(RobotMap.CLIMBER_PWM_INDEX);
 	}
 }

@@ -7,14 +7,15 @@ package org.usfirst.frc3219.TREAD.subsystems;
 import org.usfirst.frc3219.TREAD.RobotMap;
 
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Ballfeeder extends Subsystem {
 	
 	//Directions for feeder motor and agitator motor forward
-	public static final int FEEDER_DIRECTION = -1;
-	public static final int AGITATOR_DIRECTION = 1;
+	public static final int FEEDER_DIRECTION = 1;
+	public static final int AGITATOR_DIRECTION = -1;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -32,7 +33,7 @@ public class Ballfeeder extends Subsystem {
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.FeederMotor = new Spark(RobotMap.BALLFEED_PWM_INDEX);
-		RobotMap.Agitator = new Victor(RobotMap.AGITATOR_PWM_INDEX);
+		RobotMap.FeederMotor = new Talon(RobotMap.BALLFEED_PWM_INDEX);
+		RobotMap.Agitator = new Talon(RobotMap.AGITATOR_PWM_INDEX);
 	}
 }

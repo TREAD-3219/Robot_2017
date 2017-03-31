@@ -6,6 +6,7 @@ package org.usfirst.frc3219.TREAD.subsystems;
 
 import org.usfirst.frc3219.TREAD.RobotMap;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,7 +19,7 @@ public class BallIntake extends Subsystem {
 	 *  It might make more sense to say "start/stop" then to say speed 1-0.
 	 */
 	
-	public static final int INTAKE_DIRECTION = -1;
+	public static final int INTAKE_DIRECTION = 1;
 	
 	public void setSafety(boolean enabled) {
 		RobotMap.ballIntakeMotor.setSafetyEnabled(enabled);
@@ -43,7 +44,7 @@ public class BallIntake extends Subsystem {
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.ballIntakeMotor = new Victor(RobotMap.BALL_INTAKE_PWM_INDEX);
+		RobotMap.ballIntakeMotor = new Talon(RobotMap.BALL_INTAKE_PWM_INDEX);
 	}
 
 	@Override
