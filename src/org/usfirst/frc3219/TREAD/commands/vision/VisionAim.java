@@ -1,10 +1,13 @@
 package org.usfirst.frc3219.TREAD.commands.vision;
 
+/*
+ * This command aims the turntable at the shooting target based off of vision tracking continuously
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Sensors;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -49,7 +52,7 @@ public class VisionAim extends PIDCommand {
     
     private double previous = 0;
     private void checkAngle() {
-    	double temp = (Robot.sensors.getShooterTargetX() - Sensors.CAMERA_WIDTH/2.0) * Sensors.DEGREES_PER_PIXEL;
+    	double temp = (Robot.sensors.getShooterTargetY() - Sensors.CAMERA_HEIGHT/2.0) * Sensors.DEGREES_PER_PIXEL_Y;
     	if (previous != temp) {
     		goalAngle = Robot.turntable.getAngle() + temp;
     		previous = temp;
@@ -65,10 +68,10 @@ public class VisionAim extends PIDCommand {
 
 	@Override
 	protected void usePIDOutput(double output) {
-		if (output > Turntable.TURNTABLE_FORWARD) {
-			output = Turntable.TURNTABLE_FORWARD;
-		} else if (output < Turntable.TURNTABLE_BACKWARD) {
-			output = Turntable.TURNTABLE_BACKWARD;
+		if (output > Turntable.TURNTABLE_CLOCKWISE) {
+			output = Turntable.TURNTABLE_CLOCKWISE;
+		} else if (output < Turntable.TURNTABLE_COUNTER_CLOCKWISE) {
+			output = Turntable.TURNTABLE_COUNTER_CLOCKWISE;
 		}
 		turnRate = output;
 	}

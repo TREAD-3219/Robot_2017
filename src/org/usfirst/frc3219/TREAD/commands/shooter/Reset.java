@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command resets the shooter power
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;

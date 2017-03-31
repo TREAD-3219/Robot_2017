@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command chooses the position the shooter will aim at based off of alliance and position
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 

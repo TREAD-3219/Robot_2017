@@ -1,12 +1,13 @@
 package org.usfirst.frc3219.TREAD.commands.vision;
 
+/*
+ * This command aims towards the gear target based off of vision tracking
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveTurn;
 import org.usfirst.frc3219.TREAD.subsystems.Sensors;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class GearAim extends Command {
 	private static final double OFFSET_INCHES = 6;
@@ -26,7 +27,7 @@ public class GearAim extends Command {
 
 	@Override
 	protected void end() {
-		Robot.drive.setMotors(0);
+		Robot.drive.runMotors(0);
 
 	}
 	double previous = 0;
@@ -41,7 +42,7 @@ public class GearAim extends Command {
 		if ((Robot.sensors.getAngle() - initialDegrees) < tempDegrees) {
 			speed *= -1;
 		}
-		Robot.drive.stickDrive(0, speed, 1);
+		Robot.drive.arcadeDrive(0, speed);
 		previous = Robot.sensors.getAngle();
 	}
 
@@ -59,7 +60,7 @@ public class GearAim extends Command {
 		goalDegrees = -temp;
 		initialDegrees = 0;
 		
-		Robot.drive.stickDrive(0, .5, 1);
+		Robot.drive.arcadeDrive(0, .5);
 		this.setTimeout(.5);
 		initialDegrees = Robot.sensors.getAngle();
 		previous = Robot.sensors.getAngle();

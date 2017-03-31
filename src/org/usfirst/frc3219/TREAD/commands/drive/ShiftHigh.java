@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.drive;
 
+/*
+ * This command sets the current shifting position to high
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 

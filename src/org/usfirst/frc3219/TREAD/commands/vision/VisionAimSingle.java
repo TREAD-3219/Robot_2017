@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.vision;
 
+/*
+ * This command aims the turntable at the shooting target based off of vision tracking
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Sensors;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
@@ -16,10 +20,10 @@ public class VisionAimSingle extends Command {
 	}
 
 	protected void initialize() {
-		this.setTimeout(10);
+		this.setTimeout(1.5);
 		if (Robot.sensors.shooterTargetIsVisible()) {
-			double temp = (Robot.sensors.getShooterTargetX() - Sensors.CAMERA_WIDTH / 2.0) * Sensors.DEGREES_PER_PIXEL;
-			temp *= .8;
+			double temp = (Robot.sensors.getShooterTargetY() - Sensors.CAMERA_HEIGHT / 2.0) * Sensors.DEGREES_PER_PIXEL_Y;
+			temp *= .5;
 			if (Math.abs(temp) > 50) {
 				temp = 0;
 			}
@@ -32,9 +36,9 @@ public class VisionAimSingle extends Command {
 
 	protected void execute() {
 		if (Robot.turntable.getAngle() - goalAngle < 0) {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_BACKWARD);
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_COUNTER_CLOCKWISE);
 		} else {
-			Robot.turntable.turnDirection(Turntable.TURNTABLE_FORWARD);
+			Robot.turntable.turnDirection(Turntable.TURNTABLE_CLOCKWISE);
 		}
 	}
 

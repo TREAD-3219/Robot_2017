@@ -1,16 +1,22 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
+/*
+ * This class contains methods used for running the shooter motor
+ */
+
 import org.usfirst.frc3219.TREAD.RobotMap;
 
 import com.ctre.CANTalon;
 
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Shooter extends Subsystem{
-	
-	private double shooterPower;
+public class Shooter extends Subsystem {
+
+	//default shooter power, currently 66%
 	public static final double SHOOTER_DEFAULT_POWER = 0.66;
+	
+	//current power of the shooter
+	private double shooterPower;
 	
 	@Override
 	protected void initDefaultCommand() {
@@ -21,15 +27,16 @@ public class Shooter extends Subsystem{
 		RobotMap.shooterMotor.setSafetyEnabled(enabled);
 	}
 	
-	public void startShooter(){
+	//runs shooter at current power
+	public void startMotors(){
 		RobotMap.shooterMotor.set(-shooterPower);
 	}
 
-	public void stopShooter(){
+	public void stopMotors(){
 		RobotMap.shooterMotor.set(0);
 	}
 
-	public void shooter(double speed){
+	public void runMotors(double speed){
 		RobotMap.shooterMotor.set(speed);
 	}
 	
@@ -37,12 +44,15 @@ public class Shooter extends Subsystem{
 		RobotMap.shooterMotor = new CANTalon(RobotMap.SHOOTER_CAN_INDEX); 
 	}
 	
-	public double getPower() {
+	//returns the current power of the shooter
+	public double getCurrentPower() {
 		return shooterPower;
 	}
 	
+	//step size for incrementing/decrementing power.
 	private final double step = 0.01;
 	
+	//increases the power of the shooter
 	public void powerUp() {
 		if (shooterPower <= 1 - step) {
 			shooterPower += step;
@@ -51,6 +61,7 @@ public class Shooter extends Subsystem{
 		}
 	}
 	
+	//decreases the power of the shooter
 	public void powerDown() {
 		if (shooterPower >= step) {
 			shooterPower -= step;
@@ -59,8 +70,8 @@ public class Shooter extends Subsystem{
 		}
 	}
 
+	//sets the shooter power to default
 	public void resetPower() {
 		shooterPower = SHOOTER_DEFAULT_POWER;
-		
 	}
 }

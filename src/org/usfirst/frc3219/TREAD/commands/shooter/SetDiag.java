@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command sets the position of the shooter to diagonal or middle based on input
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 

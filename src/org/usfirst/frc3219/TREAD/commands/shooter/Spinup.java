@@ -1,10 +1,12 @@
 package org.usfirst.frc3219.TREAD.commands.shooter;
 
+/*
+ * This command spins up the shooter motors without feeding balls
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
-import org.usfirst.frc3219.TREAD.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Spinup extends Command {
 	private double seconds;
@@ -19,7 +21,7 @@ public class Spinup extends Command {
 	
 	@Override
 	protected void execute() {
-		Robot.shooter.startShooter();
+		Robot.shooter.startMotors();
 	}
 	
 	@Override

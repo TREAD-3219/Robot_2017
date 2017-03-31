@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.ballTransport;
 
+/*
+ * This command runs the ball intake motors until the command stops
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,14 +22,14 @@ public class IntakeBalls extends Command {
 
 	@Override
 	protected void end() {
-		Robot.intake.flipperStop();
+		Robot.intake.stopMotors();
 		Robot.intake.setSafety(true);
 	}
 
 	@Override
 	protected void execute() {
 		
-		Robot.intake.flipperSpeed(speed);
+		Robot.intake.runMotors(speed);
 		
 	}
 

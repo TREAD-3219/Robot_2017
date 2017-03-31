@@ -11,21 +11,12 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
-import org.opencv.core.Mat;
-import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
-import org.usfirst.frc3219.TREAD.commands.autonomous.Wiggle;
-import org.usfirst.frc3219.TREAD.commands.shooter.AimRight;
-import org.usfirst.frc3219.TREAD.commands.vision.GearAim;
-import org.usfirst.frc3219.TREAD.commands.vision.VisionAim;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.BallIntake;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -48,10 +39,15 @@ public class Robot extends IterativeRobot {
 	
 	// Command Declarations
 	Command autonomousCommand;
+	
+	//Sendable Choosers for choosing position, and whether or not to shoot.
 	private static SendableChooser<String> posChooser;
 	public static SendableChooser<Boolean> shootChooser;
+	
+	//field to keep track of position from posChooser
 	public static String position = "Default";
 	
+	//field to keep track of alliance, found from querying DriverStation.
 	public static boolean blueAlliance = true;
 	
 	// Subsystem Declarations
@@ -64,15 +60,15 @@ public class Robot extends IterativeRobot {
 	public static GearSlot gearSlot;
 	public static Shooter shooter;
 	public static Sensors sensors;
-	public static UsbCamera camera;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
+		//initializes motors
 		RobotMap.init();
-		//startCameras();
+		
 		// Subsystem Construction, OI must be last.
 		climber = new Climber();
 		turntable = new Turntable();
@@ -83,7 +79,7 @@ public class Robot extends IterativeRobot {
 		shooter= new Shooter();
 		sensors = new Sensors();
 		
-		setupCamera();
+		Sensors.setupCamera();
 		
 		// OI must be constructed after subsystems. If the OI creates Commands
 		// (which it very likely will), subsystems are not guaranteed to be
@@ -91,26 +87,22 @@ public class Robot extends IterativeRobot {
 		// pointers. Bad news. Don't move it.
 		oi = new OI();
 
-		// instantiate the command chooser used for selecting autonomous
+		//instantiate the chooser used for selecting autonomous position
 		posChooser = new SendableChooser<String>();
 		posChooser.addDefault("Middle", "Middle");
 		posChooser.addObject("Left", "Left");
 		posChooser.addObject("Right", "Right");
 		SmartDashboard.putData("Position", posChooser);
 		
+		//instantiate the chooser for selecting whether or not to attempt to shoot in autonomous
 		shootChooser = new SendableChooser<Boolean>();
 		shootChooser.addDefault("Shoot On", true);
 		shootChooser.addObject("Shoot Off", false);
 		SmartDashboard.putData("Shoot In Auto", shootChooser);
 		
-		autonomousCommand = new StandardAutonomous();
-	}
-	
-	private static void setupCamera() {
-		CameraServer server = CameraServer.getInstance();
-		//UsbCamera cam = server.startAutomaticCapture();
-		server.addAxisCamera("Gears", "10.32.19.51");
-		server.addAxisCamera("Shooter", "10.32.19.52");
+		SmartDashboard.putNumber("Auto Mid Dist", 93);
+		SmartDashboard.putNumber("Auto Diag Dist 1", 80);
+		SmartDashboard.putNumber("Auto Diag Dist 2", 95);
 	}
 
 	/**
@@ -126,11 +118,16 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void autonomousInit() {
-		Robot.sensors.resetEncoders();
+		//find out the alliance we are on
 		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
 		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
+		
+		//find out where we are
 		position = (String) posChooser.getSelected();
+		
+		//instantiate the autonomous
 		autonomousCommand = new StandardAutonomous();
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
@@ -144,8 +141,6 @@ public class Robot extends IterativeRobot {
 	}
 
 	public void teleopInit() {
-		DriverStation.Alliance alliance = DriverStation.getInstance().getAlliance();
-		blueAlliance = alliance.equals(DriverStation.Alliance.Blue);
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove

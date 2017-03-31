@@ -1,11 +1,13 @@
 package org.usfirst.frc3219.TREAD.commands.drive;
 
-import org.usfirst.frc3219.TREAD.OI;
+/*
+ * This command continuously sets the joystick outputs to drive power
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class StickDrive extends Command {
 	
@@ -23,8 +25,7 @@ public class StickDrive extends Command {
 	
 	@Override
 	protected void execute() {
-		//Robot.drive.stickDrive(driveStick.getY(), driveStick.getX(), -driveStick.getThrottle());
-		Robot.drive.tankDrive(-Robot.oi.leftStick.getY(), -Robot.oi.rightStick.getY());
+		Robot.drive.tankDrive(Robot.oi.leftStick.getY(), Robot.oi.rightStick.getY());
 	}
 
 	@Override

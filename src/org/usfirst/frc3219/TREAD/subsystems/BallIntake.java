@@ -1,8 +1,12 @@
 package org.usfirst.frc3219.TREAD.subsystems;
 
+/*
+ * This class contains methods useful to running the ball intake motor and the agitator motor.
+ */
+
 import org.usfirst.frc3219.TREAD.RobotMap;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class BallIntake extends Subsystem {
@@ -14,38 +18,38 @@ public class BallIntake extends Subsystem {
 	 *  It might make more sense to say "start/stop" then to say speed 1-0.
 	 */
 	
-	// Variable setup
-	private int turnSpeed = 100;	// In percent
-	
-	@Override
-	protected void initDefaultCommand() {
-
-	}
+	public static final int INTAKE_DIRECTION = -1;
 	
 	public void setSafety(boolean enabled) {
 		RobotMap.ballIntakeMotor.setSafetyEnabled(enabled);
 	}
 	
 	//Sets the speed of the flipper motor, on a scale from 0-1
-	public void flipperSpeed(double speed) {
-		RobotMap.ballIntakeMotor.set(speed);
-		RobotMap.Agitator.set(-speed);
+	public void runMotors(double speed) {
+		RobotMap.ballIntakeMotor.set(speed * INTAKE_DIRECTION);
+		RobotMap.Agitator.set(speed * Ballfeeder.AGITATOR_DIRECTION);
 	}
 	
-	public void flipperStart() {
+	public void startMotors() {
 		// Starts motor
-		RobotMap.ballIntakeMotor.set(turnSpeed / 100);
-		RobotMap.Agitator.set(-1);
+		RobotMap.ballIntakeMotor.set(INTAKE_DIRECTION);
+		RobotMap.Agitator.set(Ballfeeder.AGITATOR_DIRECTION);
 	}
 	
-	public void flipperStop() {
+	public void stopMotors() {
 		// Stops motor
 		RobotMap.ballIntakeMotor.set(0);
 		RobotMap.Agitator.set(0);
 	}
 	
 	public static void initializeMotors() {
-		RobotMap.ballIntakeMotor = new Talon(RobotMap.BALL_INTAKE_PWM_INDEX);
+		RobotMap.ballIntakeMotor = new Victor(RobotMap.BALL_INTAKE_PWM_INDEX);
+	}
+
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,5 +1,9 @@
 package org.usfirst.frc3219.TREAD.commands.POV;
 
+/*
+ * This command continously takes input from the xbox controller and sets the turntable and climber based off of it
+ */
+
 import org.usfirst.frc3219.TREAD.Robot;
 import org.usfirst.frc3219.TREAD.RobotMap;
 import org.usfirst.frc3219.TREAD.commands.shooter.AimLeft;
@@ -18,26 +22,30 @@ public class DPad extends Command {
 
 	@Override
 	protected void execute() {
-		int pov = Robot.oi.Gamecontroller.getPOV();
+		//move the turntable left or right
+		int pov = Robot.oi.GameController.getPOV();
 		if (pov == 90) {
 			Robot.addCommand(new AimRight());
 		} else if (pov == 270) {
 			Robot.addCommand(new AimLeft());
 		} else {
-			double value = Robot.oi.Gamecontroller.getRawAxis(0);
+			double value = Robot.oi.GameController.getRawAxis(0); //Left x axis
 			Robot.turntable.turnDirection(value * -0.3);
 		}
 		
+		//changes the power of the shooter
 		if (pov == 180) {
 			Robot.shooter.powerDown();
 		} else if(pov == 0) {
 			Robot.shooter.powerUp();
 		}
-		double value = Robot.oi.Gamecontroller.getRawAxis(5);
+		
+		//sets the power of the climber
+		double value = Robot.oi.GameController.getRawAxis(5); //Right y axis
 		if (Math.abs(value) < .3) {
-			Robot.climber.setMotors(0);
+			Robot.climber.runMotors(0);
 		} else {
-			Robot.climber.setMotors(Math.abs(value));
+			Robot.climber.runMotors(Math.abs(value));
 		}
 	}
 
