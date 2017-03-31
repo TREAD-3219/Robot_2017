@@ -11,34 +11,36 @@ import org.usfirst.frc3219.TREAD.commands.shooter.Spinup;
 import org.usfirst.frc3219.TREAD.commands.vision.GearAim;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class StandardAutonomous extends CommandGroup {
 	
 	public StandardAutonomous() {
 		if (Robot.position.equals("Middle")) {
 			//this.addSequential(new Spinup(0.1));
 			//this.addSequential(new GearAim(90));
-			this.addSequential(new DriveForward(48));
+			//this.addSequential(new DriveForward(48));
 			//this.addSequential(new GearAim(45));
-			this.addSequential(new DriveForward(45));
+			//this.addSequential(new DriveForward(45));
+			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Mid Dist", 93))); 
 			if (Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 			
 		} else if (Robot.position.equals("Left")) {
-			this.addSequential(new DriveForward(80));
+			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 1", 80)));
 			this.addSequential(new DriveTurn(-57));
 			this.addSequential(new GearAim(95));
-			this.addSequential(new DriveForward(95));
+			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
 			if (!Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 			
 		} else if (Robot.position.equals("Right")) {
 			//this.addSequential(new Spinup(0.1));
-			this.addSequential(new DriveForward(80));
+			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 1", 80)));
 			this.addSequential(new DriveTurn(57));
 			this.addSequential(new GearAim(95));
-			this.addSequential(new DriveForward(95));
+			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
 			if (Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}

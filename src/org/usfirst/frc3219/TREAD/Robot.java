@@ -99,6 +99,10 @@ public class Robot extends IterativeRobot {
 		shootChooser.addDefault("Shoot On", true);
 		shootChooser.addObject("Shoot Off", false);
 		SmartDashboard.putData("Shoot In Auto", shootChooser);
+		
+		SmartDashboard.putNumber("Auto Mid Dist", 93);
+		SmartDashboard.putNumber("Auto Diag Dist 1", 80);
+		SmartDashboard.putNumber("Auto Diag Dist 2", 95);
 	}
 
 	/**

@@ -17,8 +17,12 @@ public class GearSlot extends Subsystem {
 	//solenoid for changing position of gear blocker
 	private Solenoid blocker;
 	
+	//Defaults for solenoid
+	public static final boolean GEAR_OPEN = true;
+	
 	//current position of solenoids
 	private boolean position = false;
+	
 	private boolean blockPosition = false;
 	
 	@Override

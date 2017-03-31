@@ -25,6 +25,7 @@ import org.usfirst.frc3219.TREAD.commands.shooter.ShooterForward;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAimSingle;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
+import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
 import org.usfirst.frc3219.TREAD.subsystems.Turntable;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -85,10 +86,10 @@ public class OI {
 		moveToPosition.whenPressed(new DriveForward(-Drive.SHOOTING_POSITION));
 
 		// Ball Pickup
-		JoystickButton ballPickup = new JoystickButton(leftStick, 1);
+		JoystickButton ballPickup = new JoystickButton(GameController, 1);
 		ballPickup.whileHeld(new IntakeBalls());
 
-		JoystickButton ballPickup2 = new JoystickButton(rightStick, 1);
+		JoystickButton ballPickup2 = new JoystickButton(GameController, 3);
 		ballPickup2.whileHeld(new IntakeBalls(-1));
 
 		// SHOOTING COMMANDS
@@ -109,11 +110,11 @@ public class OI {
 		ballfeed1.whileHeld(new Ballfeed());
 
 		//GEARS
-		JoystickButton openGear = new JoystickButton(GameController, 1);
-		openGear.whenPressed(new GearPiston(false));
+		JoystickButton openGear = new JoystickButton(rightStick, 1);
+		openGear.whenPressed(new GearPiston(GearSlot.GEAR_OPEN));
 
-		JoystickButton closeGear = new JoystickButton(GameController, 3);
-		closeGear.whenPressed(new GearPiston(true));
+		JoystickButton closeGear = new JoystickButton(leftStick, 1);
+		closeGear.whenPressed(new GearPiston(!GearSlot.GEAR_OPEN));
 		
 		JoystickButton openBlock = new JoystickButton(GameController, 5);
 		openBlock.whenPressed(new BlockerPiston(false));
