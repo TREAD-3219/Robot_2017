@@ -22,8 +22,9 @@ public class Turntable extends Subsystem {
 	public static final double TURNTABLE_COUNTER_CLOCKWISE = .3;
 	
 	//encoder ratio for turntable
-	public static final double DISTANCE_PER_PULSE = 12.0/240.0;
-	public static final double DISTANCE_FIX_VAR = 9.0/7.0;
+	public static final double DISTANCE_FIX_VAR = 15.0/7.0;
+	public static final double DISTANCE_PER_PULSE = 12.0/240.0 * DISTANCE_FIX_VAR;
+	
 	
 	//previously set positions for when the robot is at the airship
 	public static final int RED_LEFT_POSITION = 50;

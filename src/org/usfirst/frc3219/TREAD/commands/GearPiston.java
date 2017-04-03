@@ -7,13 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GearPiston extends Command {
 	private boolean on;
 	public GearPiston(boolean on) {
-		requires(Robot.gearSlot);
+		//requires(Robot.gearSlot);
 		this.on = on;
 	}
 	
 	@Override
 	protected void initialize() {
 		Robot.gearSlot.setPosition(on);
+		Robot.gearSlot.setBlockerPosition(!on);
 	}
 	
 	@Override

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class BlockerPiston extends Command {
 	private boolean on;
 	public BlockerPiston(boolean on) {
-		requires(Robot.gearSlot);
+		//requires(Robot.gearSlot);
 		this.on = on;
 	}
 	

@@ -82,7 +82,7 @@ public class OI {
 		JoystickButton shift2 = new JoystickButton(rightStick, 2);
 		shift2.whenPressed(new ShiftHigh());
 		
-		JoystickButton moveToPosition = new JoystickButton(rightStick, 3);
+		JoystickButton moveToPosition = new JoystickButton(rightStick, 5);
 		moveToPosition.whenPressed(new DriveForward(-Drive.SHOOTING_POSITION));
 
 		// Ball Pickup
@@ -116,11 +116,11 @@ public class OI {
 		JoystickButton closeGear = new JoystickButton(leftStick, 1);
 		closeGear.whenPressed(new GearPiston(!GearSlot.GEAR_OPEN));
 		
-		JoystickButton openBlock = new JoystickButton(GameController, 5);
-		openBlock.whenPressed(new BlockerPiston(false));
+		JoystickButton openBlock = new JoystickButton(rightStick, 3);
+		openBlock.whenPressed(new BlockerPiston(GearSlot.GEAR_OPEN));
 
-		JoystickButton closeBlock = new JoystickButton(GameController, 6);
-		closeBlock.whenPressed(new BlockerPiston(true));
+		JoystickButton closeBlock = new JoystickButton(leftStick, 3);
+		closeBlock.whenPressed(new BlockerPiston(!GearSlot.GEAR_OPEN));
 
 		//CLIMBING
 		JoystickButton climb1 = new JoystickButton(GameController, 10);

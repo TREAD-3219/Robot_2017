@@ -23,7 +23,7 @@ public class Sensors extends Subsystem {
 	private final static double TICKS_PER_ROTATION = 360.0 * OUTPUT_SHAFT_SCALE;
 	private final static double WHEEL_ROTATIONS_PER_ROTATION = 10.86;
 	private final static double WHEEL_DIAMETER = 4 * Math.PI;
-	private final static double INCHES_PER_TICK = (WHEEL_DIAMETER * WHEEL_ROTATIONS_PER_ROTATION) / TICKS_PER_ROTATION;
+	private final static double INCHES_PER_TICK = (WHEEL_DIAMETER * WHEEL_ROTATIONS_PER_ROTATION) / TICKS_PER_ROTATION * 0.9;
 	
 	//Gyro declaration
 	public AHRS NAVX;

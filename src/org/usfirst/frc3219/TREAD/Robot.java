@@ -11,6 +11,8 @@
 package org.usfirst.frc3219.TREAD;
 
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
+import org.usfirst.frc3219.TREAD.commands.BlockerPiston;
+import org.usfirst.frc3219.TREAD.commands.autonomous.DriveForward;
 import org.usfirst.frc3219.TREAD.commands.autonomous.StandardAutonomous;
 import org.usfirst.frc3219.TREAD.subsystems.Ballfeeder;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
@@ -100,8 +102,8 @@ public class Robot extends IterativeRobot {
 		shootChooser.addObject("Shoot Off", false);
 		SmartDashboard.putData("Shoot In Auto", shootChooser);
 		
-		SmartDashboard.putNumber("Auto Mid Dist", 93);
-		SmartDashboard.putNumber("Auto Diag Dist 1", 80);
+		SmartDashboard.putNumber("Auto Mid Dist", 97);
+		SmartDashboard.putNumber("Auto Diag Dist 1", 77);
 		SmartDashboard.putNumber("Auto Diag Dist 2", 95);
 	}
 
@@ -146,6 +148,7 @@ public class Robot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		if (autonomousCommand != null) autonomousCommand.cancel();
+		Scheduler.getInstance().add(new BlockerPiston(GearSlot.GEAR_OPEN));
 	}
 
 	/**
