@@ -9,6 +9,7 @@ import org.usfirst.frc3219.TREAD.commands.SensorWatch;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
@@ -55,8 +56,7 @@ public class Sensors extends Subsystem {
 	// sets up stuff for putting cameras onto smartdashboard
 	public static void setupCamera() {
 		CameraServer server = CameraServer.getInstance();
-		// UsbCamera cam = server.startAutomaticCapture();
-		server.addAxisCamera("Gears", "10.32.19.51");
+		server.startAutomaticCapture(0);
 		server.addAxisCamera("Shooter", "10.32.19.52");
 	}
 
