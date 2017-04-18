@@ -25,21 +25,23 @@ public class StandardAutonomous extends CommandGroup {
 		this.addSequential(new ShiftLow());
 		if (Robot.position.equals("Middle")) {
 			//this.addSequential(new Spinup(0.1));
-			//this.addSequential(new GearAim(90));
+			//this.addSequential(new Wait(.75));
+			//this.addSequential(new GearAim((int) SmartDashboard.getNumber("Auto Mid Dist", 97)));
 			//this.addSequential(new DriveForward(48));
 			//this.addSequential(new GearAim(45));
 			//this.addSequential(new DriveForward(45));
 			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Mid Dist", 97))); 
-			if (Robot.shootChooser.getSelected()) {
+			if (Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 			
 		} else if (Robot.position.equals("Left")) {
 			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 1", 77)));
 			this.addSequential(new DriveTurn(61));
-			this.addSequential(new GearAim(95));
+			this.addSequential(new Wait(.75));
+			this.addSequential(new GearAim((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
 			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
-			if (!Robot.blueAlliance && Robot.shootChooser.getSelected()) {
+			if (Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 			
@@ -47,9 +49,10 @@ public class StandardAutonomous extends CommandGroup {
 			//this.addSequential(new Spinup(0.1));
 			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 1", 77)));
 			this.addSequential(new DriveTurn(-61));
-			this.addSequential(new GearAim(95));
+			this.addSequential(new Wait(.75));
+			this.addSequential(new GearAim((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
 			this.addSequential(new DriveForward((int) SmartDashboard.getNumber("Auto Diag Dist 2", 95)));
-			if (Robot.blueAlliance && Robot.shootChooser.getSelected()) {
+			if (!Robot.blueAlliance && Robot.shootChooser.getSelected()) {
 				shootCommands();
 			}
 		}
@@ -71,6 +74,7 @@ public class StandardAutonomous extends CommandGroup {
 	public void shootCommands() {
 		this.addSequential(new AimAtTarget());
 		this.addSequential(new VisionAimSingle());
+		Robot.shooter.setPower(1);
 		this.addSequential(new Spinup(4));
 		this.addSequential(new AutoShoot());
 	}

@@ -9,6 +9,7 @@ import org.usfirst.frc3219.TREAD.commands.SensorWatch;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
@@ -35,8 +36,11 @@ public class Sensors extends Subsystem {
 	//Camera settings
 	public static final int CAMERA_WIDTH = 640;
 	public static final int CAMERA_HEIGHT = 480;
+	public static final int GEAR_CAMERA_HEIGHT = 720;
 	public static final double DEGREES_PER_PIXEL = 60.0 / CAMERA_WIDTH;
 	public static final double DEGREES_PER_PIXEL_Y = 60.0 / CAMERA_HEIGHT;
+	public static final double GEAR_DEGREES_PER_PIXEL_Y = 50.0 / CAMERA_HEIGHT;
+	private static final int CAMERA_FPS = 5;
 
 	public Sensors() {
 		NAVX = new AHRS(SPI.Port.kMXP);
@@ -55,8 +59,11 @@ public class Sensors extends Subsystem {
 	// sets up stuff for putting cameras onto smartdashboard
 	public static void setupCamera() {
 		CameraServer server = CameraServer.getInstance();
-		// UsbCamera cam = server.startAutomaticCapture();
-		server.addAxisCamera("Gears", "10.32.19.51");
+		UsbCamera gearCam = server.startAutomaticCapture();
+		gearCam.setResolution(CAMERA_WIDTH, CAMERA_HEIGHT);
+		gearCam.setFPS(CAMERA_FPS);
+		gearCam.setExposureManual(33);
+		
 		server.addAxisCamera("Shooter", "10.32.19.52");
 	}
 
@@ -78,13 +85,13 @@ public class Sensors extends Subsystem {
 	}
 	
 	//returns the x location in pixels of the gear target
-	public double getGearTargetX() {
-		double[] centerXs = gearVisionTable.getNumberArray("centerX", new double[1]);
+	public double getGearTargetY() {
+		double[] centerYs = gearVisionTable.getNumberArray("centerY", new double[1]);
 		double average = 0.0;
-		for (double d : centerXs) {
+		for (double d : centerYs) {
 			average += d;
 		}
-		average /= centerXs.length;
+		average /= centerYs.length;
 		return average;
 	}
 

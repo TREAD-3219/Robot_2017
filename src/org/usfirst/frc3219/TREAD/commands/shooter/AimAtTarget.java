@@ -16,13 +16,13 @@ public class AimAtTarget extends CommandGroup {
 			if (Robot.position.equals("Middle")) {
 				this.addSequential(new TurntableTurnTo(Turntable.BLUE_MID_POSITION));
 			} else {
-				this.addSequential(new TurntableTurnTo(Turntable.BLUE_RIGHT_POSITION));
+				this.addSequential(new TurntableTurnTo(Turntable.BLUE_LEFT_POSITION));
 			}
 		} else {
 			if (Robot.position.equals("Middle")) {
 				this.addSequential(new TurntableTurnTo(Turntable.RED_MID_POSITION));
 			} else {
-				this.addSequential(new TurntableTurnTo(Turntable.RED_LEFT_POSITION));
+				this.addSequential(new TurntableTurnTo(Turntable.RED_RIGHT_POSITION));
 			}
 		}
 	}

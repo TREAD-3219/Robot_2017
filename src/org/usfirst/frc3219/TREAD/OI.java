@@ -23,6 +23,7 @@ import org.usfirst.frc3219.TREAD.commands.shooter.SetTurntableZero;
 import org.usfirst.frc3219.TREAD.commands.shooter.Shoot;
 import org.usfirst.frc3219.TREAD.commands.shooter.ShooterForward;
 import org.usfirst.frc3219.TREAD.commands.shooter.TurntableTurnTo;
+import org.usfirst.frc3219.TREAD.commands.vision.GearAim;
 import org.usfirst.frc3219.TREAD.commands.vision.VisionAimSingle;
 import org.usfirst.frc3219.TREAD.subsystems.Drive;
 import org.usfirst.frc3219.TREAD.subsystems.GearSlot;
@@ -82,8 +83,8 @@ public class OI {
 		JoystickButton shift2 = new JoystickButton(rightStick, 2);
 		shift2.whenPressed(new ShiftHigh());
 		
-		JoystickButton moveToPosition = new JoystickButton(rightStick, 5);
-		moveToPosition.whenPressed(new DriveForward(-Drive.SHOOTING_POSITION));
+		//JoystickButton moveToPosition = new JoystickButton(rightStick, 5);
+		//moveToPosition.whenPressed(new DriveForward(-Drive.SHOOTING_POSITION));
 
 		// Ball Pickup
 		JoystickButton ballPickup = new JoystickButton(GameController, 1);
@@ -125,6 +126,9 @@ public class OI {
 		//CLIMBING
 		JoystickButton climb1 = new JoystickButton(GameController, 10);
 		climb1.whileHeld(new Climb());
+		
+		JoystickButton gearAim = new JoystickButton(rightStick, 4);
+		gearAim.whenPressed(new GearAim(95));
 	}
 
 }

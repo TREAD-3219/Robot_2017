@@ -61,6 +61,14 @@ public class GearSlot extends Subsystem {
 		}
 	}
 	
+	public boolean getPosition() {
+		return position;
+	}
+	
+	public boolean getBlockerPosition() {
+		return blockPosition;
+	}
+	
 	public static void initializeMotors() {
 		RobotMap.gearPiston = new Solenoid(RobotMap.GEAR_SOLENOID_INDEX);
 		RobotMap.blockerPiston = new Solenoid(RobotMap.BLOCKER_SOLENOID_INDEX);

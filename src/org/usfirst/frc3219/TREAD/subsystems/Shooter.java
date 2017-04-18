@@ -74,4 +74,9 @@ public class Shooter extends Subsystem {
 	public void resetPower() {
 		shooterPower = SHOOTER_DEFAULT_POWER;
 	}
+	
+	//sets the current shooter power to user input
+	public void setPower(double pow) {
+		shooterPower = pow;
+	}
 }

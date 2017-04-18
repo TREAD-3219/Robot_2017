@@ -27,10 +27,10 @@ public class Turntable extends Subsystem {
 	
 	
 	//previously set positions for when the robot is at the airship
-	public static final int RED_LEFT_POSITION = 50;
-	public static final int RED_MID_POSITION = -40;
-	public static final int BLUE_MID_POSITION = 45;
-	public static final int BLUE_RIGHT_POSITION = -20;
+	public static final int RED_RIGHT_POSITION = 0;
+	public static final int RED_MID_POSITION = 0;
+	public static final int BLUE_MID_POSITION = -30;
+	public static final int BLUE_LEFT_POSITION = 80;
 	//position for the robot directly in front of the boiler
 	public static final int FORWARD_POSITION = -41;
 	//hardware declarations
